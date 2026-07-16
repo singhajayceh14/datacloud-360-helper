@@ -110,3 +110,29 @@ export const unifications = pgTable("unifications", {
 });
 
 export type Unification = typeof unifications.$inferSelect;
+
+/** A marketing segment in the project's catalog. */
+export const segments = pgTable("segments", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .notNull()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  objective: text("objective").notNull().default(""),
+  criteria: text("criteria").notNull().default(""),
+  dmos: text("dmos").notNull().default(""),
+  calculatedInsights: text("calculated_insights").notNull().default(""),
+  cadence: text("cadence").notNull().default("Daily"),
+  channel: text("channel").notNull().default(""),
+  status: text("status").notNull().default("Draft"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+export type Segment = typeof segments.$inferSelect;
+export type NewSegment = typeof segments.$inferInsert;
