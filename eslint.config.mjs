@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Read-only porting reference and generated migrations — not app code.
+    "reference/**",
+    "drizzle/**",
   ]),
 ]);
 

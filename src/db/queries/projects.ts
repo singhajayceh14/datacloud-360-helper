@@ -1,19 +1,19 @@
 import "server-only";
-import { eq } from "drizzle-orm";
-import { db } from "@/db";
+import { desc, eq } from "drizzle-orm";
+import { getDb } from "@/db";
 import { projects, type NewProject } from "@/db/schema";
 
 export function listProjects() {
-  return db.select().from(projects).orderBy(projects.updatedAt);
+  return getDb().select().from(projects).orderBy(desc(projects.updatedAt));
 }
 
 export async function getProject(id: string) {
-  const [row] = await db.select().from(projects).where(eq(projects.id, id));
+  const [row] = await getDb().select().from(projects).where(eq(projects.id, id));
   return row ?? null;
 }
 
 export async function createProject(data: NewProject) {
-  const [row] = await db.insert(projects).values(data).returning();
+  const [row] = await getDb().insert(projects).values(data).returning();
   return row;
 }
 
@@ -21,7 +21,7 @@ export async function updateProject(
   id: string,
   data: Partial<Omit<NewProject, "id">>,
 ) {
-  const [row] = await db
+  const [row] = await getDb()
     .update(projects)
     .set(data)
     .where(eq(projects.id, id))
@@ -30,5 +30,5 @@ export async function updateProject(
 }
 
 export async function deleteProject(id: string) {
-  await db.delete(projects).where(eq(projects.id, id));
+  await getDb().delete(projects).where(eq(projects.id, id));
 }

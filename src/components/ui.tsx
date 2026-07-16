@@ -27,6 +27,27 @@ export function Card({
   );
 }
 
+type BannerTone = "info" | "warn";
+
+/** Inline notice — the reference's `.banner`. */
+export function Banner({
+  tone = "info",
+  children,
+}: {
+  tone?: BannerTone;
+  children: ReactNode;
+}) {
+  const tones: Record<BannerTone, string> = {
+    info: "bg-info-bg text-info border-blue-200",
+    warn: "bg-warn-bg text-warn border-amber-200",
+  };
+  return (
+    <div className={`mb-4 rounded-[10px] border px-3.5 py-3 text-[13px] ${tones[tone]}`}>
+      {children}
+    </div>
+  );
+}
+
 type PillTone = "ga" | "beta" | "other";
 
 /** GA / Beta / other status pill — the reference's `.pill`. */
