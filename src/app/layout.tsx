@@ -6,7 +6,7 @@ import { listProjects } from "@/db/queries/projects";
 import { getActiveProjectId } from "@/lib/active-project";
 
 export const metadata: Metadata = {
-  title: "Data 360 App",
+  title: "DataCloud 360 Helper",
   description:
     "Design Salesforce Data Cloud 360 implementations end to end — sources, mappings, unification, segments, activation, entitlements, and the BRD/SDD.",
 };
