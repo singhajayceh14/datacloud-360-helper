@@ -1,4 +1,11 @@
-import { pgTable, uuid, text, timestamp, integer } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  uuid,
+  text,
+  timestamp,
+  integer,
+  jsonb,
+} from "drizzle-orm/pg-core";
 
 /**
  * A project = one Salesforce Data Cloud 360 implementation design.
@@ -40,3 +47,38 @@ export const appSettings = pgTable("app_settings", {
 });
 
 export type AppSettings = typeof appSettings.$inferSelect;
+
+/** One row of a CSV→Data 360 field mapping. */
+export type MappingField = {
+  column: string; // source CSV column
+  sample: string | null; // an example value
+  dlo: string; // Data Lake Object (source object)
+  dmo: string; // Data Model Object (target)
+  category: string; // person-split bucket, e.g. "Party Identification"
+  identity: boolean; // used for identity resolution?
+};
+
+/**
+ * A CSV source mapped to the Data 360 model, scoped to a project.
+ * Deleting a project cascades to its mappings.
+ */
+export const mappings = pgTable("mappings", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .notNull()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  sourceName: text("source_name").notNull(),
+  fileName: text("file_name"),
+  rowsSampled: integer("rows_sampled").notNull().default(0),
+  fields: jsonb("fields").notNull().$type<MappingField[]>(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+export type Mapping = typeof mappings.$inferSelect;
+export type NewMapping = typeof mappings.$inferInsert;
