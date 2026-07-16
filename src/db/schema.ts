@@ -31,7 +31,7 @@ export type NewProject = typeof projects.$inferInsert;
 export const appSettings = pgTable("app_settings", {
   id: integer("id").primaryKey().default(1),
   provider: text("provider").notNull().default("anthropic"),
-  claudeModel: text("claude_model").notNull().default("claude-sonnet-5"),
+  claudeModel: text("claude_model").notNull().default("claude-opus-4-8"),
   geminiModel: text("gemini_model").notNull().default("gemini-2.0-flash"),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .notNull()

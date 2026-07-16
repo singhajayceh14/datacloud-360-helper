@@ -1,7 +1,7 @@
 CREATE TABLE "app_settings" (
 	"id" integer PRIMARY KEY DEFAULT 1 NOT NULL,
 	"provider" text DEFAULT 'anthropic' NOT NULL,
-	"claude_model" text DEFAULT 'claude-sonnet-5' NOT NULL,
+	"claude_model" text DEFAULT 'claude-opus-4-8' NOT NULL,
 	"gemini_model" text DEFAULT 'gemini-2.0-flash' NOT NULL,
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL
 );
