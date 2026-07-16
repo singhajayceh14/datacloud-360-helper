@@ -136,3 +136,29 @@ export const segments = pgTable("segments", {
 
 export type Segment = typeof segments.$inferSelect;
 export type NewSegment = typeof segments.$inferInsert;
+
+/** An activation: a segment pushed to a destination on a cadence. */
+export const activations = pgTable("activations", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .notNull()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  segmentId: uuid("segment_id")
+    .notNull()
+    .references(() => segments.id, { onDelete: "cascade" }),
+  target: text("target").notNull(),
+  channel: text("channel").notNull().default(""),
+  cadence: text("cadence").notNull().default("Daily"),
+  consentBasis: text("consent_basis").notNull().default(""),
+  status: text("status").notNull().default("Draft"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+export type Activation = typeof activations.$inferSelect;
+export type NewActivation = typeof activations.$inferInsert;
