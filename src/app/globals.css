@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/*
+  Data 360 App — design system
+  Tokens lifted from the reference console (Icreon look): primary blue #386AFF,
+  dark sidebar, hairline borders, grouped cards, GA/Beta pills.
+*/
+@theme {
+  /* brand + neutrals */
+  --color-brand: #386aff;
+  --color-brand-hover: #2f5be0;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-line: #e5e7eb;
+  --color-canvas: #f7f8fa;
+  --color-panel: #ffffff;
+
+  /* sidebar (dark) */
+  --color-sidebar: #0b1220;
+  --color-sidebar-hover: #172033;
+  --color-sidebar-input: #131c2e;
+  --color-sidebar-border: #24304a;
+
+  /* status */
+  --color-ok: #166534;
+  --color-ok-bg: #dcfce7;
+  --color-warn: #854d0e;
+  --color-warn-bg: #fef9c3;
+  --color-info: #1e40af;
+  --color-info-bg: #eff6ff;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+
+  --radius-card: 12px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+}

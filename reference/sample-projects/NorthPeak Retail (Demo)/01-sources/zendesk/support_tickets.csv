@@ -1,0 +1,201 @@
+ticket_id,requester_email,subject,status,priority,created_at,satisfaction_rating
+ZD-5000,priya.lopez88@outlook.com,Where is my order,solved,normal,2026-04-21,
+ZD-5001,nina.obrien83@hotmail.com,Refund request,solved,normal,2026-04-07,good
+ZD-5002,priya.chen69@example.com,Damaged item,solved,normal,2026-04-11,good
+ZD-5003,emma.johnson50@yahoo.com,Refund request,solved,normal,2026-05-24,good
+ZD-5004,chen.obrien3@outlook.com,Loyalty points missing,open,normal,2026-06-09,good
+ZD-5005,james.garcia80@example.com,Where is my order,solved,high,2026-04-09,good
+ZD-5006,arjun.tanaka27@outlook.com,Loyalty points missing,pending,high,2026-05-09,good
+ZD-5007,arjun.anand57@yahoo.com,Sizing question,pending,high,2026-05-23,
+ZD-5008,nina.sharma23@example.com,Refund request,open,normal,2026-07-17,good
+ZD-5009,priya.wilson19@example.com,Where is my order,solved,normal,2026-04-17,good
+ZD-5010,olivia.obrien43@gmail.com,Where is my order,open,high,2026-07-05,
+ZD-5011,liam.martin83@hotmail.com,Sizing question,solved,normal,2026-07-26,good
+ZD-5012,zoe.chen56@outlook.com,Damaged item,solved,high,2026-07-15,
+ZD-5013,ethan.johnson9@yahoo.com,Damaged item,solved,normal,2026-05-25,
+ZD-5014,liam.wilson63@gmail.com,Loyalty points missing,solved,normal,2026-07-27,good
+ZD-5015,chen.lee64@hotmail.com,Damaged item,solved,high,2026-05-05,
+ZD-5016,olivia.johnson6@yahoo.com,Damaged item,open,normal,2026-07-17,good
+ZD-5017,lucas.gonzalez89@yahoo.com,Where is my order,solved,normal,2026-05-09,
+ZD-5018,liam.gonzalez90@outlook.com,Refund request,solved,high,2026-07-06,good
+ZD-5019,zoe.novak37@gmail.com,Sizing question,pending,normal,2026-07-13,bad
+ZD-5020,tom.kim71@example.com,Where is my order,solved,high,2026-07-10,
+ZD-5021,noah.ali70@yahoo.com,Loyalty points missing,pending,normal,2026-05-02,bad
+ZD-5022,james.chen63@hotmail.com,Refund request,open,high,2026-05-23,bad
+ZD-5023,lucas.khan90@hotmail.com,Damaged item,solved,normal,2026-06-25,good
+ZD-5024,maria.wilson8@example.com,Refund request,open,high,2026-04-16,
+ZD-5025,arjun.tanaka73@outlook.com,Where is my order,solved,normal,2026-05-01,good
+ZD-5026,sara.lopez7@hotmail.com,Sizing question,open,normal,2026-06-12,good
+ZD-5027,raj.ali11@outlook.com,Loyalty points missing,pending,normal,2026-06-23,bad
+ZD-5028,david.lopez62@hotmail.com,Damaged item,solved,normal,2026-04-20,bad
+ZD-5029,james.gonzalez49@yahoo.com,Where is my order,solved,normal,2026-05-27,good
+ZD-5030,olivia.kim44@hotmail.com,Loyalty points missing,pending,normal,2026-07-27,bad
+ZD-5031,noah.brown14@hotmail.com,Where is my order,open,normal,2026-05-26,
+ZD-5032,fatima.costa18@example.com,Damaged item,solved,high,2026-07-12,
+ZD-5033,olivia.patel79@example.com,Loyalty points missing,pending,high,2026-04-24,good
+ZD-5034,raj.kim49@hotmail.com,Loyalty points missing,pending,normal,2026-05-04,
+ZD-5035,arjun.smith2@outlook.com,Loyalty points missing,solved,normal,2026-06-07,bad
+ZD-5036,tom.tanaka29@outlook.com,Refund request,solved,normal,2026-06-19,good
+ZD-5037,nina.johnson10@yahoo.com,Refund request,open,normal,2026-05-06,good
+ZD-5038,noah.ali17@example.com,Damaged item,solved,high,2026-04-15,good
+ZD-5039,priya.garcia51@gmail.com,Sizing question,solved,high,2026-04-10,good
+ZD-5040,liam.chen92@hotmail.com,Sizing question,pending,normal,2026-07-16,bad
+ZD-5041,james.lopez33@example.com,Where is my order,pending,normal,2026-05-13,bad
+ZD-5042,liam.sharma16@outlook.com,Damaged item,pending,normal,2026-04-22,bad
+ZD-5043,chen.smith96@yahoo.com,Refund request,solved,high,2026-05-04,good
+ZD-5044,fatima.lopez46@hotmail.com,Loyalty points missing,solved,normal,2026-05-28,bad
+ZD-5045,david.obrien81@yahoo.com,Refund request,pending,high,2026-06-25,bad
+ZD-5046,nina.johnson68@gmail.com,Sizing question,solved,high,2026-05-20,good
+ZD-5047,emma.novak4@hotmail.com,Where is my order,solved,high,2026-06-21,bad
+ZD-5048,lucas.martin0@yahoo.com,Refund request,open,normal,2026-07-22,bad
+ZD-5049,mia.ali16@example.com,Damaged item,solved,normal,2026-04-06,good
+ZD-5050,raj.costa32@hotmail.com,Damaged item,solved,normal,2026-06-19,good
+ZD-5051,lucas.gonzalez57@outlook.com,Loyalty points missing,solved,normal,2026-06-04,good
+ZD-5052,aiko.chen36@hotmail.com,Refund request,open,normal,2026-07-24,good
+ZD-5053,lucas.sharma45@hotmail.com,Loyalty points missing,open,normal,2026-04-10,good
+ZD-5054,emma.johnson50@yahoo.com,Sizing question,solved,high,2026-04-03,bad
+ZD-5055,arjun.sharma81@hotmail.com,Damaged item,solved,normal,2026-06-19,
+ZD-5056,arjun.patel85@gmail.com,Where is my order,solved,normal,2026-05-04,good
+ZD-5057,priya.anand2@example.com,Sizing question,solved,high,2026-07-11,bad
+ZD-5058,emma.anand90@hotmail.com,Sizing question,pending,normal,2026-07-17,bad
+ZD-5059,raj.kim49@hotmail.com,Sizing question,solved,high,2026-05-12,bad
+ZD-5060,chen.patel36@yahoo.com,Refund request,solved,normal,2026-07-09,good
+ZD-5061,noah.johnson8@gmail.com,Damaged item,solved,high,2026-04-18,
+ZD-5062,maria.novak91@example.com,Sizing question,pending,normal,2026-05-07,good
+ZD-5063,zoe.chen56@outlook.com,Sizing question,pending,normal,2026-06-28,good
+ZD-5064,mia.ali16@example.com,Where is my order,open,normal,2026-05-20,good
+ZD-5065,aiko.patel74@outlook.com,Damaged item,open,normal,2026-06-06,good
+ZD-5066,tom.sharma17@outlook.com,Damaged item,pending,high,2026-05-25,good
+ZD-5067,aiko.chen36@hotmail.com,Loyalty points missing,open,normal,2026-04-28,bad
+ZD-5068,james.gonzalez49@yahoo.com,Sizing question,solved,normal,2026-04-10,good
+ZD-5069,david.khan78@gmail.com,Sizing question,solved,high,2026-04-13,bad
+ZD-5070,ethan.patel22@gmail.com,Loyalty points missing,pending,normal,2026-05-13,bad
+ZD-5071,aiko.chen92@outlook.com,Where is my order,pending,normal,2026-04-26,good
+ZD-5072,maria.kim1@outlook.com,Refund request,pending,normal,2026-07-10,good
+ZD-5073,emma.tanaka54@outlook.com,Refund request,open,normal,2026-07-19,bad
+ZD-5074,tom.martin81@outlook.com,Damaged item,solved,high,2026-07-04,
+ZD-5075,priya.lopez88@outlook.com,Sizing question,solved,normal,2026-07-15,good
+ZD-5076,noah.gonzalez60@outlook.com,Where is my order,solved,normal,2026-04-27,bad
+ZD-5077,zoe.brown55@example.com,Sizing question,solved,high,2026-05-24,bad
+ZD-5078,liam.martin2@gmail.com,Loyalty points missing,pending,high,2026-06-14,bad
+ZD-5079,david.brown95@gmail.com,Where is my order,open,high,2026-06-22,bad
+ZD-5080,zoe.ali5@hotmail.com,Damaged item,pending,normal,2026-06-27,good
+ZD-5081,zoe.khan65@yahoo.com,Refund request,pending,normal,2026-06-16,good
+ZD-5082,noah.smith86@yahoo.com,Sizing question,solved,normal,2026-07-13,bad
+ZD-5083,raj.martin45@gmail.com,Sizing question,solved,high,2026-07-26,
+ZD-5084,david.wilson85@example.com,Damaged item,pending,high,2026-07-13,
+ZD-5085,noah.martin24@gmail.com,Loyalty points missing,solved,normal,2026-04-12,
+ZD-5086,aiko.ali30@outlook.com,Refund request,solved,normal,2026-06-28,
+ZD-5087,fatima.smith40@outlook.com,Where is my order,solved,normal,2026-04-25,
+ZD-5088,olivia.sharma26@gmail.com,Sizing question,pending,normal,2026-04-18,
+ZD-5089,zoe.chen56@outlook.com,Loyalty points missing,pending,normal,2026-05-21,
+ZD-5090,noah.patel73@hotmail.com,Where is my order,solved,normal,2026-06-09,good
+ZD-5091,liam.smith7@yahoo.com,Sizing question,open,normal,2026-05-18,good
+ZD-5092,emma.novak4@hotmail.com,Loyalty points missing,solved,normal,2026-05-06,good
+ZD-5093,aiko.tanaka29@outlook.com,Sizing question,pending,normal,2026-04-23,
+ZD-5094,maria.obrien12@outlook.com,Where is my order,pending,normal,2026-07-07,good
+ZD-5095,chen.lee64@hotmail.com,Damaged item,open,normal,2026-04-24,bad
+ZD-5096,ethan.patel14@yahoo.com,Refund request,solved,normal,2026-06-04,good
+ZD-5097,nina.brown30@yahoo.com,Refund request,pending,normal,2026-05-28,bad
+ZD-5098,raj.khan32@yahoo.com,Loyalty points missing,pending,normal,2026-05-10,bad
+ZD-5099,lucas.sharma45@hotmail.com,Damaged item,pending,normal,2026-07-28,bad
+ZD-5100,mia.brown90@example.com,Where is my order,solved,normal,2026-05-16,good
+ZD-5101,arjun.patel85@gmail.com,Loyalty points missing,pending,normal,2026-04-11,good
+ZD-5102,tom.khan53@hotmail.com,Where is my order,solved,normal,2026-04-03,good
+ZD-5103,maria.novak91@example.com,Sizing question,pending,normal,2026-07-26,good
+ZD-5104,fatima.johnson58@yahoo.com,Loyalty points missing,solved,normal,2026-07-10,
+ZD-5105,nina.martin12@hotmail.com,Sizing question,pending,high,2026-07-07,good
+ZD-5106,nina.novak23@hotmail.com,Where is my order,pending,normal,2026-06-09,good
+ZD-5107,aiko.novak67@outlook.com,Sizing question,solved,normal,2026-07-17,good
+ZD-5108,mia.ali77@outlook.com,Where is my order,solved,high,2026-05-14,good
+ZD-5109,tom.martin95@yahoo.com,Sizing question,open,high,2026-07-28,bad
+ZD-5110,aiko.patel74@outlook.com,Sizing question,pending,normal,2026-07-03,good
+ZD-5111,tom.martin81@outlook.com,Loyalty points missing,solved,normal,2026-07-04,good
+ZD-5112,lucas.martin0@yahoo.com,Where is my order,solved,normal,2026-07-15,
+ZD-5113,chen.brown89@example.com,Loyalty points missing,solved,high,2026-04-23,good
+ZD-5114,nina.brown30@yahoo.com,Sizing question,pending,high,2026-07-01,
+ZD-5115,david.anand64@gmail.com,Loyalty points missing,open,normal,2026-04-25,good
+ZD-5116,aiko.ali30@outlook.com,Sizing question,solved,normal,2026-04-27,bad
+ZD-5117,liam.costa39@yahoo.com,Where is my order,pending,normal,2026-07-17,good
+ZD-5118,maria.kim1@outlook.com,Loyalty points missing,solved,normal,2026-06-17,good
+ZD-5119,noah.gonzalez87@outlook.com,Where is my order,solved,normal,2026-06-15,good
+ZD-5120,olivia.khan27@gmail.com,Damaged item,solved,high,2026-04-28,
+ZD-5121,zoe.novak37@gmail.com,Loyalty points missing,solved,normal,2026-05-17,good
+ZD-5122,david.sharma23@outlook.com,Where is my order,solved,normal,2026-07-18,good
+ZD-5123,aiko.lee25@yahoo.com,Sizing question,solved,normal,2026-04-14,bad
+ZD-5124,mia.brown90@example.com,Loyalty points missing,solved,high,2026-06-09,
+ZD-5125,sara.patel21@gmail.com,Loyalty points missing,solved,high,2026-05-01,good
+ZD-5126,tom.martin95@yahoo.com,Where is my order,pending,high,2026-06-14,good
+ZD-5127,raj.tanaka74@hotmail.com,Damaged item,solved,normal,2026-04-04,
+ZD-5128,tom.martin81@outlook.com,Refund request,open,normal,2026-07-13,good
+ZD-5129,noah.garcia15@gmail.com,Where is my order,solved,normal,2026-06-28,bad
+ZD-5130,tom.patel83@example.com,Damaged item,open,normal,2026-04-15,good
+ZD-5131,chen.lee64@hotmail.com,Damaged item,solved,normal,2026-05-22,bad
+ZD-5132,raj.anand9@gmail.com,Refund request,open,normal,2026-05-28,
+ZD-5133,mia.novak13@hotmail.com,Where is my order,solved,normal,2026-04-10,good
+ZD-5134,zoe.ali5@hotmail.com,Where is my order,solved,high,2026-04-25,bad
+ZD-5135,priya.costa70@hotmail.com,Refund request,open,normal,2026-04-26,good
+ZD-5136,mia.lopez96@gmail.com,Refund request,open,normal,2026-06-17,
+ZD-5137,tom.kim71@example.com,Sizing question,solved,high,2026-06-15,bad
+ZD-5138,ethan.lee16@outlook.com,Sizing question,solved,high,2026-05-09,
+ZD-5139,fatima.obrien35@gmail.com,Damaged item,solved,high,2026-04-12,good
+ZD-5140,olivia.novak80@gmail.com,Refund request,pending,normal,2026-05-25,good
+ZD-5141,tom.tanaka29@outlook.com,Damaged item,solved,high,2026-06-28,good
+ZD-5142,zoe.khan64@outlook.com,Damaged item,solved,normal,2026-06-21,bad
+ZD-5143,ethan.smith60@example.com,Sizing question,open,normal,2026-06-19,good
+ZD-5144,arjun.tanaka27@outlook.com,Where is my order,open,high,2026-07-24,
+ZD-5145,sara.costa58@example.com,Damaged item,pending,normal,2026-04-22,
+ZD-5146,sara.lopez7@hotmail.com,Damaged item,solved,high,2026-04-23,
+ZD-5147,lucas.novak86@hotmail.com,Where is my order,solved,high,2026-06-10,bad
+ZD-5148,arjun.tanaka73@outlook.com,Damaged item,open,normal,2026-06-01,bad
+ZD-5149,tom.sharma17@outlook.com,Loyalty points missing,solved,normal,2026-06-20,good
+ZD-5150,emma.ali91@gmail.com,Damaged item,open,normal,2026-05-22,good
+ZD-5151,nina.brown34@outlook.com,Sizing question,solved,normal,2026-07-25,bad
+ZD-5152,aiko.ali30@outlook.com,Sizing question,pending,normal,2026-06-19,good
+ZD-5153,liam.chen92@hotmail.com,Damaged item,open,normal,2026-05-17,bad
+ZD-5154,chen.ali75@gmail.com,Damaged item,solved,normal,2026-07-20,good
+ZD-5155,arjun.brown8@yahoo.com,Sizing question,open,high,2026-06-28,
+ZD-5156,chen.brown89@example.com,Loyalty points missing,solved,high,2026-06-19,bad
+ZD-5157,david.novak42@yahoo.com,Damaged item,open,normal,2026-07-05,good
+ZD-5158,zoe.chen56@outlook.com,Loyalty points missing,solved,normal,2026-07-04,good
+ZD-5159,fatima.wilson71@gmail.com,Damaged item,solved,normal,2026-04-06,bad
+ZD-5160,zoe.novak26@gmail.com,Sizing question,solved,high,2026-04-13,
+ZD-5161,nina.novak63@example.com,Refund request,solved,normal,2026-05-22,bad
+ZD-5162,ethan.tanaka9@yahoo.com,Damaged item,solved,normal,2026-06-27,
+ZD-5163,lucas.gonzalez57@outlook.com,Refund request,solved,normal,2026-07-21,good
+ZD-5164,emma.kim28@example.com,Damaged item,solved,normal,2026-06-18,good
+ZD-5165,emma.johnson50@yahoo.com,Damaged item,solved,normal,2026-06-27,
+ZD-5166,lucas.lee28@hotmail.com,Refund request,open,normal,2026-05-07,
+ZD-5167,noah.gonzalez60@outlook.com,Sizing question,pending,normal,2026-04-18,
+ZD-5168,ethan.patel0@gmail.com,Where is my order,solved,high,2026-04-01,bad
+ZD-5169,ethan.patel0@gmail.com,Where is my order,solved,normal,2026-04-16,good
+ZD-5170,liam.chen92@hotmail.com,Damaged item,pending,high,2026-06-25,good
+ZD-5171,arjun.costa47@gmail.com,Loyalty points missing,pending,high,2026-05-08,bad
+ZD-5172,lucas.khan90@hotmail.com,Sizing question,open,high,2026-05-28,good
+ZD-5173,zoe.ali51@yahoo.com,Sizing question,open,high,2026-06-21,good
+ZD-5174,mia.gonzalez45@outlook.com,Where is my order,solved,normal,2026-05-20,good
+ZD-5175,arjun.costa47@gmail.com,Where is my order,solved,normal,2026-05-02,good
+ZD-5176,priya.patel13@example.com,Damaged item,open,normal,2026-05-22,good
+ZD-5177,tom.kim71@example.com,Refund request,pending,normal,2026-07-19,good
+ZD-5178,lucas.smith94@gmail.com,Where is my order,solved,high,2026-07-17,good
+ZD-5179,ethan.anand44@hotmail.com,Where is my order,solved,high,2026-06-10,bad
+ZD-5180,lucas.garcia72@gmail.com,Where is my order,pending,normal,2026-07-13,good
+ZD-5181,noah.novak91@outlook.com,Damaged item,solved,high,2026-04-18,good
+ZD-5182,emma.ali56@yahoo.com,Loyalty points missing,open,normal,2026-06-06,bad
+ZD-5183,lucas.lee28@hotmail.com,Damaged item,pending,normal,2026-05-24,bad
+ZD-5184,olivia.lee60@yahoo.com,Damaged item,open,normal,2026-07-21,good
+ZD-5185,lucas.brown4@yahoo.com,Refund request,pending,high,2026-07-14,good
+ZD-5186,chen.gonzalez32@hotmail.com,Loyalty points missing,solved,high,2026-04-22,bad
+ZD-5187,arjun.obrien33@outlook.com,Damaged item,solved,high,2026-05-10,bad
+ZD-5188,aiko.ali75@outlook.com,Sizing question,open,normal,2026-06-13,good
+ZD-5189,noah.gonzalez60@outlook.com,Loyalty points missing,solved,normal,2026-04-26,
+ZD-5190,lucas.anand72@example.com,Sizing question,pending,normal,2026-05-07,
+ZD-5191,david.lee5@yahoo.com,Refund request,pending,high,2026-04-28,bad
+ZD-5192,chen.lopez40@hotmail.com,Loyalty points missing,pending,normal,2026-07-22,good
+ZD-5193,mia.sharma62@yahoo.com,Loyalty points missing,solved,normal,2026-05-08,good
+ZD-5194,liam.costa39@yahoo.com,Sizing question,pending,normal,2026-05-02,good
+ZD-5195,lucas.sharma45@hotmail.com,Refund request,solved,normal,2026-06-02,bad
+ZD-5196,emma.tanaka54@outlook.com,Where is my order,solved,high,2026-07-16,
+ZD-5197,noah.ali70@yahoo.com,Loyalty points missing,solved,normal,2026-05-02,
+ZD-5198,fatima.lopez46@hotmail.com,Damaged item,solved,high,2026-07-22,
+ZD-5199,emma.tanaka54@outlook.com,Sizing question,pending,high,2026-06-27,bad

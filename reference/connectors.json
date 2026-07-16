@@ -1,0 +1,3413 @@
+{
+ "verified": "2026-07-10",
+ "source": "salesforce.com connector directory (dc-connectors v0.1.8)",
+ "connectors": [
+  {
+   "name": "ActOn",
+   "label": "Act-On",
+   "desc": "Ingest or federate data from Act-On",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "act",
+   "label": "Act! CRM",
+   "desc": "Ingest or federate data from Act! CRM",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "ActiveCampaign",
+   "label": "ActiveCampaign",
+   "desc": "Ingest or federate data from ActiveCampaign",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Acumatica",
+   "label": "Acumatica",
+   "desc": "Ingest or federate data from Acumatica Cloud ERP",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AdFormMI",
+   "label": "Ad Form",
+   "desc": "Ingest data for Marketing Intelligence from AdForm",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "AdobeAnalytics",
+   "label": "Adobe Analytics",
+   "desc": "Ingest or federate data from Adobe Analytics",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AdobeCommerce",
+   "label": "Adobe Commerce",
+   "desc": "Ingest or federate data from Adobe Commerce",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "uEkAem",
+   "label": "Adobe Experience Manager (AEM)",
+   "desc": "Ingest files from AEM",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "MS_AdobeMarketo",
+   "label": "Adobe Marketo",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "AdobeMarketoEngage",
+   "label": "Adobe Marketo Engage",
+   "desc": "Ingest data from Marketo Engage",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Batch"
+   ]
+  },
+  {
+   "name": "ADP",
+   "label": "ADP",
+   "desc": "Ingest or federate data from ADP",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AIPlatform",
+   "label": "AIPlatform Connector",
+   "desc": "A connector for S3 ARN authentication",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "NoConnection",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Airtable",
+   "label": "Airtable",
+   "desc": "Ingest or federate data from Airtable",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AjnaKafka",
+   "label": "Ajna Kafka",
+   "desc": "Ingest streaming data from Ajna Kafka",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Streaming",
+    "StaticSchema",
+    "UniqueConnection",
+    "NoConnection"
+   ]
+  },
+  {
+   "name": "AmazonAdsMI",
+   "label": "Amazon Ads for MI",
+   "desc": "Ingest data for Marketing Intelligence from Amazon Ads",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "AmazonDspEMI",
+   "label": "Amazon DSP for MI",
+   "desc": "Ingest data for Marketing Intelligence from Amazon DSP",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_AmazonDynamoDB",
+   "label": "Amazon DynamoDB",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_AmazonEC2",
+   "label": "Amazon EC2",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "AwsKinesisDS",
+   "label": "Amazon Kinesis",
+   "desc": "Ingest streaming data from Amazon Kinesis",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Streaming",
+    "StaticSchema",
+    "UniqueConnection"
+   ]
+  },
+  {
+   "name": "MS_AmazonLambda",
+   "label": "Amazon Lambda",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "AmazonMarketingCloud",
+   "label": "Amazon Marketing Cloud",
+   "desc": "",
+   "release": "GA",
+   "features": [
+    "Egress"
+   ]
+  },
+  {
+   "name": "AmazonMarketplace",
+   "label": "Amazon Marketplace",
+   "desc": "Ingest or federate data from Amazon Marketplace",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AmazonKafka",
+   "label": "Amazon MSK",
+   "desc": "Ingest streaming data from Amazon MSK",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Streaming",
+    "StaticSchema",
+    "UniqueConnection"
+   ]
+  },
+  {
+   "name": "MS_AmazonRDS",
+   "label": "Amazon RDS",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "REDSHIFT",
+   "label": "Amazon Redshift",
+   "desc": "Federate data from Amazon Redshift using Zero Copy.",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "AwsS3",
+   "label": "Amazon S3",
+   "desc": "Retrieve a file from Amazon Simple Storage Service",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Egress",
+    "FileBased",
+    "Batch",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "MS_AmazonSNS",
+   "label": "Amazon SNS",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_AmazonSQS",
+   "label": "Amazon SQS",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_AMQP",
+   "label": "AMQP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_AnypointCustomMetrics",
+   "label": "Anypoint Custom Metrics",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_AnypointMQ",
+   "label": "Anypoint MQ",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "Cassandra",
+   "label": "Apache Cassandra",
+   "desc": "Ingest or federate data from an Apache Cassandra database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "ApacheCouchDB",
+   "label": "Apache CouchDB",
+   "desc": "Ingest or federate data from an Apache CouchDB database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "ApacheHBase",
+   "label": "Apache HBase",
+   "desc": "Ingest or federate data from Apache HBase",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "ApacheHive",
+   "label": "Apache Hive",
+   "desc": "Ingest or federate data from Apache Hive",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "ICEBERG",
+   "label": "Apache Iceberg",
+   "desc": "Federate data from Iceberg tables using Zero Copy.",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "BYOL",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "ApacheImpala",
+   "label": "Apache Impala",
+   "desc": "Ingest or federate data from Apache Impala",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_ApacheKafka",
+   "label": "Apache Kafka",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "ApachePhoenix",
+   "label": "Apache Phoenix",
+   "desc": "Ingest or federate data from Apache Phoenix",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_AS2",
+   "label": "AS2",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "Asana",
+   "label": "Asana",
+   "desc": "Ingest or federate data from Asana",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AwsAthena",
+   "label": "AWS Athena",
+   "desc": "Ingest data from an Athena Query Service on AWS",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "AwsRdsAuroraMySql",
+   "label": "AWS Aurora MySQL",
+   "desc": "Ingest or federate data from a MySQL database on AWS Aurora",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AwsRdsAuroraPostgres",
+   "label": "AWS Aurora PostgreSQL",
+   "desc": "Ingest or federate data from a PostgreSQL database on AWS Aurora",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AwsDynamoDB",
+   "label": "AWS DynamoDB",
+   "desc": "Ingest or federate data from an Amazon DynamoDB database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "GLUE_IRC",
+   "label": "AWS Glue Data Catalog",
+   "desc": "Federate data from Glue-managed Iceberg tables using Zero Copy.",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "BYOL",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "AwsRdsMariaDB",
+   "label": "AWS RDS MariaDB",
+   "desc": "Ingest or federate data from a MariaDB database on AWS RDS",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AwsRdsMySql",
+   "label": "AWS RDS MySQL",
+   "desc": "Ingest or federate data from a MySQL database on AWS RDS",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AwsRdsOracle",
+   "label": "AWS RDS Oracle",
+   "desc": "Ingest or federate data from an Oracle database on AWS RDS.",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AwsRdsPostgres",
+   "label": "AWS RDS PostgreSQL",
+   "desc": "Ingest or federate data from a PostgreSQL database on AWS RDS",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AwsRdsSqlServer",
+   "label": "AWS RDS SQL Server",
+   "desc": "Ingest or federate data from a SQL Server database on AWS RDS",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AzureAnalysisServices",
+   "label": "Azure Analysis Services",
+   "desc": "Ingest or federate data from Azure Analysis Services",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AzureCosmosDB",
+   "label": "Azure Cosmos DB",
+   "desc": "Ingest or federate data from Azure Cosmos DB",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_AzureDataLakeStorage",
+   "label": "Azure Data Lake Storage",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_AzureKeyVault",
+   "label": "Azure Key Vault",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_AzureKeyVaultPropertiesProvider",
+   "label": "Azure Key Vault Properties Provider",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "AzureMariaDB",
+   "label": "Azure MariaDB",
+   "desc": "Ingest data from a MariaDB database on Azure",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "AzureMySql",
+   "label": "Azure MySQL",
+   "desc": "Ingest or federate data from a MySQL database on Azure",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "AzurePostgres",
+   "label": "Azure PostgreSQL",
+   "desc": "Ingest or federate data from a PostgreSQL database on Azure",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_AzureServiceBus",
+   "label": "Azure Service Bus",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_AzureServiceBusManagement",
+   "label": "Azure Service Bus Management",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "AzureSql",
+   "label": "Azure SQL Server",
+   "desc": "Ingest data from a SQL Server database on Azure",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "AzureSynapse",
+   "label": "Azure Synapse",
+   "desc": "Ingest data from a Microsoft Azure Synapse instance",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "BigCommerce",
+   "label": "BigCommerce",
+   "desc": "Ingest or federate data from BigCommerce",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_BMCRemedy",
+   "label": "BMC Remedy",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "uEkBox",
+   "label": "Box",
+   "desc": "Ingest data from Box",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "BridgeFT",
+   "label": "BridgeFT",
+   "desc": "Ingest financial data from BridgeFT API",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "MS_CAQH",
+   "label": "CAQH",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_CloudHub",
+   "label": "CloudHub",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "CockroachDB",
+   "label": "CockroachDB",
+   "desc": "Ingest or federate data from a CockroachDB database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Confluence",
+   "label": "Confluence",
+   "desc": "Ingest or federate data from Confluence",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "ConfluenceUnstructured",
+   "label": "Confluence - Unstructured Data",
+   "desc": "Ingest data from Confluence",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "MS_ConfluentSchemaRegistry",
+   "label": "Confluent Schema Registry",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "ConversationTranscripts",
+   "label": "Conversation Transcripts",
+   "desc": "Ingest Conversation Transcripts for Enhanced Channels",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "NoConnection",
+    "Batch"
+   ]
+  },
+  {
+   "name": "CreativeAssetsDownloader",
+   "label": "Creative Assets Downloader For MI",
+   "desc": "Download Creative Assets From Various MI Connectors",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "CriteoMarketingMI",
+   "label": "Criteo Marketing for MI",
+   "desc": "Ingest campaign delivery and conversion data from Criteo Marketing Media",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "CriteoRetailMI",
+   "label": "Criteo Retail for MI",
+   "desc": "Ingest campaign delivery and conversion data from Criteo Retail Media",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "CrowdStrikeFalcon",
+   "label": "CrowdStrike Falcon",
+   "desc": "CrowdStrike Falcon API to fetch events",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress"
+   ]
+  },
+  {
+   "name": "Cube",
+   "label": "Cube",
+   "desc": "Ingest data from Cube API",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "DataCustomCode",
+   "label": "Data Custom Code Connector",
+   "desc": "Ingests Data Custom Code logs",
+   "release": "ACCESS_CHECK",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "NoConnection",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_Database",
+   "label": "Database",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "Databricks",
+   "label": "Databricks",
+   "desc": "Ingest or federate data from Databricks using Zero Copy.",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "BYOL",
+    "Batch"
+   ]
+  },
+  {
+   "name": "DATABRICKS_UNITY",
+   "label": "Databricks File Federation",
+   "desc": "Federate data from Databricks UniForm-enabled tables using Zero Copy.",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "BYOL",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "Dbeaver Corporation",
+   "label": "Dbeaver Corporation",
+   "desc": "Data Management Tool **",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Demandbase",
+   "label": "Demandbase",
+   "desc": "Import files from Demandbase SFTP server",
+   "release": "GA",
+   "features": [
+    "Batch",
+    "Ingress",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "Discover",
+   "label": "Discover",
+   "desc": "Ingest data using discover connector",
+   "release": "IN_DEV",
+   "features": []
+  },
+  {
+   "name": "MS_DocuSign",
+   "label": "DocuSign",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_Dropbox",
+   "label": "Dropbox",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "eBay",
+   "label": "eBay",
+   "desc": "Ingest or federate data from eBay",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "eBayAnalytics",
+   "label": "eBay Analytics",
+   "desc": "Ingest or federate data from eBay Analytics",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "ECI",
+   "label": "ECI Connector",
+   "desc": "A connector for S3 ARN authentication",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "NoConnection",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_EDIFACTEDI",
+   "label": "EDIFACT EDI",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "Elasticsearch",
+   "label": "Elasticsearch",
+   "desc": "Ingest or federate data from Elasticsearch",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_Email",
+   "label": "Email",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "EnterpriseDB",
+   "label": "EnterpriseDB",
+   "desc": "Ingest or federate data from an EnterpriseDB database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "EpicorERP",
+   "label": "Epicor Kinetic",
+   "desc": "Ingest or federate data from Epicor Kinetic",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Facebook",
+   "label": "Facebook",
+   "desc": "Ingest data from Facebook",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "FacebookPageInsightMI",
+   "label": "Facebook Page & Insight for MI",
+   "desc": "Ingest data for Marketing Intelligence from Facebook Page Insight",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "FacebookPostInsightMI",
+   "label": "Facebook Posts Insights for MI",
+   "desc": "Ingest data for Marketing Intelligence from Facebook Post Insight",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_File",
+   "label": "File",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "UploadedFiles",
+   "label": "File Upload",
+   "desc": "Upload file from your local drive",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Batch",
+    "NoConnection"
+   ]
+  },
+  {
+   "name": "MS_FTP",
+   "label": "FTP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_FTPS",
+   "label": "FTPS",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "EdcMlModelBYOConnector",
+   "label": "Generic OAuth connector for EDC BYO MlModels",
+   "desc": "Save OAuth credentials to retrieve model metadata for EDC BYO MlModels",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "BYOM",
+    "NoConnection"
+   ]
+  },
+  {
+   "name": "uEkGitHub",
+   "label": "GitHub",
+   "desc": "Ingest data from GitHub",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "MS_Gmail",
+   "label": "Gmail",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "GoogleAdManager",
+   "label": "Google Ad Manager",
+   "desc": "Ingest or federate data from Google Ad Manager",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "GoogleAdManagerMI",
+   "label": "Google Ad Manager for MI",
+   "desc": "Ingest campaign delivery and conversion data from Google Ad Manager",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "GoogleAds",
+   "label": "Google Ads",
+   "desc": "Ingest campaign delivery and conversion data from Google Ads",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "CDataJdbcGoogleAnalytics",
+   "label": "Google Analytics",
+   "desc": "Ingest data from Google Analytics",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "GoogleAnalyticsCustomMI",
+   "label": "Google Analytics Custom For MI",
+   "desc": "Ingest web analytics data for Marketing Intelligence from Google Analytics",
+   "release": "IN_DEV",
+   "features": []
+  },
+  {
+   "name": "GoogleAnalyticsEMI",
+   "label": "Google Analytics for MI",
+   "desc": "Ingest web analytics data for Marketing Intelligence from Google Analytics",
+   "release": "GA",
+   "features": []
+  },
+  {
+   "name": "BIGQUERY",
+   "label": "Google Big Query",
+   "desc": "Federate data from Google BigQuery using Zero Copy.",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "MS_GoogleBigQuery",
+   "label": "Google BigQuery",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_GoogleCalendar",
+   "label": "Google Calendar",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "GoogleCampaignManager",
+   "label": "Google Campaign Manager",
+   "desc": "Ingest or federate data from Google Campaign Manager",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "GCS",
+   "label": "Google Cloud Storage",
+   "desc": "Connect to Google Cloud Storage to import data from Data cloud",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Egress",
+    "FileBased",
+    "UniqueConnection",
+    "Batch",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "GoogleContacts",
+   "label": "Google Contacts",
+   "desc": "Ingest or federate data from Google Contacts",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "GoogleDfaEMI",
+   "label": "Google DFA for MI",
+   "desc": "Ingest data for Marketing Intelligence from Google DFA",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "GoogleDVMI",
+   "label": "Google Display & Video 360 For MI",
+   "desc": "Ingest data for Marketing Intelligence from Google Display & Video 360 For MI",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "GoogleDV360",
+   "label": "Google Display and Video 360",
+   "desc": "",
+   "release": "GA",
+   "features": [
+    "Egress",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "MS_GoogleDrive",
+   "label": "Google Drive",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "GoogleDrive",
+   "label": "Google Drive Structured Data",
+   "desc": "Ingest structured data from Google Drive",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Batch"
+   ]
+  },
+  {
+   "name": "GDriveUnstructured",
+   "label": "Google Drive Unstructured Data",
+   "desc": "Ingest unstructured data from Google Drive",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "MS_GooglePubSub",
+   "label": "Google Pub/Sub",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "GoogleSearchAds360MI",
+   "label": "Google Search Ads 360 for MI",
+   "desc": "Ingest data for Marketing Intelligence from Google Search Ads 360",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "GoogleSearchConsoleMI",
+   "label": "Google Search Console For MI",
+   "desc": "Ingest data for Marketing Intelligence from Google Search Console For MI",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "GoogleSheet",
+   "label": "Google Sheets",
+   "desc": "Ingest spreadsheets from Google Sheets",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Batch"
+   ]
+  },
+  {
+   "name": "GoogleSpanner",
+   "label": "Google Spanner",
+   "desc": "Ingest or federate data from a Google Spanner database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "GraphQL",
+   "label": "GraphQL",
+   "desc": "Ingest or federate data from GraphQL",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Greenplum",
+   "label": "Greenplum",
+   "desc": "Ingest or federate data from Greenplum",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "uEkGuru",
+   "label": "Guru",
+   "desc": "Ingest data from Guru",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "MS_HadoopHDFS",
+   "label": "Hadoop (HDFS)",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "uEkHelpJuice",
+   "label": "Helpjuice",
+   "desc": "Ingest knowledge articles from Helpjuice",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "HerokuPostgres",
+   "label": "Heroku PostgreSQL",
+   "desc": "Ingest or federate data from a PostgreSQL database on Heroku",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_HL7EDI",
+   "label": "HL7 EDI",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_HL7MLLP",
+   "label": "HL7 MLLP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_HTTP",
+   "label": "HTTP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "hubspot",
+   "label": "HubSpot",
+   "desc": "Ingest or federate data from Hubspot",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "IBMCloudObjectStorage",
+   "label": "IBM Cloud Object Storage",
+   "desc": "Ingest data from IBM Cloud Object Storage",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Cloudant",
+   "label": "IBM Cloudant",
+   "desc": "Ingest data from an IBM Cloudant database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_IBMCTG",
+   "label": "IBM CTG",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "DB2",
+   "label": "IBM Db2",
+   "desc": "Ingest data from an IBM Db2 database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Informix",
+   "label": "IBM Informix",
+   "desc": "Ingest data from an IBM Informix database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_IBMMQ",
+   "label": "IBM MQ",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "IBM_ICEBERG",
+   "label": "IBM watsonx.data",
+   "desc": "Federate data from watsonx.data-managed Iceberg tables using Zero Copy.",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "BYOL",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "Instagram",
+   "label": "Instagram",
+   "desc": "Ingest or federate data from Instagram",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "InstagramMI",
+   "label": "Instagram Business & Insight for MI",
+   "desc": "Ingest data for Marketing Intelligence from Instagram Business Account Insights",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Intercom",
+   "label": "Intercom",
+   "desc": "Ingest Contact and Data Event data from Intercom",
+   "release": "PILOT",
+   "features": [
+    "Ingress",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "Jira",
+   "label": "Jira",
+   "desc": "Ingest or federate data from Jira",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "uEkJira",
+   "label": "Jira",
+   "desc": "Ingest unstructured data from Atlassian Jira",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "JiraServiceDesk",
+   "label": "Jira Service Desk",
+   "desc": "Ingest or federate data from Jira Service Desk",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_JMS",
+   "label": "JMS",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "KakaoAdsMI",
+   "label": "Kakao Ads For MI",
+   "desc": "Ingest data for Marketing Intelligence from Kakao Ads",
+   "release": "BETA",
+   "features": []
+  },
+  {
+   "name": "MS_LDAP",
+   "label": "LDAP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "LineAdsMI",
+   "label": "Line Ads for MI",
+   "desc": "Ingest data for Marketing Intelligence from Line Ads",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Linkedin",
+   "label": "LinkedIn",
+   "desc": "Ingest or federate data from LinkedIn",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "LinkedinAds",
+   "label": "LinkedIn Ads",
+   "desc": "Ingest or federate data from LinkedIn Ads",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "LinkedinAdsEgress",
+   "label": "LinkedIn Ads",
+   "desc": "",
+   "release": "ACCESS_CHECK",
+   "features": [
+    "Egress",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "LinkedInAdsEMI",
+   "label": "LinkedIn Ads for MI",
+   "desc": "Ingest data for Marketing Intelligence from LinkedIn Ads",
+   "release": "GA",
+   "features": []
+  },
+  {
+   "name": "LinkedInCompanyMI",
+   "label": "LinkedIn Company for MI",
+   "desc": "Ingest data for Marketing Intelligence from LinkedIn Company",
+   "release": "GA",
+   "features": []
+  },
+  {
+   "name": "LinkedInSalesNavigator",
+   "label": "LinkedIn Sales Navigator",
+   "desc": "Ingest data from LinkedIn Sales Navigator",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Batch"
+   ]
+  },
+  {
+   "name": "LinkedInSalesNavigatorEgress",
+   "label": "LinkedIn Sales Navigator",
+   "desc": "",
+   "release": "ACCESS_CHECK",
+   "features": [
+    "Egress",
+    "ObjectBased",
+    "WDCConnector",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Mailchimp",
+   "label": "Mailchimp",
+   "desc": "Ingest or federate data from Mailchimp",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_MailchimpMarketing",
+   "label": "Mailchimp Marketing",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "FacebookAds",
+   "label": "Meta Ads",
+   "desc": "Ingest campaign delivery and conversion data from Meta Ads",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "FacebookConversion",
+   "label": "Meta Conversion API",
+   "desc": "",
+   "release": "GA",
+   "features": [
+    "Egress",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "EMIMock",
+   "label": "MI Mock",
+   "desc": "MI Mock connector that returns static data",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "MS_MicrosoftNET",
+   "label": "Microsoft .NET",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "ExcelOnline",
+   "label": "Microsoft 365 Excel Online",
+   "desc": "Ingest or federate data from Microsoft 365 Excel Online",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MicrosoftAds",
+   "label": "Microsoft Advertising",
+   "desc": "Ingest or federate data from Microsoft Advertising",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "BingAdsEMI",
+   "label": "Microsoft Advertising for MI",
+   "desc": "Ingest data for Marketing Intelligence from Microsoft Advertising",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "AzureBlob",
+   "label": "Microsoft Azure Blob Storage",
+   "desc": "Connect to Microsoft Azure Blob Storage to import data to Data cloud",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Egress",
+    "FileBased",
+    "UniqueConnection",
+    "Batch",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "MicrosoftDynamics365",
+   "label": "Microsoft Dynamics 365",
+   "desc": "Ingest or federate data from Microsoft Dynamics 365",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_MicrosoftDynamics365BusinessCentral",
+   "label": "Microsoft Dynamics 365 Business Central",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_MicrosoftDynamics365ForFinanceandOperations",
+   "label": "Microsoft Dynamics 365 For Finance and Operations",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_MicrosoftDynamicsAX2012",
+   "label": "Microsoft Dynamics AX 2012",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_MicrosoftDynamicsCRM",
+   "label": "Microsoft Dynamics CRM",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_MicrosoftDynamicsGP",
+   "label": "Microsoft Dynamics GP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_MicrosoftDynamicsNAV",
+   "label": "Microsoft Dynamics NAV",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_MicrosoftExcelOnline",
+   "label": "Microsoft Excel Online",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MSFABRIC_ONELAKE",
+   "label": "Microsoft Fabric OneLake",
+   "desc": "Federate data from Microsoft Fabric OneLake tables using Zero Copy.",
+   "release": "ACCESS_CHECK",
+   "features": [
+    "Ingress",
+    "BYOL",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "MS_MicrosoftMSMQ",
+   "label": "Microsoft MSMQ",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MicrosoftOneDrive",
+   "label": "Microsoft OneDrive",
+   "desc": "Ingest CSV files and spreadsheets from Microsoft OneDrive",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Batch"
+   ]
+  },
+  {
+   "name": "OneNoteUnstructured",
+   "label": "Microsoft Onenote Unstructured Data (Documents)",
+   "desc": "Ingest unstructured data from a MS Onenote document library",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "MS_MicrosoftOutlook365",
+   "label": "Microsoft Outlook 365",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_MicrosoftPowerBI",
+   "label": "Microsoft Power BI",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MicrosoftPowerBiXmla",
+   "label": "Microsoft Power BI XMLA",
+   "desc": "Ingest or federate data from Microsoft Power BI XMLA",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_MicrosoftServiceBus",
+   "label": "Microsoft Service Bus",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_MicrosoftSharePoint",
+   "label": "Microsoft SharePoint",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MicrosoftSharePoint",
+   "label": "Microsoft SharePoint Structured Data",
+   "desc": "Ingest structured data from Microsoft SharePoint",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Batch"
+   ]
+  },
+  {
+   "name": "SPUnstructuredDocument",
+   "label": "Microsoft SharePoint Unstructured Data (Documents)",
+   "desc": "Ingest unstructured data from a MS SharePoint document library",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "SPUnstructuredPageAsset",
+   "label": "Microsoft SharePoint Unstructured Data (Site Pages & Site Assets)",
+   "desc": "Ingest unstructured data from MS SharePoint site pages & site assets",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "MicrosoftAnalysisServices",
+   "label": "Microsoft SQL Server Analysis Services",
+   "desc": "Ingest or federate data from Microsoft SQL Server Analysis Services",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MicrosoftTeams",
+   "label": "Microsoft Teams",
+   "desc": "Ingest or federate data from Microsoft Teams",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_MicrosoftWindowsPowerShell",
+   "label": "Microsoft Windows PowerShell",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "Monday",
+   "label": "Monday",
+   "desc": "Ingest or federate data from Monday",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MongoDB",
+   "label": "MongoDB",
+   "desc": "Ingest or federate data from a MongoDB database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_MQTT",
+   "label": "MQTT",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MuleSoftDirect",
+   "label": "MuleSoft Content",
+   "desc": "Connect to MuleSoft Content to import data to Data cloud",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Unstructured",
+    "NoConnection"
+   ]
+  },
+  {
+   "name": "Neo4j",
+   "label": "Neo4j",
+   "desc": "Ingest or federate data from Neo4j",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_NetSuite",
+   "label": "NetSuite",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_NetSuiteOpenAir",
+   "label": "NetSuite OpenAir",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_NetSuiteRestlet",
+   "label": "NetSuite Restlet",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_ObjectStore",
+   "label": "Object Store",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "Observability",
+   "label": "Observability",
+   "desc": "Ingest streaming data from Observability",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Streaming",
+    "StaticSchema",
+    "NoConnection"
+   ]
+  },
+  {
+   "name": "ObservabilityLogs",
+   "label": "ObservabilityLogs",
+   "desc": "Ingest streaming data from ObservabilityLogs",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "ObservabilityMetrics",
+   "label": "ObservabilityMetrics",
+   "desc": "Ingest streaming data from ObservabilityMetrics",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "ObservabilitySpans",
+   "label": "ObservabilitySpans",
+   "desc": "Ingest streaming data from ObservabilitySpans",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "OData",
+   "label": "OData",
+   "desc": "Ingest or federate data from OData",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Odoo",
+   "label": "Odoo",
+   "desc": "Ingest or federate data from Odoo",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Okta",
+   "label": "Okta",
+   "desc": "Ingest or federate data from Okta identity management system",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "OCI",
+   "label": "Omnichannel Inventory",
+   "desc": "Connect to OCI.",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "NoConnection",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_OracleEBS121",
+   "label": "Oracle EBS 12.1",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_OracleEBS122",
+   "label": "Oracle EBS 12.2",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "OracleEloqua",
+   "label": "Oracle Eloqua",
+   "desc": "Ingest data from Oracle Eloqua",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Batch"
+   ]
+  },
+  {
+   "name": "OracleFusionCloudFinancials",
+   "label": "Oracle Fusion Cloud Financials",
+   "desc": "Ingest or federate data from Oracle Fusion Cloud Financials",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "OracleFusionCloudHCM",
+   "label": "Oracle Fusion Cloud HCM",
+   "desc": "Ingest or federate data from Oracle Cloud Human Capital Management",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "OracleSCM",
+   "label": "Oracle Fusion Cloud SCM",
+   "desc": "Ingest or federate data from Oracle Cloud Supply Chain Management",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "OracleNetSuite",
+   "label": "Oracle NetSuite",
+   "desc": "Ingest or federate data from Oracle NetSuite",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_OraclePeopleSoft",
+   "label": "Oracle PeopleSoft",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "OracleSalesCloud",
+   "label": "Oracle Sales Cloud",
+   "desc": "Ingest data from Oracle Sales Cloud",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "OracleServiceCloud",
+   "label": "Oracle Service Cloud",
+   "desc": "Ingest data from Oracle Service Cloud",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_OracleSiebel",
+   "label": "Oracle Siebel",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "OutbrainMI",
+   "label": "Outbrain for MI",
+   "desc": "Ingest data for Marketing Intelligence from Outbrain",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Paylocity",
+   "label": "Paylocity",
+   "desc": "Ingest or federate data from Paylocity",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "PayPal",
+   "label": "PayPal",
+   "desc": "Ingest or federate data from PayPal",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Pinterest",
+   "label": "Pinterest",
+   "desc": "Ingest or federate data from Pinterest",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "PinterestAdsEMI",
+   "label": "Pinterest Ads for MI",
+   "desc": "Ingest data for Marketing Intelligence from Pinterest Ads",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Pipedrive",
+   "label": "Pipedrive",
+   "desc": "Ingest or federate data from Pipedrive",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "PlatformTraces",
+   "label": "Platform Traces",
+   "desc": "Ingest streaming data from Platform Traces",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "MS_QuickBooksOnline",
+   "label": "QuickBooks Online",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "TpmAwsS3Testing",
+   "label": "RCG TPM Spike for Aws S3 connection",
+   "desc": "An extended connector for testing S3 ARN authentication",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "NoConnection",
+    "Batch",
+    "IncrementalUpdate"
+   ]
+  },
+  {
+   "name": "RedditAdsMI",
+   "label": "Reddit Ads for MI",
+   "desc": "Ingest campaign delivery and conversion data from Reddit Ads",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Redis",
+   "label": "Redis",
+   "desc": "Ingest or federate data from a Redis database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_Roostify",
+   "label": "Roostify",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_RosettaNet",
+   "label": "RosettaNet",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "CatalogMdloConnection",
+   "label": "S3 ARN Extended Connector for Catalog MDLO Creation",
+   "desc": "An extended connector for creating MDLO using S3 ARN",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "NoConnection",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_Salesforce",
+   "label": "Salesforce",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "B2CE",
+   "label": "Salesforce B2C Commerce Intelligence",
+   "desc": "Ingest or federate data from the Salesforce B2C Commerce Data Lakehouse",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_SalesforceCDP",
+   "label": "Salesforce CDP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "SalesforceCommerceCloud",
+   "label": "Salesforce Commerce Cloud",
+   "desc": "Ingest data from Salesforce Commerce Cloud",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_SalesforceCommerceCloudB2CData",
+   "label": "Salesforce Commerce Cloud B2C Data",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_SalesforceCommerceCloudB2CShopAPI",
+   "label": "Salesforce Commerce Cloud B2C Shop API",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_SalesforceComposite",
+   "label": "Salesforce Composite",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "SalesforceCRM",
+   "label": "Salesforce CRM",
+   "desc": "Ingest data from Salesforce CRM",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "DATACLOUD",
+   "label": "Salesforce Data Cloud",
+   "desc": "Connect directly to Salesforce Data Cloud to access data stored externally.",
+   "release": "ACCESS_CHECK",
+   "features": [
+    "Ingress",
+    "BYOL",
+    "NoConnection"
+   ]
+  },
+  {
+   "name": "MS_SalesforceEinsteinAnalytics",
+   "label": "Salesforce Einstein Analytics",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "SalesforceMarketingCloud",
+   "label": "Salesforce Marketing Cloud",
+   "desc": "Ingest data from Salesforce Commerce Cloud",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Egress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_SalesforceMarketingCloudREST",
+   "label": "Salesforce Marketing Cloud REST",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "EventBusConnector",
+   "label": "Salesforce Platform Events",
+   "desc": "Ingest real-time platform events",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_SalesforcePubSub",
+   "label": "Salesforce Pub/Sub",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "Salesloft",
+   "label": "Salesloft",
+   "desc": "Ingest or federate data from Salesloft",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_SAP",
+   "label": "SAP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "SybaseASE",
+   "label": "SAP ASE",
+   "desc": "Ingest or federate data from SAP ASE",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SAPConcur",
+   "label": "SAP Concur",
+   "desc": "Ingest or federate data from SAP Concur",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SAPHana",
+   "label": "SAP HANA",
+   "desc": "Ingest or federate data from an SAP HANA database",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SAPHybris",
+   "label": "SAP Hybris",
+   "desc": "Ingest or federate data from SAP Hybris",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SybaseIQ",
+   "label": "SAP IQ",
+   "desc": "Ingest or federate data from SAP IQ",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_SAPS4HANAOData",
+   "label": "SAP S/4HANA OData",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_SAPS4HANASOAP",
+   "label": "SAP S/4HANA SOAP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "SapSuccessFactors",
+   "label": "SAP SuccessFactors",
+   "desc": "Ingest or federate data from SAP SuccessFactors",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SFTP",
+   "label": "Secure File Transfer (SFTP)",
+   "desc": "Import files from an SFTP-enabled server using SSH",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Egress",
+    "FileBased",
+    "Batch"
+   ]
+  },
+  {
+   "name": "SendGrid",
+   "label": "SendGrid",
+   "desc": "Ingest or federate data from SendGrid",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "servicenow",
+   "label": "ServiceNow",
+   "desc": "Ingest or federate data from ServiceNow",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_SFTP",
+   "label": "SFTP",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "ShipStation",
+   "label": "ShipStation",
+   "desc": "Ingest or federate data from Shipstation",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Shopify",
+   "label": "Shopify",
+   "desc": "Ingest or federate data from Shopify",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SingleStore",
+   "label": "SingleStore",
+   "desc": "Ingest or federate data from a SingleStore database",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_Slack",
+   "label": "Slack",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "Slack",
+   "label": "Slack Connector",
+   "desc": "Ingest data from Slack",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress",
+    "NoConnection",
+    "ObjectBased",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "Smartsheet",
+   "label": "Smartsheet",
+   "desc": "Ingest or federate data from Smartsheet",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SnapchatAds",
+   "label": "Snapchat Ads",
+   "desc": "Ingest or federate data from Snapchat Ads",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SnapchatAdsEgress",
+   "label": "Snapchat Ads",
+   "desc": "",
+   "release": "ACCESS_CHECK",
+   "features": [
+    "Egress",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "SnapchatAdsEMI",
+   "label": "Snapchat Ads for MI",
+   "desc": "Ingest data for Marketing Intelligence from Snapchat Ads",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "SNOWFLAKE",
+   "label": "Snowflake",
+   "desc": "Ingest or federate data from Snowflake using Zero Copy.",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "BYOL",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "NoConnection"
+   ]
+  },
+  {
+   "name": "SNOWFLAKE_POLARIS",
+   "label": "Snowflake File Federation",
+   "desc": "Federate data from Snowflake-managed Iceberg tables using Zero Copy.",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "BYOL",
+    "ObjectBased"
+   ]
+  },
+  {
+   "name": "MS_Sockets",
+   "label": "Sockets",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "SparkSQL",
+   "label": "Spark SQL",
+   "desc": "Ingest or federate data from Spark SQL",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Splunk",
+   "label": "Splunk",
+   "desc": "Ingest or federate data from Splunk",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Square",
+   "label": "Square",
+   "desc": "Ingest or federate data from Square",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Starburst",
+   "label": "Starburst Galaxy",
+   "desc": "Ingest or federate data via Starburst Galaxy",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Streak",
+   "label": "Streak",
+   "desc": "Ingest or federate data from Streak",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Stripe",
+   "label": "Stripe",
+   "desc": "Ingest or federate data from Stripe",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SugarCRM",
+   "label": "SugarCRM",
+   "desc": "Ingest or federate data from SugarCRM",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SuiteCRM",
+   "label": "SuiteCRM",
+   "desc": "Ingest or federate data from SuiteCRM",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "SurveyMonkey",
+   "label": "SurveyMonkey",
+   "desc": "Ingest or federate data from SurveyMonkey",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_Tableau",
+   "label": "Tableau",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "TaboolaEMI",
+   "label": "Taboola for MI",
+   "desc": "Ingest data for Marketing Intelligence from Taboola",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "TenantBillingUsageConnector",
+   "label": "Tenant Billing Usage",
+   "desc": "Extract Tenant Billing Usage Events from the Event Bus API",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "NoConnection",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "TheTradeDeskEMI",
+   "label": "The Trade Desk for MI",
+   "desc": "Ingest data for Marketing Intelligence from The Trade Desk",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "TigerGraph",
+   "label": "TigerGraph",
+   "desc": "Ingest or federate data from TigerGraph",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "TiktokAdsEMI",
+   "label": "Tiktok Ads for MI",
+   "desc": "Ingest data for Marketing Intelligence from Tiktok Ads",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "TPMDataConnector",
+   "label": "TPM Data Connector",
+   "desc": "Provides data to the data streams and data lake objects to transfer data to Data Cloud",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "MS_TRADACOMSEDI",
+   "label": "TRADACOMS EDI",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "Trello",
+   "label": "Trello",
+   "desc": "Ingest or federate data from Trello",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Trino",
+   "label": "Trino",
+   "desc": "Connect to trino tables",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "Twilio",
+   "label": "Twilio",
+   "desc": "Ingest or federate data from Twilio",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_Confluence",
+   "label": "Unstructured Confluence",
+   "desc": "Ingest data from Confluence",
+   "release": "IN_DEV",
+   "features": [
+    "Ingress",
+    "FileBased",
+    "Unstructured"
+   ]
+  },
+  {
+   "name": "MS_ValidationModule",
+   "label": "Validation Module",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_VeevaVault",
+   "label": "Veeva Vault",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "VeevaVault",
+   "label": "VeevaVault",
+   "desc": "Ingest or federate data from Veeva Vault",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_VM",
+   "label": "VM",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "EkWebsite",
+   "label": "Web Content",
+   "desc": "Ingest publicly-available website content as data.",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "uEkWebsite",
+   "label": "Web Content (Crawler)",
+   "desc": "Ingest website content as data by crawling its page links.",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "uEkSitemap",
+   "label": "Web Content (Sitemap)",
+   "desc": "Ingest website content as data based on its sitemap.",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "MS_WebServiceConsumer",
+   "label": "Web Service Consumer",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_WebSockets",
+   "label": "WebSockets",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "WooCommerce",
+   "label": "WooCommerce",
+   "desc": "Ingest or federate data from WooCommerce",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "WordPress",
+   "label": "WordPress",
+   "desc": "Ingest or federate data from WordPress",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "Workday",
+   "label": "Workday",
+   "desc": "Ingest or federate data from Workday",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "BYOL",
+    "Batch"
+   ]
+  },
+  {
+   "name": "TwitterAds",
+   "label": "X Ads",
+   "desc": "Ingest or federate data from X Ads",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "XAdsEMI",
+   "label": "X Ads for MI",
+   "desc": "Ingest data for Marketing Intelligence from X Ads",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "XSocialMI",
+   "label": "X Social for MI",
+   "desc": "Ingest data for Marketing Intelligence from X (Twitter)",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "MS_X12EDI",
+   "label": "X12 EDI",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "MS_XeroAccounting",
+   "label": "Xero Accounting",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "uEkYoutube",
+   "label": "YouTube",
+   "desc": "Ingest videos from a YouTube channel",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "Unstructured",
+    "FileBased"
+   ]
+  },
+  {
+   "name": "YoutubeAdsEMI",
+   "label": "YouTube Ads for MI",
+   "desc": "Ingest data for Marketing Intelligence from YouTube Ads",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "YoutubeAnalytics",
+   "label": "YouTube Analytics",
+   "desc": "Ingest or federate data from YouTube Analytics",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "YoutubeInsightsMI",
+   "label": "YouTube Insights for MI",
+   "desc": "Ingest data for Marketing Intelligence from YouTube Analytics API",
+   "release": "GA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch"
+   ]
+  },
+  {
+   "name": "Zendesk",
+   "label": "Zendesk",
+   "desc": "Ingest or federate data from Zendesk",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "Unstructured",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_Zoom",
+   "label": "Zoom",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  },
+  {
+   "name": "ZoomInfo",
+   "label": "ZoomInfo",
+   "desc": "Ingest company and contact data from ZoomInfo",
+   "release": "ACCESS_CHECK",
+   "features": []
+  },
+  {
+   "name": "Zuora",
+   "label": "Zuora",
+   "desc": "Ingest or federate data from Zuora",
+   "release": "BETA",
+   "features": [
+    "Ingress",
+    "ObjectBased",
+    "IncrementalUpdate",
+    "Batch",
+    "BYOL"
+   ]
+  },
+  {
+   "name": "MS_ZuoraAQuA",
+   "label": "Zuora AQuA",
+   "desc": "Available via MuleSoft (Anypoint) into Data 360",
+   "release": "MuleSoft",
+   "features": []
+  }
+ ]
+}
