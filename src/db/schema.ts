@@ -162,3 +162,41 @@ export const activations = pgTable("activations", {
 
 export type Activation = typeof activations.$inferSelect;
 export type NewActivation = typeof activations.$inferInsert;
+
+/** One row of the consumption calculator's rate card. */
+export type ConsumptionLine = {
+  category: string; // e.g. "Segmentation & activation"
+  unit: string; // what a unit is, e.g. "M rows / mo"
+  monthlyVolume: number; // units consumed per month
+  creditsPerUnit: number; // credits burned per unit (from the order-form rate card)
+};
+
+/**
+ * A project's entitlement design (one per project): the order-form caps plus
+ * the consumption calculator's rate-card line items.
+ */
+export const entitlements = pgTable("entitlements", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .notNull()
+    .unique()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  dataServicesCredits: integer("data_services_credits").notNull().default(0),
+  sandboxCredits: integer("sandbox_credits").notNull().default(0),
+  flexCredits: integer("flex_credits").notNull().default(0),
+  dataStorageTb: integer("data_storage_tb").notNull().default(0),
+  contractStart: text("contract_start").notNull().default(""),
+  orderEndDate: text("order_end_date").notNull().default(""),
+  notes: text("notes").notNull().default(""),
+  lineItems: jsonb("line_items").notNull().$type<ConsumptionLine[]>(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+export type Entitlement = typeof entitlements.$inferSelect;
+export type NewEntitlement = typeof entitlements.$inferInsert;
