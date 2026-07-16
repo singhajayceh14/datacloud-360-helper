@@ -46,3 +46,21 @@ body {
   font-family: var(--font-sans);
   font-size: 14px;
 }
+
+/* Print / Save-as-PDF: drop the app chrome, print only the document. */
+@media print {
+  aside,
+  [data-print-hide] {
+    display: none !important;
+  }
+  .grid {
+    display: block !important;
+  }
+  main {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+  body {
+    background: #fff !important;
+  }
+}
