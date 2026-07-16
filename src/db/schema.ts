@@ -82,3 +82,31 @@ export const mappings = pgTable("mappings", {
 
 export type Mapping = typeof mappings.$inferSelect;
 export type NewMapping = typeof mappings.$inferInsert;
+
+/** One rung of the identity-resolution match-rule ladder. */
+export type MatchRule = {
+  name: string; // e.g. "Email exact match"
+  keys: string[]; // the DMOs/columns this rule matches on
+  type: "exact" | "fuzzy";
+  enabled: boolean;
+};
+
+/** A project's identity-resolution design (one per project). */
+export const unifications = pgTable("unifications", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .notNull()
+    .unique()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  matchRules: jsonb("match_rules").notNull().$type<MatchRule[]>(),
+  notes: text("notes").notNull().default(""),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+export type Unification = typeof unifications.$inferSelect;
