@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scratch/temp files (dev logs, verify scripts)
+_*.mjs
+_*.log
+_*.html
+_*.md
