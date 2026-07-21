@@ -1,4 +1,5 @@
 import { Banner, Card, PageHeader, Pill } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
@@ -73,9 +74,10 @@ export default async function SegmentsPage() {
         <p className="text-muted">No segments yet — add one above.</p>
       )}
 
-      <div className="flex flex-col gap-2.5">
+      <Stagger className="flex flex-col gap-2.5">
         {segments.map((s) => (
-          <Card key={s.id} className="mb-0">
+          <StaggerItem key={s.id}>
+          <Card className="mb-0">
             <div className="flex items-start gap-3">
               <div className="grow">
                 <div className="flex items-center gap-2">
@@ -124,8 +126,9 @@ export default async function SegmentsPage() {
               </div>
             </div>
           </Card>
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
     </div>
   );
 }

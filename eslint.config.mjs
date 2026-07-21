@@ -15,6 +15,8 @@ const eslintConfig = defineConfig([
     // Read-only porting reference and generated migrations — not app code.
     "reference/**",
     "drizzle/**",
+    // Handover docs + the extracted original app (reference only, not shipped).
+    "Data/**",
   ]),
 ]);
 

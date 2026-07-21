@@ -1,4 +1,5 @@
 import { Banner, Card, PageHeader, Pill } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
@@ -111,12 +112,13 @@ export default async function ActivationPage() {
         <p className="text-muted">No activations yet — add one above.</p>
       )}
 
-      <div className="flex flex-col gap-2.5">
+      <Stagger className="flex flex-col gap-2.5">
         {activations.map((a) => {
           const segment = segmentById.get(a.segmentId);
           const warnings = activationWarnings(a, segment);
           return (
-            <Card key={a.id} className="mb-0">
+            <StaggerItem key={a.id}>
+            <Card className="mb-0">
               <div className="flex items-start gap-3">
                 <div className="grow">
                   <div className="flex flex-wrap items-center gap-2">
@@ -168,9 +170,10 @@ export default async function ActivationPage() {
                 </div>
               </div>
             </Card>
+            </StaggerItem>
           );
         })}
-      </div>
+      </Stagger>
     </div>
   );
 }

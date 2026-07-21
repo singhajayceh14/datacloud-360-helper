@@ -3,8 +3,12 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
+import { motion } from "framer-motion";
 import { TABS } from "@/lib/tabs";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { setActiveProject } from "@/app/actions/active-project";
+
+const MotionLink = motion.create(Link);
 
 type Opt = { id: string; name: string };
 
@@ -51,27 +55,37 @@ export default function Sidebar({
         ))}
       </select>
 
-      <nav className="flex flex-col gap-1">
+      <Stagger className="flex flex-col gap-1">
         {TABS.map((t) => {
           const active =
             pathname === t.href ||
             (t.href !== "/projects" && pathname.startsWith(t.href));
           return (
-            <Link
-              key={t.id}
-              href={t.href}
-              className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition-colors ${
-                active
-                  ? "bg-brand text-white"
-                  : "text-slate-300 hover:bg-sidebar-hover hover:text-white"
-              }`}
-            >
-              <span className="w-4 text-center">{t.icon}</span>
-              {t.label}
-            </Link>
+            <StaggerItem key={t.id}>
+              <MotionLink
+                href={t.href}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className={`relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition-colors ${
+                  active
+                    ? "text-white"
+                    : "text-slate-300 hover:bg-sidebar-hover hover:text-white"
+                }`}
+              >
+                {active && (
+                  <motion.span
+                    layoutId="sidebar-active"
+                    className="absolute inset-0 rounded-lg bg-brand"
+                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                  />
+                )}
+                <span className="relative z-10 w-4 text-center">{t.icon}</span>
+                <span className="relative z-10">{t.label}</span>
+              </MotionLink>
+            </StaggerItem>
           );
         })}
-      </nav>
+      </Stagger>
 
       <div className="mt-auto px-2.5 py-2.5 text-[11px] text-slate-500">
         {dbReady ? "Supabase: connected" : "Supabase: not connected"}

@@ -16,6 +16,7 @@
     "@anthropic-ai/sdk": "^0.111.0",
     "docx": "^9.7.1",
     "drizzle-orm": "^0.45.2",
+    "framer-motion": "^12.42.2",
     "next": "16.2.10",
     "postgres": "^3.4.9",
     "react": "19.2.4",

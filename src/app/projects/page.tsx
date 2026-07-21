@@ -1,4 +1,5 @@
 import { Banner, Card, PageHeader, Pill } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { isDbConfigured } from "@/db";
 import { listProjects } from "@/db/queries/projects";
 import type { Project } from "@/db/schema";
@@ -66,11 +67,11 @@ export default async function ProjectsPage() {
         <p className="text-muted">No projects yet — create one above.</p>
       )}
 
-      <div className="flex flex-col gap-2.5">
+      <Stagger className="flex flex-col gap-2.5">
         {projects.map((p) => (
-          <div
+          <StaggerItem
             key={p.id}
-            className="flex items-center gap-3 rounded-[10px] border border-line bg-white px-4 py-3 hover:border-indigo-200"
+            className="flex items-center gap-3 rounded-[10px] border border-line bg-white px-4 py-3 transition-colors hover:border-indigo-200"
           >
             <div className="grow">
               <div className="flex items-center gap-2 font-semibold">
@@ -91,9 +92,9 @@ export default async function ProjectsPage() {
               {fmtDate(p.updatedAt)}
             </div>
             <DeleteProjectButton id={p.id} name={p.name} />
-          </div>
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
     </div>
   );
 }

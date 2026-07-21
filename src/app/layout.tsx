@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import { AnimatedMain } from "@/components/motion";
 import { isDbConfigured } from "@/db";
 import { listProjects } from "@/db/queries/projects";
 import { getActiveProjectId } from "@/lib/active-project";
@@ -32,7 +33,7 @@ export default async function RootLayout({
       <body className="h-full">
         <div className="grid h-screen grid-cols-[232px_1fr]">
           <Sidebar projects={projects} activeId={activeId} dbReady={dbReady} />
-          <main className="overflow-auto px-8 py-7">{children}</main>
+          <AnimatedMain>{children}</AnimatedMain>
         </div>
       </body>
     </html>
