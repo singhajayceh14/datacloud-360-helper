@@ -79,10 +79,15 @@ export default async function MappingPage() {
           >
             <div className="grow">
               <div className="font-semibold">{m.sourceName}</div>
-              <div className="text-[12px] text-muted">
-                {m.fields.length} fields ·{" "}
-                {m.fields.filter((f) => f.identity).length} identity ·{" "}
-                {m.rowsSampled} rows {m.fileName ? `· ${m.fileName}` : ""}
+              <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[12px] text-muted">
+                <span className="rounded-full bg-slate-100 px-2 py-0.5 font-medium text-slate-600">
+                  {m.fields.length} fields
+                </span>
+                <span className="rounded-full bg-blue-100 px-2 py-0.5 font-semibold text-blue-700">
+                  {m.fields.filter((f) => f.identity).length} identity
+                </span>
+                <span>· {m.rowsSampled} rows</span>
+                {m.fileName && <span>· {m.fileName}</span>}
               </div>
             </div>
             <form action={deleteMappingAction}>
