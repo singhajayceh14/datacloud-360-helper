@@ -1,0 +1,12 @@
+{
+  "name": "data360-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Data 360 App backend — zero-dependency Node server (node:http, node:sqlite, fetch).",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  }
+}

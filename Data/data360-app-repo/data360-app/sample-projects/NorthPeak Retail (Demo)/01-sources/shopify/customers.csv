@@ -1,0 +1,426 @@
+customer_id,first_name,last_name,email,phone,city,state,zip,country,loyalty_no,created_at,updated_at,accepts_marketing
+SH-20000,Tom,Gonzalez,tom.gonzalez0@yahoo.com,,Denver,CO,80202,US,LY-70000,2025-12-18,2026-01-19,false
+SH-20001,James,Gonzalez,james.gonzalez1@yahoo.com,,San Jose,CA,95112,US,LY-70001,2025-04-23,2026-06-23,false
+SH-20002,Liam,Martin,liam.martin2@gmail.com,(364) 555-7924,Denver,CO,80202,US,LY-70002,2023-04-25,2026-03-04,true
+SH-20003,Chen,OBrien,chen.obrien3@outlook.com,(245) 555-8527,Seattle,WA,98101,US,LY-70003,2024-02-18,2026-03-27,false
+SH-20004,Arjun,Ali,arjun.ali4@gmail.com,(497) 555-2307,San Jose,CA,95112,US,LY-70004,2023-07-09,2026-04-21,false
+SH-20005,David,Lee,david.lee5@yahoo.com,(919) 555-2169,Seattle,WA,98101,US,LY-70005,2023-09-24,2026-02-06,false
+SH-20006,Chen,Johnson,chen.johnson6@outlook.com,(258) 555-4752,Boston,MA,02108,US,LY-70006,2024-07-09,2026-01-07,false
+SH-20007,Sara,Lopez,sara.lopez7@hotmail.com,,Chicago,IL,60601,US,,2025-09-18,2026-03-24,false
+SH-20008,Arjun,Brown,arjun.brown8@yahoo.com,(342) 555-9348,Seattle,WA,98101,US,LY-70008,2023-02-05,2026-06-06,false
+SH-20009,Nina,Sharma,nina.sharma9@hotmail.com,(680) 555-9669,Chicago,IL,60601,US,,2025-01-22,2026-06-04,false
+SH-20010,Olivia,OBrien,olivia.obrien10@hotmail.com,,Denver,CO,80202,US,,2025-12-09,2026-05-25,true
+SH-20011,Ethan,OBrien,ethan.obrien11@example.com,(357) 555-7126,Denver,CO,80202,US,LY-70011,2025-09-01,2026-05-11,false
+SH-20012,Maria,OBrien,maria.obrien12@outlook.com,,Seattle,WA,98101,US,,2025-02-03,2026-06-16,true
+SH-20013,Zoe,Tanaka,zoe.tanaka13@hotmail.com,(370) 555-5342,Austin,TX,78701,US,LY-70013,2025-07-07,2026-05-25,true
+SH-20014,Noah,Brown,noah.brown14@hotmail.com,(663) 555-2982,Seattle,WA,98101,US,,2023-06-01,2026-05-18,true
+SH-20015,Arjun,Smith,arjun.smith15@gmail.com,(261) 555-4750,New York,NY,10001,US,,2023-06-03,2026-05-08,false
+SH-20016,Mia,Ali,mia.ali16@example.com,(449) 555-8749,Austin,TX,78701,US,LY-70016,2023-02-04,2026-06-14,false
+SH-20017,Fatima,Khan,fatima.khan17@gmail.com,(862) 555-2612,Miami,FL,33101,US,,2025-06-26,2026-07-04,true
+SH-20018,Sara,Ali,sara.ali18@yahoo.com,(486) 555-8579,Miami,FL,33101,US,,2023-08-26,2026-07-28,true
+SH-20019,James,Anand,james.anand19@gmail.com,(443) 555-3724,New York,NY,10001,US,LY-70019,2024-04-28,2026-04-02,true
+SH-20020,Chen,Gonzalez,chen.gonzalez20@outlook.com,(666) 555-5673,Chicago,IL,60601,US,LY-70020,2025-09-22,2026-06-16,true
+SH-20021,Sara,Patel,sara.patel21@gmail.com,(756) 555-1998,Boston,MA,02108,US,LY-70021,2023-01-19,2026-04-17,true
+SH-20022,James,Wilson,james.wilson22@yahoo.com,,San Jose,CA,95112,US,,2023-07-04,2026-05-08,true
+SH-20023,Nina,Sharma,nina.sharma23@example.com,(524) 555-5272,Chicago,IL,60601,US,,2025-06-08,2026-03-13,true
+SH-20024,Noah,Martin,noah.martin24@gmail.com,,Seattle,WA,98101,US,LY-70024,2025-02-03,2026-05-07,false
+SH-20025,Aiko,Lee,aiko.lee25@yahoo.com,(362) 555-8179,San Jose,CA,95112,US,LY-70025,2025-05-20,2026-07-21,true
+SH-20026,Zoe,Patel,zoe.patel26@yahoo.com,(310) 555-3546,San Jose,CA,95112,US,,2025-04-23,2026-03-07,false
+SH-20027,Ethan,Lopez,ethan.lopez27@gmail.com,,Denver,CO,80202,US,LY-70027,2024-01-01,2026-03-25,true
+SH-20028,Emma,Kim,emma.kim28@example.com,(775) 555-1158,Miami,FL,33101,US,,2025-03-18,2026-01-27,false
+SH-20029,Arjun,Anand,arjun.anand29@hotmail.com,,Austin,TX,78701,US,LY-70029,2023-06-07,2026-06-08,true
+SH-20030,Raj,Anand,raj.anand30@example.com,(443) 555-3662,Chicago,IL,60601,US,LY-70030,2023-07-01,2026-02-24,false
+SH-20031,Fatima,Smith,fatima.smith31@yahoo.com,(311) 555-7267,Denver,CO,80202,US,LY-70031,2024-04-07,2026-07-15,false
+SH-20032,Noah,Smith,noah.smith32@gmail.com,(609) 555-6378,Boston,MA,02108,US,,2023-05-12,2026-06-17,false
+SH-20033,Zoe,Garcia,zoe.garcia33@gmail.com,(468) 555-3925,New York,NY,10001,US,LY-70033,2024-01-04,2026-05-14,false
+SH-20034,Olivia,Khan,olivia.khan34@hotmail.com,(395) 555-5173,San Jose,CA,95112,US,,2024-01-17,2026-07-18,true
+SH-20035,Raj,Khan,raj.khan35@outlook.com,(880) 555-3041,San Jose,CA,95112,US,LY-70035,2024-09-10,2026-06-14,false
+SH-20036,Chen,Patel,chen.patel36@yahoo.com,(589) 555-3851,Austin,TX,78701,US,LY-70036,2024-07-18,2026-07-01,false
+SH-20037,Noah,Ali,noah.ali37@example.com,(530) 555-8618,Chicago,IL,60601,US,LY-70037,2025-04-17,2026-04-26,true
+SH-20038,Priya,Patel,priya.patel38@gmail.com,(970) 555-4848,Seattle,WA,98101,US,LY-70038,2023-04-05,2026-01-02,true
+SH-20039,Mia,Novak,mia.novak39@hotmail.com,(845) 555-4185,San Jose,CA,95112,US,LY-70039,2024-08-13,2026-02-05,true
+SH-20040,Tom,Khan,tom.khan40@yahoo.com,(913) 555-9486,Boston,MA,02108,US,LY-70040,2025-04-28,2026-01-15,true
+SH-20041,Lucas,Wilson,lucas.wilson41@hotmail.com,(937) 555-9270,Seattle,WA,98101,US,LY-70041,2025-08-06,2026-06-28,false
+SH-20042,Lucas,Johnson,lucas.johnson42@outlook.com,(734) 555-8939,Boston,MA,02108,US,LY-70042,2024-08-03,2026-06-10,true
+SH-20043,Emma,Garcia,emma.garcia43@example.com,,Seattle,WA,98101,US,,2024-12-05,2026-06-07,true
+SH-20044,Fatima,Khan,fatima.khan44@example.com,(264) 555-4388,Seattle,WA,98101,US,LY-70044,2024-10-23,2026-01-28,false
+SH-20045,Mia,Gonzalez,mia.gonzalez45@outlook.com,(630) 555-9818,Seattle,WA,98101,US,LY-70045,2025-10-08,2026-04-08,false
+SH-20046,Fatima,Lopez,fatima.lopez46@hotmail.com,(896) 555-7624,New York,NY,10001,US,LY-70046,2024-03-20,2026-05-01,false
+SH-20047,Arjun,Costa,arjun.costa47@gmail.com,(339) 555-8564,New York,NY,10001,US,,2024-07-11,2026-02-15,false
+SH-20048,Olivia,Brown,olivia.brown48@hotmail.com,(284) 555-8705,Denver,CO,80202,US,,2025-01-12,2026-02-21,true
+SH-20049,James,Gonzalez,james.gonzalez49@yahoo.com,(837) 555-3496,Boston,MA,02108,US,,2024-11-04,2026-05-07,false
+SH-20050,Emma,Lee,emma.lee50@example.com,(966) 555-2876,Austin,TX,78701,US,LY-70050,2023-05-04,2026-05-01,false
+SH-20051,Arjun,Brown,arjun.brown51@yahoo.com,,Chicago,IL,60601,US,LY-70051,2025-04-04,2026-06-25,false
+SH-20052,Nina,OBrien,nina.obrien52@outlook.com,(878) 555-7071,New York,NY,10001,US,,2025-06-01,2026-07-14,false
+SH-20053,Tom,Khan,tom.khan53@hotmail.com,(646) 555-3885,Seattle,WA,98101,US,LY-70053,2025-05-20,2026-07-18,false
+SH-20054,Lucas,Khan,lucas.khan54@outlook.com,(289) 555-5569,Denver,CO,80202,US,LY-70054,2023-08-19,2026-05-22,false
+SH-20055,Olivia,Gonzalez,olivia.gonzalez55@outlook.com,,Miami,FL,33101,US,,2024-06-09,2026-05-23,false
+SH-20056,Zoe,Gonzalez,zoe.gonzalez56@gmail.com,,Boston,MA,02108,US,LY-70056,2025-04-23,2026-04-21,false
+SH-20057,Lucas,Gonzalez,lucas.gonzalez57@outlook.com,,San Jose,CA,95112,US,LY-70057,2024-11-19,2026-03-16,false
+SH-20058,Fatima,Anand,fatima.anand58@outlook.com,(478) 555-6023,Seattle,WA,98101,US,,2023-12-07,2026-03-04,true
+SH-20059,Sara,Ali,sara.ali59@outlook.com,(979) 555-9595,Miami,FL,33101,US,LY-70059,2023-04-10,2026-02-12,true
+SH-20060,Noah,Gonzalez,noah.gonzalez60@outlook.com,,Austin,TX,78701,US,,2024-12-05,2026-06-28,false
+SH-20061,Tom,Gonzalez,tom.gonzalez61@hotmail.com,(549) 555-4020,Denver,CO,80202,US,LY-70061,2024-08-04,2026-07-03,false
+SH-20062,Mia,Sharma,mia.sharma62@yahoo.com,,New York,NY,10001,US,LY-70062,2024-02-08,2026-01-18,false
+SH-20063,Nina,Novak,nina.novak63@example.com,(654) 555-5871,Boston,MA,02108,US,LY-70063,2024-05-19,2026-05-02,true
+SH-20064,Sara,Ali,sara.ali64@gmail.com,,Denver,CO,80202,US,,2023-03-01,2026-04-15,false
+SH-20065,Noah,Chen,noah.chen65@outlook.com,(920) 555-8438,Boston,MA,02108,US,,2023-05-26,2026-07-21,true
+SH-20066,Fatima,OBrien,fatima.obrien66@yahoo.com,(346) 555-2169,Boston,MA,02108,US,,2024-10-24,2026-07-19,false
+SH-20067,Lucas,OBrien,lucas.obrien67@outlook.com,(479) 555-9199,Miami,FL,33101,US,LY-70067,2024-02-20,2026-01-14,false
+SH-20068,Nina,Johnson,nina.johnson68@gmail.com,,New York,NY,10001,US,LY-70068,2025-10-01,2026-07-22,false
+SH-20069,Arjun,Chen,arjun.chen69@hotmail.com,(653) 555-5557,Austin,TX,78701,US,,2025-07-21,2026-07-16,true
+SH-20070,Mia,Lee,mia.lee70@outlook.com,(308) 555-3634,Chicago,IL,60601,US,LY-70070,2025-08-10,2026-06-13,true
+SH-20071,Lucas,Sharma,lucas.sharma71@outlook.com,(614) 555-9431,Seattle,WA,98101,US,LY-70071,2023-11-28,2026-05-15,false
+SH-20072,James,Ali,james.ali72@example.com,(841) 555-8242,Seattle,WA,98101,US,LY-70072,2023-05-18,2026-02-10,false
+SH-20073,Mia,OBrien,mia.obrien73@example.com,(927) 555-3594,New York,NY,10001,US,LY-70073,2023-09-14,2026-01-08,true
+SH-20074,Lucas,OBrien,lucas.obrien74@hotmail.com,(499) 555-9337,Austin,TX,78701,US,LY-70074,2024-08-16,2026-02-15,true
+SH-20075,Chen,Ali,chen.ali75@gmail.com,(625) 555-6568,Austin,TX,78701,US,LY-70075,2025-05-27,2026-01-10,false
+SH-20076,Arjun,Costa,arjun.costa76@yahoo.com,(696) 555-6654,Miami,FL,33101,US,LY-70076,2025-07-15,2026-03-28,true
+SH-20077,Liam,Costa,liam.costa77@yahoo.com,(621) 555-1715,Chicago,IL,60601,US,LY-70077,2024-12-26,2026-04-13,true
+SH-20078,Mia,Chen,mia.chen78@example.com,(540) 555-2644,Austin,TX,78701,US,LY-70078,2024-02-17,2026-04-01,true
+SH-20079,Fatima,Tanaka,fatima.tanaka79@hotmail.com,(472) 555-6546,San Jose,CA,95112,US,LY-70079,2024-11-03,2026-07-11,false
+SH-20080,Olivia,Lopez,olivia.lopez80@example.com,,New York,NY,10001,US,LY-70080,2024-04-24,2026-01-14,true
+SH-20081,Tom,Martin,tom.martin81@outlook.com,(248) 555-6314,Austin,TX,78701,US,LY-70081,2024-06-12,2026-04-05,true
+SH-20082,Ethan,Khan,ethan.khan82@yahoo.com,,Austin,TX,78701,US,LY-70082,2024-10-22,2026-02-16,true
+SH-20083,Liam,Martin,liam.martin83@hotmail.com,(210) 555-8622,Denver,CO,80202,US,LY-70083,2025-09-06,2026-01-15,false
+SH-20084,Arjun,Patel,arjun.patel84@outlook.com,(510) 555-4263,Chicago,IL,60601,US,LY-70084,2024-02-08,2026-04-19,false
+SH-20085,Arjun,Patel,arjun.patel85@gmail.com,(875) 555-7484,Denver,CO,80202,US,,2025-11-25,2026-06-02,false
+SH-20086,Noah,Smith,noah.smith86@yahoo.com,(836) 555-5106,Seattle,WA,98101,US,LY-70086,2025-11-22,2026-07-05,true
+SH-20087,James,Patel,james.patel87@gmail.com,(950) 555-3153,Miami,FL,33101,US,,2024-06-24,2026-04-06,true
+SH-20088,Aiko,Anand,aiko.anand88@example.com,(480) 555-3695,Seattle,WA,98101,US,,2024-05-24,2026-07-11,true
+SH-20089,Lucas,Sharma,lucas.sharma89@yahoo.com,(942) 555-7511,Austin,TX,78701,US,LY-70089,2025-06-03,2026-07-13,true
+SH-20090,Emma,Anand,emma.anand90@hotmail.com,(967) 555-5295,San Jose,CA,95112,US,LY-70090,2025-06-04,2026-06-08,false
+SH-20091,Maria,Novak,maria.novak91@example.com,,Seattle,WA,98101,US,,2024-12-10,2026-06-14,true
+SH-20092,Aiko,Chen,aiko.chen92@outlook.com,(319) 555-2592,New York,NY,10001,US,,2025-03-13,2026-04-12,false
+SH-20093,Arjun,Tanaka,arjun.tanaka93@gmail.com,(831) 555-7686,Chicago,IL,60601,US,LY-70093,2024-01-23,2026-03-07,false
+SH-20094,Lucas,Smith,lucas.smith94@gmail.com,(577) 555-9920,Seattle,WA,98101,US,LY-70094,2025-06-02,2026-04-09,true
+SH-20095,Tom,Martin,tom.martin95@yahoo.com,(812) 555-1349,San Jose,CA,95112,US,,2024-04-05,2026-07-19,true
+SH-20096,Priya,Anand,priya.anand96@example.com,,Boston,MA,02108,US,LY-70096,2024-03-26,2026-05-01,false
+SH-20097,Aiko,Tanaka,aiko.tanaka0@yahoo.com,,Denver,CO,80202,US,LY-70097,2023-01-12,2026-07-26,true
+SH-20098,Arjun,Garcia,arjun.garcia1@yahoo.com,(330) 555-7897,New York,NY,10001,US,LY-70098,2025-02-16,2026-04-25,false
+SH-20099,Ethan,Costa,ethan.costa2@hotmail.com,(830) 555-1710,San Jose,CA,95112,US,LY-70099,2025-09-10,2026-04-21,true
+SH-20100,James,Lopez,james.lopez3@hotmail.com,(703) 555-8267,Chicago,IL,60601,US,,2023-06-20,2026-02-03,true
+SH-20101,Emma,Novak,emma.novak4@hotmail.com,(744) 555-5831,Seattle,WA,98101,US,LY-70101,2025-07-04,2026-07-23,true
+SH-20102,Zoe,Ali,zoe.ali5@hotmail.com,(624) 555-6553,Chicago,IL,60601,US,LY-70102,2024-07-24,2026-01-11,false
+SH-20103,Olivia,Johnson,olivia.johnson6@yahoo.com,(686) 555-2099,Seattle,WA,98101,US,,2023-02-14,2026-01-24,false
+SH-20104,Aiko,Anand,aiko.anand7@example.com,(776) 555-6400,New York,NY,10001,US,LY-70104,2024-06-28,2026-06-25,false
+SH-20105,James,Patel,james.patel8@outlook.com,,Denver,CO,80202,US,LY-70105,2023-11-16,2026-02-28,true
+SH-20106,Raj,Anand,raj.anand9@gmail.com,(788) 555-4705,Seattle,WA,98101,US,LY-70106,2025-10-20,2026-06-21,true
+SH-20107,Nina,Johnson,nina.johnson10@yahoo.com,(981) 555-6062,New York,NY,10001,US,LY-70107,2024-01-06,2026-07-05,false
+SH-20108,Priya,Tanaka,priya.tanaka11@gmail.com,(421) 555-7163,New York,NY,10001,US,LY-70108,2024-03-12,2026-03-24,false
+SH-20109,Arjun,Novak,arjun.novak12@gmail.com,,San Jose,CA,95112,US,LY-70109,2023-11-03,2026-03-15,false
+SH-20110,Mia,Novak,mia.novak13@hotmail.com,(974) 555-9394,Miami,FL,33101,US,,2024-02-10,2026-06-22,false
+SH-20111,Ethan,Patel,ethan.patel14@yahoo.com,(814) 555-1897,New York,NY,10001,US,,2024-04-25,2026-02-25,false
+SH-20112,Noah,Garcia,noah.garcia15@gmail.com,(641) 555-3878,San Jose,CA,95112,US,,2025-12-08,2026-05-18,false
+SH-20113,Priya,Brown,priya.brown16@hotmail.com,,New York,NY,10001,US,LY-70113,2024-10-14,2026-05-13,false
+SH-20114,Noah,OBrien,noah.obrien17@gmail.com,(376) 555-8538,Chicago,IL,60601,US,LY-70114,2024-02-14,2026-07-04,true
+SH-20115,Fatima,Costa,fatima.costa18@example.com,,Chicago,IL,60601,US,LY-70115,2025-06-08,2026-03-25,true
+SH-20116,Priya,Wilson,priya.wilson19@example.com,(558) 555-6752,San Jose,CA,95112,US,LY-70116,2025-03-08,2026-01-05,false
+SH-20117,Sara,Kim,sara.kim20@gmail.com,,Austin,TX,78701,US,LY-70117,2024-08-25,2026-05-25,false
+SH-20118,Arjun,Novak,arjun.novak21@outlook.com,,Seattle,WA,98101,US,,2024-11-10,2026-07-09,true
+SH-20119,Raj,Wilson,raj.wilson22@outlook.com,(239) 555-1932,San Jose,CA,95112,US,LY-70119,2024-02-21,2026-07-28,true
+SH-20120,Nina,Novak,nina.novak23@hotmail.com,(957) 555-1672,Chicago,IL,60601,US,LY-70120,2025-11-07,2026-03-20,false
+SH-20121,Ethan,Tanaka,ethan.tanaka24@hotmail.com,,New York,NY,10001,US,LY-70121,2024-12-03,2026-05-21,true
+SH-20122,James,Smith,james.smith25@hotmail.com,(825) 555-3600,Miami,FL,33101,US,LY-70122,2024-07-14,2026-07-11,true
+SH-20123,Olivia,Sharma,olivia.sharma26@gmail.com,(596) 555-5655,Seattle,WA,98101,US,,2025-10-28,2026-02-11,true
+SH-20124,Arjun,Tanaka,arjun.tanaka27@outlook.com,(916) 555-7421,Seattle,WA,98101,US,,2025-02-10,2026-05-13,false
+SH-20125,Aiko,Wilson,aiko.wilson28@hotmail.com,(219) 555-6940,San Jose,CA,95112,US,LY-70125,2023-06-25,2026-04-07,true
+SH-20126,Aiko,Tanaka,aiko.tanaka29@outlook.com,(304) 555-9317,San Jose,CA,95112,US,LY-70126,2025-09-02,2026-06-11,true
+SH-20127,Nina,Brown,nina.brown30@yahoo.com,,Austin,TX,78701,US,LY-70127,2025-03-24,2026-04-02,false
+SH-20128,Raj,Smith,raj.smith31@example.com,(967) 555-8355,Miami,FL,33101,US,,2023-05-26,2026-07-16,true
+SH-20129,Raj,Costa,raj.costa32@hotmail.com,(592) 555-9239,Miami,FL,33101,US,LY-70129,2023-04-26,2026-05-05,false
+SH-20130,James,Lopez,james.lopez33@example.com,(929) 555-9452,Seattle,WA,98101,US,LY-70130,2024-02-25,2026-02-09,false
+SH-20131,Ethan,Tanaka,ethan.tanaka34@gmail.com,(428) 555-8391,Chicago,IL,60601,US,LY-70131,2023-07-02,2026-04-17,false
+SH-20132,Liam,Brown,liam.brown35@outlook.com,,San Jose,CA,95112,US,LY-70132,2023-12-21,2026-03-26,true
+SH-20133,Aiko,Chen,aiko.chen36@hotmail.com,(343) 555-8685,Denver,CO,80202,US,LY-70133,2023-02-01,2026-03-07,true
+SH-20134,Zoe,Novak,zoe.novak37@gmail.com,(444) 555-5934,Chicago,IL,60601,US,,2023-07-21,2026-07-20,false
+SH-20135,Priya,OBrien,priya.obrien38@example.com,(848) 555-9443,Miami,FL,33101,US,LY-70135,2025-03-10,2026-04-01,false
+SH-20136,Liam,Costa,liam.costa39@yahoo.com,(288) 555-9576,Chicago,IL,60601,US,LY-70136,2023-09-18,2026-05-26,true
+SH-20137,Chen,Lopez,chen.lopez40@hotmail.com,(460) 555-1266,New York,NY,10001,US,LY-70137,2023-06-08,2026-06-22,true
+SH-20138,Arjun,Garcia,arjun.garcia41@gmail.com,(547) 555-3868,Austin,TX,78701,US,LY-70138,2025-08-23,2026-04-21,true
+SH-20139,Aiko,Sharma,aiko.sharma42@gmail.com,(245) 555-4268,Miami,FL,33101,US,LY-70139,2024-05-17,2026-04-27,false
+SH-20140,Emma,Chen,emma.chen43@outlook.com,(249) 555-6438,Boston,MA,02108,US,,2024-07-13,2026-06-15,false
+SH-20141,Olivia,Kim,olivia.kim44@hotmail.com,(732) 555-5369,Miami,FL,33101,US,LY-70141,2025-07-03,2026-04-20,true
+SH-20142,Zoe,Patel,zoe.patel45@gmail.com,,Seattle,WA,98101,US,LY-70142,2024-08-20,2026-06-14,true
+SH-20143,Lucas,Lee,lucas.lee46@gmail.com,(562) 555-8126,Miami,FL,33101,US,,2023-02-22,2026-06-13,false
+SH-20144,Ethan,Kim,ethan.kim47@yahoo.com,(895) 555-8179,New York,NY,10001,US,,2023-04-25,2026-06-12,false
+SH-20145,Chen,Costa,chen.costa48@example.com,,New York,NY,10001,US,LY-70145,2024-06-15,2026-07-03,true
+SH-20146,Ethan,Lee,ethan.lee49@outlook.com,(456) 555-2858,Chicago,IL,60601,US,,2023-08-17,2026-04-18,true
+SH-20147,Emma,Johnson,emma.johnson50@yahoo.com,(493) 555-9047,Miami,FL,33101,US,,2023-02-15,2026-02-23,false
+SH-20148,Priya,Garcia,priya.garcia51@gmail.com,(498) 555-5914,Seattle,WA,98101,US,LY-70148,2025-12-23,2026-06-06,false
+SH-20149,Ethan,Smith,ethan.smith52@yahoo.com,(443) 555-9094,San Jose,CA,95112,US,,2025-10-12,2026-04-26,true
+SH-20150,Nina,Sharma,nina.sharma53@outlook.com,(935) 555-8842,San Jose,CA,95112,US,LY-70150,2024-10-03,2026-02-11,true
+SH-20151,Lucas,Martin,lucas.martin54@yahoo.com,(765) 555-3981,Seattle,WA,98101,US,LY-70151,2023-07-17,2026-07-02,true
+SH-20152,Ethan,Tanaka,ethan.tanaka55@yahoo.com,,Denver,CO,80202,US,LY-70152,2023-06-17,2026-03-28,true
+SH-20153,Emma,Ali,emma.ali56@yahoo.com,(830) 555-9740,Denver,CO,80202,US,,2025-03-19,2026-05-05,true
+SH-20154,Nina,Novak,nina.novak57@example.com,,Seattle,WA,98101,US,LY-70154,2023-01-21,2026-07-19,false
+SH-20155,Sara,Costa,sara.costa58@example.com,(710) 555-9938,Chicago,IL,60601,US,,2024-08-08,2026-07-26,false
+SH-20156,Noah,Martin,noah.martin59@gmail.com,,San Jose,CA,95112,US,LY-70156,2024-04-11,2026-05-05,false
+SH-20157,Olivia,Lee,olivia.lee60@yahoo.com,(728) 555-2739,Chicago,IL,60601,US,LY-70157,2024-02-09,2026-04-08,true
+SH-20158,Tom,Chen,tom.chen61@hotmail.com,(629) 555-5067,Denver,CO,80202,US,LY-70158,2023-06-19,2026-06-11,true
+SH-20159,David,Lopez,david.lopez62@hotmail.com,(710) 555-1379,Miami,FL,33101,US,,2024-09-15,2026-02-07,false
+SH-20160,James,Chen,james.chen63@hotmail.com,(870) 555-8710,Denver,CO,80202,US,,2023-02-14,2026-02-09,false
+SH-20161,Chen,Lee,chen.lee64@hotmail.com,,New York,NY,10001,US,LY-70161,2024-09-10,2026-01-13,false
+SH-20162,Zoe,Johnson,zoe.johnson65@yahoo.com,(604) 555-7114,San Jose,CA,95112,US,LY-70162,2024-09-12,2026-07-05,true
+SH-20163,Nina,Wilson,nina.wilson66@example.com,,Chicago,IL,60601,US,,2025-06-26,2026-04-17,false
+SH-20164,Aiko,Novak,aiko.novak67@outlook.com,(527) 555-3662,Austin,TX,78701,US,LY-70164,2025-12-27,2026-03-19,false
+SH-20165,Ethan,Wilson,ethan.wilson68@example.com,(218) 555-7035,Miami,FL,33101,US,LY-70165,2023-07-19,2026-03-26,true
+SH-20166,Nina,Lopez,nina.lopez69@example.com,(939) 555-1841,Denver,CO,80202,US,LY-70166,2023-09-21,2026-06-20,false
+SH-20167,Aiko,Smith,aiko.smith70@example.com,(313) 555-4125,New York,NY,10001,US,,2024-07-05,2026-04-23,true
+SH-20168,Fatima,Wilson,fatima.wilson71@gmail.com,(732) 555-4397,Miami,FL,33101,US,LY-70168,2025-08-17,2026-04-11,true
+SH-20169,Lucas,Anand,lucas.anand72@example.com,(939) 555-5331,Seattle,WA,98101,US,LY-70169,2023-04-09,2026-05-10,true
+SH-20170,Noah,Patel,noah.patel73@hotmail.com,(558) 555-5480,Boston,MA,02108,US,,2025-11-18,2026-04-13,false
+SH-20171,Aiko,Patel,aiko.patel74@outlook.com,(281) 555-6674,New York,NY,10001,US,LY-70171,2025-05-24,2026-04-07,true
+SH-20172,Zoe,Johnson,zoe.johnson75@yahoo.com,,Denver,CO,80202,US,LY-70172,2023-04-02,2026-06-17,true
+SH-20173,Liam,Chen,liam.chen76@hotmail.com,(684) 555-2647,San Jose,CA,95112,US,LY-70173,2023-01-18,2026-02-14,false
+SH-20174,Mia,Ali,mia.ali77@outlook.com,(261) 555-2465,Denver,CO,80202,US,LY-70174,2023-09-24,2026-06-28,true
+SH-20175,David,Khan,david.khan78@gmail.com,(607) 555-9116,Austin,TX,78701,US,,2025-05-02,2026-01-10,true
+SH-20176,Olivia,Patel,olivia.patel79@example.com,(338) 555-9261,Miami,FL,33101,US,LY-70176,2023-02-11,2026-02-24,false
+SH-20177,Emma,Kim,emma.kim80@outlook.com,(782) 555-4164,New York,NY,10001,US,,2025-07-27,2026-04-17,false
+SH-20178,Priya,Brown,priya.brown81@yahoo.com,(689) 555-6301,San Jose,CA,95112,US,LY-70178,2023-05-13,2026-02-15,false
+SH-20179,Olivia,Patel,olivia.patel82@outlook.com,(910) 555-4871,New York,NY,10001,US,,2023-08-10,2026-02-13,false
+SH-20180,Tom,Patel,tom.patel83@example.com,,Seattle,WA,98101,US,LY-70180,2024-03-15,2026-06-20,false
+SH-20181,Fatima,Anand,fatima.anand84@example.com,(424) 555-5054,Miami,FL,33101,US,LY-70181,2025-02-17,2026-04-17,false
+SH-20182,Priya,Costa,priya.costa85@gmail.com,(718) 555-4312,San Jose,CA,95112,US,LY-70182,2023-03-11,2026-07-17,false
+SH-20183,Tom,Ali,tom.ali86@gmail.com,(657) 555-1911,Miami,FL,33101,US,LY-70183,2025-07-15,2026-05-02,false
+SH-20184,Noah,Gonzalez,noah.gonzalez87@outlook.com,(964) 555-4570,Chicago,IL,60601,US,LY-70184,2023-07-12,2026-06-03,true
+SH-20185,Priya,Lopez,priya.lopez88@outlook.com,(988) 555-3218,New York,NY,10001,US,LY-70185,2025-11-14,2026-03-13,false
+SH-20186,Chen,Brown,chen.brown89@example.com,,San Jose,CA,95112,US,LY-70186,2023-03-18,2026-04-17,true
+SH-20187,Liam,Gonzalez,liam.gonzalez90@outlook.com,(937) 555-9920,New York,NY,10001,US,LY-70187,2024-04-08,2026-04-12,true
+SH-20188,Emma,Ali,emma.ali91@gmail.com,(630) 555-1256,San Jose,CA,95112,US,,2023-02-20,2026-01-15,true
+SH-20189,Liam,Chen,liam.chen92@hotmail.com,,Chicago,IL,60601,US,,2023-03-17,2026-03-08,false
+SH-20190,Arjun,Novak,arjun.novak93@yahoo.com,(347) 555-9540,Seattle,WA,98101,US,,2024-05-02,2026-05-19,true
+SH-20191,Fatima,Anand,fatima.anand94@gmail.com,(859) 555-7244,Miami,FL,33101,US,LY-70191,2024-12-14,2026-04-05,false
+SH-20192,Chen,Kim,chen.kim95@yahoo.com,(508) 555-3365,Miami,FL,33101,US,LY-70192,2023-09-14,2026-04-18,true
+SH-20193,Chen,Smith,chen.smith96@yahoo.com,(281) 555-8369,Denver,CO,80202,US,LY-70193,2023-09-24,2026-07-07,true
+SH-20194,Emma,Brown,emma.brown0@gmail.com,,New York,NY,10001,US,LY-70194,2025-11-18,2026-02-16,true
+SH-20195,Olivia,Patel,olivia.patel1@yahoo.com,(960) 555-2922,New York,NY,10001,US,LY-70195,2024-04-23,2026-05-23,true
+SH-20196,Chen,Smith,chen.smith2@outlook.com,(747) 555-6886,Seattle,WA,98101,US,LY-70196,2024-09-16,2026-04-04,false
+SH-20197,Olivia,Ali,olivia.ali3@outlook.com,(777) 555-4625,Seattle,WA,98101,US,LY-70197,2023-05-18,2026-05-19,false
+SH-20198,Noah,Tanaka,noah.tanaka4@outlook.com,,Boston,MA,02108,US,LY-70198,2023-08-18,2026-06-22,false
+SH-20199,Emma,Lopez,emma.lopez5@hotmail.com,,Miami,FL,33101,US,LY-70199,2023-03-24,2026-05-16,true
+SH-20200,Zoe,Chen,zoe.chen6@gmail.com,(885) 555-1794,New York,NY,10001,US,LY-70200,2024-03-27,2026-06-08,true
+SH-20201,Aiko,Gonzalez,aiko.gonzalez7@example.com,(262) 555-8916,Boston,MA,02108,US,LY-70201,2023-01-18,2026-05-14,true
+SH-20202,Maria,Wilson,maria.wilson8@example.com,(218) 555-9228,Denver,CO,80202,US,LY-70202,2025-07-26,2026-02-04,true
+SH-20203,Ethan,Tanaka,ethan.tanaka9@yahoo.com,(459) 555-6807,Boston,MA,02108,US,,2024-02-12,2026-04-15,true
+SH-20204,Liam,Patel,liam.patel10@gmail.com,,San Jose,CA,95112,US,LY-70204,2025-08-02,2026-06-01,true
+SH-20205,Priya,Lopez,priya.lopez11@outlook.com,(298) 555-9653,Chicago,IL,60601,US,LY-70205,2023-04-28,2026-06-19,false
+SH-20206,Emma,Chen,emma.chen12@outlook.com,(778) 555-1539,San Jose,CA,95112,US,,2024-01-07,2026-05-05,false
+SH-20207,Priya,Patel,priya.patel13@example.com,,Austin,TX,78701,US,LY-70207,2024-11-18,2026-03-13,true
+SH-20208,Priya,Wilson,priya.wilson14@gmail.com,,Seattle,WA,98101,US,,2023-06-20,2026-07-20,false
+SH-20209,Olivia,Gonzalez,olivia.gonzalez15@hotmail.com,(565) 555-7150,Denver,CO,80202,US,LY-70209,2025-10-22,2026-04-03,false
+SH-20210,Liam,Sharma,liam.sharma16@outlook.com,,San Jose,CA,95112,US,LY-70210,2025-03-24,2026-04-11,false
+SH-20211,Tom,Sharma,tom.sharma17@outlook.com,(980) 555-5419,New York,NY,10001,US,,2023-03-14,2026-04-18,false
+SH-20212,Tom,Gonzalez,tom.gonzalez18@outlook.com,(812) 555-6315,San Jose,CA,95112,US,LY-70212,2023-05-14,2026-04-25,true
+SH-20213,Zoe,Smith,zoe.smith19@hotmail.com,,Austin,TX,78701,US,,2024-08-05,2026-01-06,false
+SH-20214,Emma,Khan,emma.khan20@hotmail.com,(570) 555-5123,Denver,CO,80202,US,LY-70214,2025-11-16,2026-05-20,true
+SH-20215,Lucas,OBrien,lucas.obrien21@outlook.com,,Austin,TX,78701,US,LY-70215,2025-07-26,2026-07-11,false
+SH-20216,Olivia,Khan,olivia.khan22@outlook.com,(912) 555-4290,Austin,TX,78701,US,LY-70216,2023-07-11,2026-03-24,false
+SH-20217,Arjun,Smith,arjun.smith23@hotmail.com,(603) 555-6980,Seattle,WA,98101,US,,2025-04-19,2026-05-06,true
+SH-20218,Lucas,Ali,lucas.ali24@outlook.com,(271) 555-7703,Miami,FL,33101,US,LY-70218,2023-11-10,2026-02-09,true
+SH-20219,Fatima,Brown,fatima.brown25@hotmail.com,(691) 555-7566,San Jose,CA,95112,US,LY-70219,2025-07-18,2026-01-26,false
+SH-20220,Zoe,Novak,zoe.novak26@gmail.com,(874) 555-6816,San Jose,CA,95112,US,,2025-01-19,2026-06-22,false
+SH-20221,Olivia,Khan,olivia.khan27@gmail.com,,San Jose,CA,95112,US,,2025-09-18,2026-05-23,true
+SH-20222,Lucas,Lee,lucas.lee28@hotmail.com,(803) 555-9199,Chicago,IL,60601,US,,2023-08-04,2026-03-14,true
+SH-20223,Tom,Tanaka,tom.tanaka29@outlook.com,(412) 555-9537,Seattle,WA,98101,US,LY-70223,2024-02-15,2026-06-23,false
+SH-20224,Olivia,Sharma,olivia.sharma30@gmail.com,(318) 555-1370,Denver,CO,80202,US,LY-70224,2025-02-22,2026-07-06,true
+SH-20225,Ethan,Kim,ethan.kim31@outlook.com,(674) 555-4798,Austin,TX,78701,US,LY-70225,2025-03-06,2026-06-22,false
+SH-20226,Chen,Gonzalez,chen.gonzalez32@hotmail.com,(599) 555-1072,Boston,MA,02108,US,LY-70226,2023-05-25,2026-06-26,true
+SH-20227,Arjun,OBrien,arjun.obrien33@outlook.com,(669) 555-2867,Austin,TX,78701,US,,2024-09-21,2026-03-20,false
+SH-20228,Nina,Brown,nina.brown34@outlook.com,(669) 555-3826,San Jose,CA,95112,US,LY-70228,2025-05-20,2026-05-03,true
+SH-20229,Olivia,OBrien,olivia.obrien35@outlook.com,,Boston,MA,02108,US,LY-70229,2023-09-13,2026-04-20,true
+SH-20230,Arjun,Brown,arjun.brown36@yahoo.com,(751) 555-3838,Chicago,IL,60601,US,LY-70230,2024-05-05,2026-02-11,false
+SH-20231,Nina,Chen,nina.chen37@gmail.com,(400) 555-7290,Seattle,WA,98101,US,LY-70231,2025-11-16,2026-04-22,false
+SH-20232,Fatima,Martin,fatima.martin38@yahoo.com,,Miami,FL,33101,US,,2023-05-02,2026-03-08,false
+SH-20233,David,Martin,david.martin39@example.com,(787) 555-2871,Miami,FL,33101,US,,2025-06-18,2026-07-25,true
+SH-20234,Lucas,Anand,lucas.anand40@hotmail.com,,Boston,MA,02108,US,LY-70234,2023-05-28,2026-01-15,false
+SH-20235,Raj,Sharma,raj.sharma41@gmail.com,(443) 555-4438,Miami,FL,33101,US,LY-70235,2025-12-12,2026-07-23,false
+SH-20236,David,Novak,david.novak42@yahoo.com,(261) 555-6747,Austin,TX,78701,US,LY-70236,2025-09-06,2026-03-23,false
+SH-20237,Noah,Costa,noah.costa43@example.com,(896) 555-2560,Denver,CO,80202,US,,2024-01-09,2026-07-21,true
+SH-20238,Aiko,Smith,aiko.smith44@outlook.com,(980) 555-7434,Austin,TX,78701,US,LY-70238,2025-11-09,2026-06-14,false
+SH-20239,Lucas,Sharma,lucas.sharma45@hotmail.com,(485) 555-7046,San Jose,CA,95112,US,LY-70239,2024-06-19,2026-01-28,true
+SH-20240,Lucas,Lee,lucas.lee46@example.com,(640) 555-4470,San Jose,CA,95112,US,LY-70240,2024-05-11,2026-05-19,true
+SH-20241,Arjun,Lopez,arjun.lopez47@gmail.com,,Seattle,WA,98101,US,LY-70241,2024-01-04,2026-07-06,false
+SH-20242,Lucas,Gonzalez,lucas.gonzalez48@yahoo.com,(336) 555-5945,Chicago,IL,60601,US,,2024-02-21,2026-03-09,true
+SH-20243,Raj,Kim,raj.kim49@hotmail.com,(944) 555-4836,New York,NY,10001,US,LY-70243,2023-12-04,2026-01-07,false
+SH-20244,Priya,Tanaka,priya.tanaka50@example.com,(210) 555-1132,Boston,MA,02108,US,LY-70244,2023-07-23,2026-02-16,true
+SH-20245,Liam,Brown,liam.brown51@gmail.com,,San Jose,CA,95112,US,LY-70245,2024-03-13,2026-07-27,true
+SH-20246,Aiko,Sharma,aiko.sharma52@example.com,(651) 555-6753,New York,NY,10001,US,LY-70246,2025-12-05,2026-04-20,false
+SH-20247,Sara,Sharma,sara.sharma53@yahoo.com,(804) 555-7291,San Jose,CA,95112,US,LY-70247,2024-06-26,2026-02-08,false
+SH-20248,Priya,Smith,priya.smith54@gmail.com,(875) 555-5942,Denver,CO,80202,US,,2025-09-07,2026-06-13,false
+SH-20249,James,Smith,james.smith55@hotmail.com,,Miami,FL,33101,US,LY-70249,2025-02-17,2026-01-12,false
+SH-20250,Aiko,Brown,aiko.brown56@outlook.com,(377) 555-8717,Chicago,IL,60601,US,LY-70250,2023-01-19,2026-01-01,false
+SH-20251,Sara,Chen,sara.chen57@hotmail.com,(844) 555-9209,New York,NY,10001,US,LY-70251,2024-12-13,2026-01-21,true
+SH-20252,Emma,Sharma,emma.sharma58@gmail.com,(409) 555-3545,Denver,CO,80202,US,LY-70252,2024-10-21,2026-07-27,true
+SH-20253,Noah,Khan,noah.khan59@gmail.com,,Boston,MA,02108,US,LY-70253,2023-08-20,2026-05-02,false
+SH-20254,David,OBrien,david.obrien60@yahoo.com,(368) 555-9133,New York,NY,10001,US,LY-70254,2025-09-26,2026-07-24,false
+SH-20255,David,Lee,david.lee61@outlook.com,(321) 555-1480,Austin,TX,78701,US,LY-70255,2024-05-17,2026-01-09,true
+SH-20256,Mia,Martin,mia.martin62@gmail.com,(781) 555-3734,Seattle,WA,98101,US,LY-70256,2024-02-19,2026-06-24,true
+SH-20257,Liam,Wilson,liam.wilson63@gmail.com,(213) 555-5006,New York,NY,10001,US,,2024-07-05,2026-02-28,true
+SH-20258,Zoe,Khan,zoe.khan64@outlook.com,,Boston,MA,02108,US,LY-70258,2024-05-27,2026-01-19,false
+SH-20259,Tom,Wilson,tom.wilson65@yahoo.com,,New York,NY,10001,US,LY-70259,2023-07-03,2026-04-28,false
+SH-20260,Noah,Garcia,noah.garcia66@example.com,(578) 555-4287,San Jose,CA,95112,US,,2024-12-20,2026-02-15,false
+SH-20261,Arjun,Lopez,arjun.lopez67@example.com,(452) 555-3466,Boston,MA,02108,US,,2024-01-08,2026-05-12,true
+SH-20262,Olivia,Gonzalez,olivia.gonzalez68@outlook.com,,Chicago,IL,60601,US,LY-70262,2023-07-16,2026-01-05,false
+SH-20263,Priya,Chen,priya.chen69@example.com,(582) 555-8511,Boston,MA,02108,US,LY-70263,2023-10-04,2026-05-05,false
+SH-20264,Priya,Costa,priya.costa70@hotmail.com,(334) 555-4879,New York,NY,10001,US,,2024-07-23,2026-07-24,false
+SH-20265,Olivia,Martin,olivia.martin71@yahoo.com,,Denver,CO,80202,US,,2025-02-05,2026-01-06,false
+SH-20266,Lucas,Garcia,lucas.garcia72@gmail.com,(989) 555-4401,Chicago,IL,60601,US,LY-70266,2024-05-28,2026-01-03,true
+SH-20267,Noah,Novak,noah.novak73@yahoo.com,(536) 555-3430,New York,NY,10001,US,,2023-06-13,2026-05-02,false
+SH-20268,Emma,Kim,emma.kim74@hotmail.com,(770) 555-5093,New York,NY,10001,US,,2023-03-04,2026-01-02,true
+SH-20269,Aiko,Ali,aiko.ali75@outlook.com,(861) 555-2376,Chicago,IL,60601,US,LY-70269,2024-02-01,2026-01-07,false
+SH-20270,Aiko,Sharma,aiko.sharma76@gmail.com,,Seattle,WA,98101,US,LY-70270,2023-10-14,2026-07-24,false
+SH-20271,Mia,Gonzalez,mia.gonzalez77@hotmail.com,,Chicago,IL,60601,US,,2023-05-09,2026-04-05,true
+SH-20272,Nina,Novak,nina.novak78@outlook.com,(764) 555-8848,Boston,MA,02108,US,,2024-07-05,2026-04-07,true
+SH-20273,Zoe,Gonzalez,zoe.gonzalez79@outlook.com,(697) 555-6636,Chicago,IL,60601,US,LY-70273,2025-06-13,2026-03-06,true
+SH-20274,Olivia,Novak,olivia.novak80@gmail.com,(488) 555-1959,Boston,MA,02108,US,LY-70274,2024-09-12,2026-07-19,true
+SH-20275,David,OBrien,david.obrien81@yahoo.com,(955) 555-1916,Boston,MA,02108,US,LY-70275,2023-10-28,2026-07-13,false
+SH-20276,David,Kim,david.kim82@example.com,(956) 555-6878,Boston,MA,02108,US,LY-70276,2023-12-23,2026-03-19,true
+SH-20277,Arjun,Ali,arjun.ali83@example.com,(703) 555-1621,Miami,FL,33101,US,,2023-10-08,2026-01-17,false
+SH-20278,Maria,Garcia,maria.garcia84@yahoo.com,(382) 555-6301,Boston,MA,02108,US,,2023-10-23,2026-02-25,true
+SH-20279,Ethan,Lee,ethan.lee85@outlook.com,(879) 555-7481,San Jose,CA,95112,US,LY-70279,2024-05-11,2026-02-06,false
+SH-20280,Mia,Garcia,mia.garcia86@example.com,(829) 555-6846,Austin,TX,78701,US,,2025-03-13,2026-03-24,false
+SH-20281,Aiko,Kim,aiko.kim87@example.com,(782) 555-1530,New York,NY,10001,US,,2024-10-08,2026-06-19,true
+SH-20282,Mia,Tanaka,mia.tanaka88@gmail.com,,Seattle,WA,98101,US,LY-70282,2023-11-03,2026-07-23,false
+SH-20283,Lucas,Gonzalez,lucas.gonzalez89@yahoo.com,,Denver,CO,80202,US,,2024-02-24,2026-01-02,false
+SH-20284,Lucas,Khan,lucas.khan90@hotmail.com,(588) 555-6754,Austin,TX,78701,US,LY-70284,2023-08-26,2026-07-19,true
+SH-20285,David,Martin,david.martin91@gmail.com,(527) 555-5278,San Jose,CA,95112,US,LY-70285,2023-06-06,2026-04-06,true
+SH-20286,Zoe,Sharma,zoe.sharma92@example.com,(695) 555-1507,Seattle,WA,98101,US,LY-70286,2025-03-20,2026-04-06,true
+SH-20287,Tom,Garcia,tom.garcia93@yahoo.com,(768) 555-9849,Boston,MA,02108,US,,2024-05-08,2026-01-02,false
+SH-20288,Arjun,Anand,arjun.anand94@yahoo.com,,Miami,FL,33101,US,,2023-05-27,2026-06-21,false
+SH-20289,Sara,OBrien,sara.obrien95@yahoo.com,,New York,NY,10001,US,,2023-08-28,2026-01-10,false
+SH-20290,Mia,Lopez,mia.lopez96@gmail.com,(597) 555-4029,Denver,CO,80202,US,LY-70290,2024-06-06,2026-04-02,false
+SH-20291,Lucas,Martin,lucas.martin0@yahoo.com,(778) 555-2009,Denver,CO,80202,US,,2025-11-04,2026-01-22,false
+SH-20292,Zoe,Khan,zoe.khan1@example.com,,Boston,MA,02108,US,LY-70292,2025-07-18,2026-06-28,false
+SH-20293,Arjun,Smith,arjun.smith2@outlook.com,,Miami,FL,33101,US,LY-70293,2025-01-17,2026-05-17,true
+SH-20294,Tom,Martin,tom.martin3@yahoo.com,(398) 555-3067,Austin,TX,78701,US,,2023-11-14,2026-02-27,true
+SH-20295,Nina,Johnson,nina.johnson4@gmail.com,,Seattle,WA,98101,US,LY-70295,2025-06-28,2026-03-17,false
+SH-20296,Maria,Novak,maria.novak5@gmail.com,(352) 555-2641,Chicago,IL,60601,US,LY-70296,2025-02-26,2026-03-28,false
+SH-20297,Fatima,Johnson,fatima.johnson6@hotmail.com,(685) 555-1613,Chicago,IL,60601,US,,2024-03-20,2026-05-22,false
+SH-20298,James,Brown,james.brown7@yahoo.com,,Seattle,WA,98101,US,LY-70298,2024-06-01,2026-03-27,false
+SH-20299,Noah,Johnson,noah.johnson8@gmail.com,(434) 555-3201,Miami,FL,33101,US,LY-70299,2025-08-25,2026-07-11,false
+SH-20300,Fatima,Novak,fatima.novak9@yahoo.com,(617) 555-8937,San Jose,CA,95112,US,LY-70300,2024-01-17,2026-07-06,true
+SH-20301,Noah,Wilson,noah.wilson10@yahoo.com,(737) 555-1474,Chicago,IL,60601,US,,2023-01-08,2026-01-15,true
+SH-20302,Raj,Ali,raj.ali11@outlook.com,(718) 555-7503,Denver,CO,80202,US,LY-70302,2023-11-01,2026-02-12,false
+SH-20303,Nina,Martin,nina.martin12@hotmail.com,(559) 555-6640,Austin,TX,78701,US,,2024-12-27,2026-06-03,false
+SH-20304,Maria,Brown,maria.brown13@yahoo.com,(420) 555-4626,New York,NY,10001,US,LY-70304,2025-04-09,2026-06-14,true
+SH-20305,Maria,Lopez,maria.lopez14@yahoo.com,(209) 555-4666,Austin,TX,78701,US,,2024-12-23,2026-06-09,false
+SH-20306,Chen,Lee,chen.lee15@outlook.com,,Miami,FL,33101,US,LY-70306,2025-10-13,2026-05-04,true
+SH-20307,Ethan,Lee,ethan.lee16@outlook.com,(694) 555-2045,Denver,CO,80202,US,LY-70307,2024-11-11,2026-07-09,false
+SH-20308,Noah,Ali,noah.ali17@example.com,(259) 555-7620,Austin,TX,78701,US,LY-70308,2025-03-24,2026-01-21,false
+SH-20309,Noah,Johnson,noah.johnson18@hotmail.com,(237) 555-4111,Chicago,IL,60601,US,LY-70309,2025-04-22,2026-05-21,false
+SH-20310,Raj,Wilson,raj.wilson19@yahoo.com,(772) 555-3967,Denver,CO,80202,US,,2024-03-24,2026-03-24,true
+SH-20311,Olivia,Sharma,olivia.sharma20@outlook.com,,Boston,MA,02108,US,LY-70311,2024-06-12,2026-03-19,false
+SH-20312,Lucas,OBrien,lucas.obrien21@gmail.com,(798) 555-2166,Miami,FL,33101,US,LY-70312,2023-09-04,2026-07-22,false
+SH-20313,Ethan,Patel,ethan.patel22@gmail.com,(355) 555-3250,Chicago,IL,60601,US,LY-70313,2024-07-19,2026-04-05,false
+SH-20314,David,Sharma,david.sharma23@outlook.com,(382) 555-6134,Miami,FL,33101,US,LY-70314,2023-08-09,2026-02-25,true
+SH-20315,Arjun,Kim,arjun.kim24@gmail.com,,Miami,FL,33101,US,LY-70315,2024-07-14,2026-04-13,true
+SH-20316,James,Anand,james.anand25@outlook.com,(530) 555-9700,Boston,MA,02108,US,,2025-01-21,2026-06-08,true
+SH-20317,Raj,Patel,raj.patel26@gmail.com,(803) 555-6015,Austin,TX,78701,US,,2023-05-10,2026-04-24,false
+SH-20318,Fatima,Tanaka,fatima.tanaka27@hotmail.com,(393) 555-3701,Seattle,WA,98101,US,LY-70318,2024-01-08,2026-02-24,true
+SH-20319,Sara,Gonzalez,sara.gonzalez28@gmail.com,(867) 555-1612,Austin,TX,78701,US,LY-70319,2025-05-25,2026-05-20,true
+SH-20320,Nina,Chen,nina.chen29@gmail.com,,San Jose,CA,95112,US,,2024-07-04,2026-05-09,false
+SH-20321,Aiko,Ali,aiko.ali30@outlook.com,(304) 555-9524,New York,NY,10001,US,,2025-12-05,2026-04-27,true
+SH-20322,Ethan,Novak,ethan.novak31@outlook.com,,San Jose,CA,95112,US,,2023-10-07,2026-07-09,true
+SH-20323,Raj,Khan,raj.khan32@yahoo.com,,Denver,CO,80202,US,LY-70323,2023-12-16,2026-03-08,true
+SH-20324,Maria,Sharma,maria.sharma33@example.com,(353) 555-2475,San Jose,CA,95112,US,LY-70324,2023-12-24,2026-01-09,true
+SH-20325,Lucas,Patel,lucas.patel34@hotmail.com,,Denver,CO,80202,US,LY-70325,2023-05-12,2026-07-22,false
+SH-20326,Fatima,OBrien,fatima.obrien35@gmail.com,,San Jose,CA,95112,US,,2025-03-11,2026-03-15,false
+SH-20327,Priya,Lee,priya.lee36@yahoo.com,,Seattle,WA,98101,US,LY-70327,2024-05-27,2026-04-23,false
+SH-20328,Fatima,Kim,fatima.kim37@yahoo.com,(261) 555-3611,San Jose,CA,95112,US,,2025-08-26,2026-05-22,false
+SH-20329,David,Novak,david.novak38@outlook.com,(901) 555-3140,Chicago,IL,60601,US,LY-70329,2024-02-14,2026-04-02,true
+SH-20330,Emma,Garcia,emma.garcia39@example.com,(791) 555-4669,New York,NY,10001,US,LY-70330,2025-06-17,2026-05-23,true
+SH-20331,Fatima,Smith,fatima.smith40@outlook.com,(857) 555-7305,Miami,FL,33101,US,,2025-10-02,2026-01-21,true
+SH-20332,Ethan,Lopez,ethan.lopez41@yahoo.com,,Miami,FL,33101,US,LY-70332,2023-06-09,2026-01-17,true
+SH-20333,Zoe,Brown,zoe.brown42@yahoo.com,,Chicago,IL,60601,US,LY-70333,2025-08-03,2026-07-16,false
+SH-20334,Olivia,OBrien,olivia.obrien43@gmail.com,,Miami,FL,33101,US,LY-70334,2025-09-01,2026-07-03,false
+SH-20335,Ethan,Anand,ethan.anand44@hotmail.com,(573) 555-1889,Boston,MA,02108,US,LY-70335,2024-06-18,2026-07-20,false
+SH-20336,Raj,Martin,raj.martin45@gmail.com,(428) 555-1035,San Jose,CA,95112,US,LY-70336,2025-05-18,2026-05-12,true
+SH-20337,James,Kim,james.kim46@yahoo.com,(961) 555-7704,Miami,FL,33101,US,,2025-04-07,2026-01-28,false
+SH-20338,Sara,Martin,sara.martin47@outlook.com,,Boston,MA,02108,US,LY-70338,2025-11-19,2026-01-25,false
+SH-20339,Lucas,Costa,lucas.costa48@hotmail.com,,Austin,TX,78701,US,LY-70339,2025-07-27,2026-05-16,true
+SH-20340,Arjun,Kim,arjun.kim49@gmail.com,(815) 555-6273,Austin,TX,78701,US,LY-70340,2024-07-20,2026-06-25,true
+SH-20341,Emma,Brown,emma.brown50@outlook.com,(337) 555-3263,Seattle,WA,98101,US,LY-70341,2025-12-17,2026-03-27,false
+SH-20342,Zoe,Ali,zoe.ali51@yahoo.com,(498) 555-6657,Boston,MA,02108,US,LY-70342,2023-12-21,2026-02-17,false
+SH-20343,Tom,Lee,tom.lee52@example.com,(884) 555-7839,Miami,FL,33101,US,LY-70343,2025-05-28,2026-04-26,true
+SH-20344,Ethan,OBrien,ethan.obrien53@hotmail.com,,New York,NY,10001,US,LY-70344,2023-05-25,2026-07-06,false
+SH-20345,Emma,Tanaka,emma.tanaka54@outlook.com,,New York,NY,10001,US,LY-70345,2024-08-04,2026-05-28,true
+SH-20346,Zoe,Brown,zoe.brown55@example.com,(913) 555-5712,Boston,MA,02108,US,LY-70346,2023-07-13,2026-04-26,false
+SH-20347,Zoe,Chen,zoe.chen56@outlook.com,,New York,NY,10001,US,LY-70347,2024-04-21,2026-06-23,false
+SH-20348,Arjun,Anand,arjun.anand57@yahoo.com,(382) 555-2220,Boston,MA,02108,US,,2023-12-17,2026-01-13,true
+SH-20349,Fatima,Johnson,fatima.johnson58@yahoo.com,,Denver,CO,80202,US,LY-70349,2023-06-15,2026-06-05,true
+SH-20350,Aiko,Garcia,aiko.garcia59@example.com,(509) 555-9037,New York,NY,10001,US,LY-70350,2025-06-03,2026-07-23,false
+SH-20351,Ethan,Smith,ethan.smith60@example.com,,Austin,TX,78701,US,LY-70351,2024-09-18,2026-04-03,false
+SH-20352,Liam,Ali,liam.ali61@outlook.com,(424) 555-9691,Seattle,WA,98101,US,LY-70352,2025-11-01,2026-01-22,false
+SH-20353,Lucas,Smith,lucas.smith62@gmail.com,(529) 555-7248,Boston,MA,02108,US,LY-70353,2023-07-09,2026-05-24,false
+SH-20354,Maria,Wilson,maria.wilson63@example.com,(657) 555-8975,Seattle,WA,98101,US,,2025-04-11,2026-05-03,true
+SH-20355,David,Anand,david.anand64@gmail.com,,New York,NY,10001,US,LY-70355,2023-11-14,2026-07-04,true
+SH-20356,Zoe,Khan,zoe.khan65@yahoo.com,,San Jose,CA,95112,US,LY-70356,2023-02-03,2026-01-06,false
+SH-20357,Zoe,Sharma,zoe.sharma66@outlook.com,(662) 555-7626,Boston,MA,02108,US,LY-70357,2023-07-22,2026-01-18,true
+SH-20358,Nina,Sharma,nina.sharma67@gmail.com,(715) 555-2738,New York,NY,10001,US,,2025-05-20,2026-01-10,false
+SH-20359,Chen,Brown,chen.brown68@hotmail.com,,New York,NY,10001,US,,2025-07-26,2026-07-28,false
+SH-20360,Aiko,Patel,aiko.patel69@gmail.com,(769) 555-3316,Seattle,WA,98101,US,,2023-10-20,2026-04-18,true
+SH-20361,Noah,Ali,noah.ali70@yahoo.com,(862) 555-9397,Seattle,WA,98101,US,,2023-04-20,2026-07-09,true
+SH-20362,Tom,Kim,tom.kim71@example.com,(763) 555-2198,New York,NY,10001,US,,2023-05-04,2026-02-24,false
+SH-20363,Olivia,Lee,olivia.lee72@yahoo.com,,Austin,TX,78701,US,LY-70363,2023-06-16,2026-04-11,false
+SH-20364,Arjun,Tanaka,arjun.tanaka73@outlook.com,(373) 555-1079,Seattle,WA,98101,US,LY-70364,2023-12-24,2026-06-14,false
+SH-20365,Raj,Tanaka,raj.tanaka74@hotmail.com,(568) 555-6004,Seattle,WA,98101,US,LY-70365,2023-03-21,2026-05-03,false
+SH-20366,Aiko,Anand,aiko.anand75@outlook.com,(842) 555-2252,Boston,MA,02108,US,LY-70366,2023-09-21,2026-01-27,false
+SH-20367,Arjun,Ali,arjun.ali76@example.com,(753) 555-8734,New York,NY,10001,US,LY-70367,2023-06-13,2026-02-25,false
+SH-20368,Aiko,Martin,aiko.martin77@hotmail.com,(211) 555-4913,San Jose,CA,95112,US,LY-70368,2025-11-06,2026-07-17,true
+SH-20369,Lucas,Kim,lucas.kim78@example.com,(876) 555-3395,Austin,TX,78701,US,LY-70369,2024-06-02,2026-02-25,false
+SH-20370,Liam,Sharma,liam.sharma79@outlook.com,,Denver,CO,80202,US,LY-70370,2025-06-13,2026-04-15,true
+SH-20371,James,Garcia,james.garcia80@example.com,(481) 555-5314,San Jose,CA,95112,US,LY-70371,2025-03-13,2026-06-13,false
+SH-20372,Arjun,Sharma,arjun.sharma81@hotmail.com,(429) 555-9460,Denver,CO,80202,US,LY-70372,2024-08-26,2026-04-20,true
+SH-20373,Ethan,Tanaka,ethan.tanaka82@yahoo.com,,Miami,FL,33101,US,LY-70373,2024-04-05,2026-02-06,false
+SH-20374,Nina,OBrien,nina.obrien83@hotmail.com,(938) 555-2856,Boston,MA,02108,US,LY-70374,2024-08-07,2026-05-06,false
+SH-20375,Maria,Smith,maria.smith84@yahoo.com,(365) 555-3207,New York,NY,10001,US,LY-70375,2023-10-05,2026-01-06,false
+SH-20376,David,Wilson,david.wilson85@example.com,(853) 555-1305,Chicago,IL,60601,US,LY-70376,2025-11-27,2026-03-03,true
+SH-20377,Lucas,Novak,lucas.novak86@hotmail.com,,Miami,FL,33101,US,LY-70377,2025-03-26,2026-05-27,true
+SH-20378,Nina,Wilson,nina.wilson87@yahoo.com,(551) 555-8429,Denver,CO,80202,US,LY-70378,2023-04-13,2026-04-05,true
+SH-20379,Maria,Ali,maria.ali88@yahoo.com,(382) 555-8796,Chicago,IL,60601,US,LY-70379,2025-01-26,2026-05-17,true
+SH-20380,Priya,Lopez,priya.lopez89@example.com,(202) 555-8069,Austin,TX,78701,US,LY-70380,2024-01-23,2026-05-14,true
+SH-20381,Mia,Brown,mia.brown90@example.com,(980) 555-2600,Seattle,WA,98101,US,LY-70381,2024-08-25,2026-02-28,true
+SH-20382,Noah,Novak,noah.novak91@outlook.com,,Chicago,IL,60601,US,LY-70382,2023-10-17,2026-01-17,true
+SH-20383,Chen,Ali,chen.ali92@hotmail.com,(359) 555-7980,Seattle,WA,98101,US,LY-70383,2024-05-28,2026-05-14,false
+SH-20384,Nina,Johnson,nina.johnson93@yahoo.com,(771) 555-8904,Chicago,IL,60601,US,,2025-09-16,2026-03-10,false
+SH-20385,Chen,Tanaka,chen.tanaka94@yahoo.com,(917) 555-3650,San Jose,CA,95112,US,,2025-07-26,2026-03-26,true
+SH-20386,David,Brown,david.brown95@gmail.com,(683) 555-8133,New York,NY,10001,US,,2024-04-12,2026-01-20,true
+SH-20387,Chen,Brown,chen.brown96@example.com,,Denver,CO,80202,US,LY-70387,2023-11-16,2026-04-01,true
+SH-20388,Ethan,Patel,ethan.patel0@gmail.com,(723) 555-9451,Boston,MA,02108,US,LY-70388,2025-03-22,2026-01-12,true
+SH-20389,Maria,Kim,maria.kim1@outlook.com,(562) 555-7474,San Jose,CA,95112,US,LY-70389,2023-09-01,2026-06-23,true
+SH-20390,Priya,Anand,priya.anand2@example.com,(557) 555-6693,Denver,CO,80202,US,LY-70390,2024-04-20,2026-02-15,false
+SH-20391,Arjun,Gonzalez,arjun.gonzalez3@yahoo.com,(310) 555-2185,Denver,CO,80202,US,LY-70391,2024-02-26,2026-05-09,false
+SH-20392,Lucas,Brown,lucas.brown4@yahoo.com,(670) 555-8548,Miami,FL,33101,US,LY-70392,2023-08-04,2026-03-03,false
+SH-20393,Liam,Smith,liam.smith5@hotmail.com,(729) 555-9776,Seattle,WA,98101,US,,2024-04-10,2026-01-13,false
+SH-20394,Priya,Anand,priya.anand6@hotmail.com,(424) 555-5408,Austin,TX,78701,US,,2025-11-07,2026-04-24,true
+SH-20395,Liam,Smith,liam.smith7@yahoo.com,,Denver,CO,80202,US,LY-70395,2025-06-05,2026-07-04,true
+SH-20396,Priya,Lopez,priya.lopez8@example.com,(694) 555-7081,New York,NY,10001,US,LY-70396,2024-10-28,2026-03-16,true
+SH-20397,Ethan,Johnson,ethan.johnson9@yahoo.com,(332) 555-1887,Chicago,IL,60601,US,LY-70397,2024-08-18,2026-01-17,false
+SH-20398,Chen,Kim,chen.kim10@gmail.com,(672) 555-6171,Miami,FL,33101,US,LY-70398,2023-11-07,2026-04-19,true
+SH-20399,Olivia,Lee,olivia.lee11@yahoo.com,(443) 555-5413,Denver,CO,80202,US,LY-70399,2025-06-12,2026-02-16,false
+SH-30000,Tom,Khan,tom.khan53@hotmail.com,(646) 555-3885,Seattle,WA,98101,US,,2025-05-20,2026-07-18,false
+SH-30001,Chen,Kim,chen.kim95@yahoo.com,(508) 555-3365,Miami,FL,33101,US,,2023-09-14,2026-04-18,true
+SH-30002,Zoe,Ali,zoe.ali5@hotmail.com,(624) 555-6553,Chicago,IL,60601,US,,2024-07-24,2026-01-11,false
+SH-30003,Fat,Lopez,fatima.lopez46@hotmail.com,(896) 555-7624,New York,NY,10001,US,,2024-03-20,2026-05-01,false
+SH-30004,Emm,Johnson,emma.johnson50@yahoo.com,(493) 555-9047,Miami,FL,33101,US,,2023-02-15,2026-02-23,false
+SH-30005,Aik,Lee,aiko.lee25@yahoo.com,(362) 555-8179,San Jose,CA,95112,US,,2025-05-20,2026-07-21,true
+SH-30006,Noa,Gonzalez,noah.gonzalez60@outlook.com,,Austin,TX,78701,US,,2024-12-05,2026-06-28,false
+SH-30007,Aiko,Tanaka,aiko.tanaka0@yahoo.com,,Denver,CO,80202,US,,2023-01-12,2026-07-26,true
+SH-30008,Liam,Chen,liam.chen92@hotmail.com,,Chicago,IL,60601,US,,2023-03-17,2026-03-08,false
+SH-30009,Liam,Martin,liam.martin2@gmail.com,(364) 555-7924,Denver,CO,80202,US,,2023-04-25,2026-03-04,true
+SH-30010,Nina,Brown,nina.brown30@yahoo.com,,Austin,TX,78701,US,,2025-03-24,2026-04-02,false
+SH-30011,Che,Lee,chen.lee64@hotmail.com,,New York,NY,10001,US,,2024-09-10,2026-01-13,false
+SH-30012,Noah,Gonzalez,noah.gonzalez87@outlook.com,(964) 555-4570,Chicago,IL,60601,US,,2023-07-12,2026-06-03,true
+SH-30013,Arjun,Tanaka,arjun.tanaka27@outlook.com,(916) 555-7421,Seattle,WA,98101,US,,2025-02-10,2026-05-13,false
+SH-30014,Luc,Lee,lucas.lee46@gmail.com,(562) 555-8126,Miami,FL,33101,US,,2023-02-22,2026-06-13,false
+SH-30015,Maria,OBrien,maria.obrien12@outlook.com,,Seattle,WA,98101,US,,2025-02-03,2026-06-16,true
+SH-30016,Olivia,Patel,olivia.patel79@example.com,(338) 555-9261,Miami,FL,33101,US,,2023-02-11,2026-02-24,false
+SH-30017,Oli,Gonzalez,olivia.gonzalez55@outlook.com,,Miami,FL,33101,US,,2024-06-09,2026-05-23,false
+SH-30018,Eth,Tanaka,ethan.tanaka24@hotmail.com,,New York,NY,10001,US,,2024-12-03,2026-05-21,true
+SH-30019,Noah,Martin,noah.martin24@gmail.com,,Seattle,WA,98101,US,,2025-02-03,2026-05-07,false
+SH-30020,Arjun,Patel,arjun.patel85@gmail.com,(875) 555-7484,Denver,CO,80202,US,,2025-11-25,2026-06-02,false
+SH-30021,Aik,Chen,aiko.chen92@outlook.com,(319) 555-2592,New York,NY,10001,US,,2025-03-13,2026-04-12,false
+SH-30022,Noah,Chen,noah.chen65@outlook.com,(920) 555-8438,Boston,MA,02108,US,,2023-05-26,2026-07-21,true
+SH-30023,James,Patel,james.patel8@outlook.com,,Denver,CO,80202,US,,2023-11-16,2026-02-28,true
+SH-30024,Lia,Chen,liam.chen76@hotmail.com,(684) 555-2647,San Jose,CA,95112,US,,2023-01-18,2026-02-14,false

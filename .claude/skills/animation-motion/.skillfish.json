@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "animation-motion",
+  "owner": "housegarofalo",
+  "repo": "claude-code-base",
+  "path": ".claude/skills/animation-motion",
+  "branch": "master",
+  "sha": "6ec3adb2c1afab3c40170bb66065ad03dc27ccb0",
+  "source": "manual"
+}
