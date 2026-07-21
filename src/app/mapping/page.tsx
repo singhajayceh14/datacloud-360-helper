@@ -6,7 +6,7 @@ import { getProject } from "@/db/queries/projects";
 import { listMappings } from "@/db/queries/mappings";
 import type { Mapping } from "@/db/schema";
 import { MappingWorkbench } from "./MappingWorkbench";
-import { deleteMappingAction } from "./actions";
+import { SavedMapping } from "./SavedMapping";
 
 export const dynamic = "force-dynamic";
 
@@ -73,32 +73,8 @@ export default async function MappingPage() {
       )}
       <Stagger className="flex flex-col gap-2">
         {existing.map((m) => (
-          <StaggerItem
-            key={m.id}
-            className="flex items-center gap-3 rounded-[10px] border border-line bg-white px-4 py-3"
-          >
-            <div className="grow">
-              <div className="font-semibold">{m.sourceName}</div>
-              <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[12px] text-muted">
-                <span className="rounded-full bg-slate-100 px-2 py-0.5 font-medium text-slate-600">
-                  {m.fields.length} fields
-                </span>
-                <span className="rounded-full bg-blue-100 px-2 py-0.5 font-semibold text-blue-700">
-                  {m.fields.filter((f) => f.identity).length} identity
-                </span>
-                <span>· {m.rowsSampled} rows</span>
-                {m.fileName && <span>· {m.fileName}</span>}
-              </div>
-            </div>
-            <form action={deleteMappingAction}>
-              <input type="hidden" name="id" value={m.id} />
-              <button
-                type="submit"
-                className="rounded-lg border border-line bg-white px-2.5 py-1.5 text-[13px] text-muted hover:border-red-300 hover:text-red-700"
-              >
-                Delete
-              </button>
-            </form>
+          <StaggerItem key={m.id}>
+            <SavedMapping mapping={m} />
           </StaggerItem>
         ))}
       </Stagger>

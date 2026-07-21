@@ -16,6 +16,18 @@ export async function createMapping(data: NewMapping) {
   return row;
 }
 
+export async function updateMapping(
+  id: string,
+  data: Partial<Pick<NewMapping, "sourceName" | "fields">>,
+) {
+  const [row] = await getDb()
+    .update(mappings)
+    .set(data)
+    .where(eq(mappings.id, id))
+    .returning();
+  return row;
+}
+
 export async function deleteMapping(id: string) {
   await getDb().delete(mappings).where(eq(mappings.id, id));
 }

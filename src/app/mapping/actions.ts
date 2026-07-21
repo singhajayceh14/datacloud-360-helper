@@ -1,7 +1,11 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createMapping, deleteMapping } from "@/db/queries/mappings";
+import {
+  createMapping,
+  updateMapping,
+  deleteMapping,
+} from "@/db/queries/mappings";
 import type { MappingField } from "@/db/schema";
 
 export type SaveMappingInput = {
@@ -25,6 +29,31 @@ export async function saveMappingAction(
       sourceName: input.sourceName.trim(),
       fileName: input.fileName,
       rowsSampled: input.rowsSampled,
+      fields: input.fields,
+    });
+    revalidatePath("/mapping");
+    return { ok: true };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+export type UpdateMappingInput = {
+  id: string;
+  sourceName: string;
+  fields: MappingField[];
+};
+
+export async function updateMappingAction(
+  input: UpdateMappingInput,
+): Promise<{ ok?: boolean; error?: string }> {
+  if (!input.id) return { error: "Missing mapping id." };
+  if (!input.sourceName.trim()) return { error: "Source name is required." };
+  if (!input.fields?.length) return { error: "A mapping needs at least one field." };
+
+  try {
+    await updateMapping(input.id, {
+      sourceName: input.sourceName.trim(),
       fields: input.fields,
     });
     revalidatePath("/mapping");
