@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { Select } from "@/components/Select";
 import { createSegmentAction, type CreateState } from "./actions";
 
 const CADENCES = ["Real-time", "Hourly", "Daily", "Weekly", "Manual"];
@@ -38,16 +39,8 @@ export function CreateSegmentForm({ projectId }: { projectId: string }) {
           placeholder="Calculated insights"
           className={inputCls}
         />
-        <select name="cadence" defaultValue="Daily" className={inputCls}>
-          {CADENCES.map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
-        <select name="status" defaultValue="Draft" className={inputCls}>
-          {STATUSES.map((s) => (
-            <option key={s}>{s}</option>
-          ))}
-        </select>
+        <Select name="cadence" defaultValue="Daily" options={CADENCES} />
+        <Select name="status" defaultValue="Draft" options={STATUSES} />
       </div>
 
       <div className="mt-3 flex items-center gap-3">

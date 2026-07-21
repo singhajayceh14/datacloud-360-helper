@@ -6,6 +6,7 @@ import { useTransition } from "react";
 import { motion } from "framer-motion";
 import { TABS } from "@/lib/tabs";
 import { Stagger, StaggerItem } from "@/components/motion";
+import { Select } from "@/components/Select";
 import { setActiveProject } from "@/app/actions/active-project";
 
 const MotionLink = motion.create(Link);
@@ -38,22 +39,21 @@ export default function Sidebar({
         Data 360 <span className="text-brand">App</span>
       </div>
 
-      <select
-        aria-label="Active project"
+      <Select
+        ariaLabel="Active project"
+        className="mb-2.5"
         value={activeId ?? ""}
         disabled={!dbReady || pending}
-        onChange={(e) => onSelect(e.target.value)}
-        className="mb-2.5 w-full rounded-lg border border-sidebar-border bg-sidebar-input px-2 py-2 text-slate-200 disabled:opacity-70"
-      >
-        <option value="">
-          {dbReady ? "— no project —" : "— database not connected —"}
-        </option>
-        {projects.map((p) => (
-          <option key={p.id} value={p.id}>
-            {p.name}
-          </option>
-        ))}
-      </select>
+        onChange={(v) => onSelect(v)}
+        options={[
+          {
+            value: "",
+            label: dbReady ? "— no project —" : "— database not connected —",
+          },
+          ...projects.map((p) => ({ value: p.id, label: p.name })),
+        ]}
+        triggerClassName="flex w-full items-center justify-between gap-2 rounded-lg border border-sidebar-border bg-sidebar-input px-2.5 py-2 text-left text-[13px] text-slate-200 outline-none transition-colors hover:border-slate-500 disabled:opacity-70"
+      />
 
       <Stagger className="flex flex-col gap-1">
         {TABS.map((t) => {

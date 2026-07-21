@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { Select } from "@/components/Select";
 import { createActivationAction, type CreateState } from "./actions";
 
 const CADENCES = ["Real-time", "Hourly", "Daily", "Weekly", "Manual"];
@@ -25,16 +26,11 @@ export function CreateActivationForm({
     <form action={action}>
       <input type="hidden" name="projectId" value={projectId} />
       <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-        <select name="segmentId" required defaultValue="" className={inputCls}>
-          <option value="" disabled>
-            Segment to activate *
-          </option>
-          {segments.map((s) => (
-            <option key={s.id} value={s.id}>
-              {s.name}
-            </option>
-          ))}
-        </select>
+        <Select
+          name="segmentId"
+          placeholder="Segment to activate *"
+          options={segments.map((s) => ({ value: s.id, label: s.name }))}
+        />
         <input
           name="target"
           required
@@ -51,16 +47,8 @@ export function CreateActivationForm({
           placeholder="Consent basis (e.g. Email opt-in DMO)"
           className={inputCls}
         />
-        <select name="cadence" defaultValue="Daily" className={inputCls}>
-          {CADENCES.map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
-        <select name="status" defaultValue="Draft" className={inputCls}>
-          {STATUSES.map((s) => (
-            <option key={s}>{s}</option>
-          ))}
-        </select>
+        <Select name="cadence" defaultValue="Daily" options={CADENCES} />
+        <Select name="status" defaultValue="Draft" options={STATUSES} />
       </div>
 
       <div className="mt-3 flex items-center gap-3">

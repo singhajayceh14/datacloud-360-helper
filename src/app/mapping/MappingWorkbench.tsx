@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 import type { MappingField } from "@/db/schema";
 import { Stagger, StaggerItem } from "@/components/motion";
+import { Select } from "@/components/Select";
 import { saveMappingAction } from "./actions";
 
 const CATEGORIES = ["Identity", "Contact Point", "Consent", "Party", "Attribute"];
@@ -243,17 +244,13 @@ export function MappingWorkbench({ projectId }: { projectId: string }) {
                       onChange={(e) => update(i, { dmo: e.target.value })}
                       className="min-w-0 flex-1 rounded-lg border border-line px-2.5 py-1.5 text-[13px] font-medium outline-none focus:border-brand"
                     />
-                    <select
+                    <Select
                       value={f.category}
-                      onChange={(e) => update(i, { category: e.target.value })}
-                      className={`cursor-pointer rounded-full border-0 px-2.5 py-1 text-[12px] font-semibold outline-none ${st.chip}`}
-                    >
-                      {CATEGORIES.map((c) => (
-                        <option key={c} value={c}>
-                          {c}
-                        </option>
-                      ))}
-                    </select>
+                      onChange={(v) => update(i, { category: v })}
+                      options={CATEGORIES}
+                      ariaLabel="Category"
+                      triggerClassName={`inline-flex cursor-pointer items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-semibold outline-none ${st.chip}`}
+                    />
                     <IdentityToggle
                       on={f.identity}
                       onToggle={() => update(i, { identity: !f.identity })}
