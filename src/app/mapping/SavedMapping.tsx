@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { Mapping, MappingField } from "@/db/schema";
 import { MappingRows } from "./MappingFields";
+import { MappingCanvas } from "./MappingCanvas";
 import { deleteMappingAction, updateMappingAction } from "./actions";
 
 const clone = (fields: MappingField[]) => fields.map((f) => ({ ...f }));
@@ -14,6 +15,7 @@ export function SavedMapping({ mapping }: { mapping: Mapping }) {
   const reduce = useReducedMotion();
 
   const [open, setOpen] = useState(false);
+  const [view, setView] = useState<"fields" | "canvas">("fields");
   const [sourceName, setSourceName] = useState(mapping.sourceName);
   const [fields, setFields] = useState<MappingField[]>(clone(mapping.fields));
   const [busy, setBusy] = useState(false);
@@ -30,6 +32,7 @@ export function SavedMapping({ mapping }: { mapping: Mapping }) {
       setSourceName(mapping.sourceName);
       setFields(clone(mapping.fields));
       setError("");
+      setView("fields");
     }
     setOpen((o) => !o);
   }
@@ -111,42 +114,64 @@ export function SavedMapping({ mapping }: { mapping: Mapping }) {
             className="overflow-hidden border-t border-line"
           >
             <div className="bg-slate-50/60 p-4">
-              <label className="mb-3 block">
-                <span className="mb-1 block text-[12px] font-medium text-muted">
-                  Source name
-                </span>
-                <input
-                  value={sourceName}
-                  onChange={(e) => setSourceName(e.target.value)}
-                  className="w-full max-w-sm rounded-lg border border-line bg-white px-3 py-2 text-[13px] outline-none focus:border-brand"
-                />
-              </label>
+              <div className="mb-3 flex flex-wrap items-end gap-3">
+                <label className="grow">
+                  <span className="mb-1 block text-[12px] font-medium text-muted">
+                    Source name
+                  </span>
+                  <input
+                    value={sourceName}
+                    onChange={(e) => setSourceName(e.target.value)}
+                    className="w-full max-w-sm rounded-lg border border-line bg-white px-3 py-2 text-[13px] outline-none focus:border-brand"
+                  />
+                </label>
 
-              <MappingRows
-                fields={fields}
-                rowsSampled={mapping.rowsSampled}
-                onUpdate={update}
-                rightSlot={
-                  <>
-                    {error && (
-                      <span className="text-[12px] text-red-700">{error}</span>
-                    )}
-                    <button
-                      onClick={toggle}
-                      className="rounded-lg border border-line bg-white px-3 py-2 text-[13px] text-muted transition-colors hover:border-slate-300"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      onClick={save}
-                      disabled={busy || !dirty}
-                      className="rounded-lg bg-brand px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-brand-hover disabled:opacity-50"
-                    >
-                      {busy ? "Saving…" : dirty ? "Save changes" : "Saved"}
-                    </button>
-                  </>
-                }
-              />
+                <div className="flex flex-wrap items-center gap-2">
+                  {/* Fields | Canvas toggle */}
+                  <div className="inline-flex rounded-lg border border-line bg-white p-0.5 text-[12px] font-medium">
+                    {(["fields", "canvas"] as const).map((v) => (
+                      <button
+                        key={v}
+                        type="button"
+                        onClick={() => setView(v)}
+                        className={`rounded-md px-2.5 py-1 capitalize transition-colors ${
+                          view === v
+                            ? "bg-brand text-white"
+                            : "text-muted hover:text-ink"
+                        }`}
+                      >
+                        {v}
+                      </button>
+                    ))}
+                  </div>
+                  {error && (
+                    <span className="text-[12px] text-red-700">{error}</span>
+                  )}
+                  <button
+                    onClick={toggle}
+                    className="rounded-lg border border-line bg-white px-3 py-2 text-[13px] text-muted transition-colors hover:border-slate-300"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={save}
+                    disabled={busy || !dirty}
+                    className="rounded-lg bg-brand px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-brand-hover disabled:opacity-50"
+                  >
+                    {busy ? "Saving…" : dirty ? "Save changes" : "Saved"}
+                  </button>
+                </div>
+              </div>
+
+              {view === "fields" ? (
+                <MappingRows
+                  fields={fields}
+                  rowsSampled={mapping.rowsSampled}
+                  onUpdate={update}
+                />
+              ) : (
+                <MappingCanvas fields={fields} />
+              )}
             </div>
           </motion.div>
         )}
