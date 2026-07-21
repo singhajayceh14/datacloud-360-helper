@@ -1,4 +1,5 @@
 import { Banner, Card, PageHeader, Pill } from "@/components/ui";
+import { Reveal } from "@/components/motion";
 import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
@@ -60,18 +61,20 @@ export default async function EntitlementsPage() {
   return (
     <div>
       {header}
-      <Card>
-        <div className="mb-4 flex items-center gap-2">
-          <h2 className="font-semibold">Order form &amp; consumption</h2>
-          <Pill tone="other">{project.name}</Pill>
-          {!row && <Pill tone="beta">starter rate card</Pill>}
-        </div>
-        <EntitlementEditor
-          projectId={project.id}
-          initialCaps={initialCaps}
-          initialLines={initialLines}
-        />
-      </Card>
+      <Reveal>
+        <Card>
+          <div className="mb-4 flex items-center gap-2">
+            <h2 className="font-semibold">Order form &amp; consumption</h2>
+            <Pill tone="other">{project.name}</Pill>
+            {!row && <Pill tone="beta">starter rate card</Pill>}
+          </div>
+          <EntitlementEditor
+            projectId={project.id}
+            initialCaps={initialCaps}
+            initialLines={initialLines}
+          />
+        </Card>
+      </Reveal>
     </div>
   );
 }

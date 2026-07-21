@@ -1,4 +1,5 @@
 import { Banner, Card, PageHeader, Pill } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
@@ -70,9 +71,9 @@ export default async function MappingPage() {
           No mappings yet — upload a CSV above to create the first one.
         </p>
       )}
-      <div className="flex flex-col gap-2">
+      <Stagger className="flex flex-col gap-2">
         {existing.map((m) => (
-          <div
+          <StaggerItem
             key={m.id}
             className="flex items-center gap-3 rounded-[10px] border border-line bg-white px-4 py-3"
           >
@@ -93,9 +94,9 @@ export default async function MappingPage() {
                 Delete
               </button>
             </form>
-          </div>
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
     </div>
   );
 }

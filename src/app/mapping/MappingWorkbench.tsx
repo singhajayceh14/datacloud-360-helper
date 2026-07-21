@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { motion, useReducedMotion } from "framer-motion";
 import type { MappingField } from "@/db/schema";
 import { saveMappingAction } from "./actions";
 
@@ -17,6 +18,7 @@ export function MappingWorkbench({ projectId }: { projectId: string }) {
   const [fields, setFields] = useState<MappingField[] | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const reduce = useReducedMotion();
 
   async function onFile(file: File) {
     setBusy(true);
@@ -98,7 +100,12 @@ export function MappingWorkbench({ projectId }: { projectId: string }) {
       {error && <p className="mt-2 text-[13px] text-red-700">{error}</p>}
 
       {fields && (
-        <div className="mt-4">
+        <motion.div
+          className="mt-4"
+          initial={{ opacity: 0, y: reduce ? 0 : 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reduce ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div className="mb-2 flex items-center justify-between">
             <span className="text-[13px] text-muted">
               {fields.length} columns · {rowsSampled} rows profiled ·{" "}
@@ -163,7 +170,7 @@ export function MappingWorkbench({ projectId }: { projectId: string }) {
               </tbody>
             </table>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );

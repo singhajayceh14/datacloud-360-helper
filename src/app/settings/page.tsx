@@ -1,4 +1,5 @@
 import { Banner, Card, PageHeader, Pill } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { isDbConfigured } from "@/db";
 import {
   DEFAULT_CLAUDE_MODEL,
@@ -47,6 +48,8 @@ export default function SettingsPage() {
         sub="Connection & provider status. Keys live server-side in .env.local — never in the browser or the repo."
       />
 
+      <Stagger>
+        <StaggerItem>
       <Card>
         <h2 className="mb-2 font-semibold">Database</h2>
         <StatusRow
@@ -61,7 +64,8 @@ export default function SettingsPage() {
           }
         />
       </Card>
-
+        </StaggerItem>
+        <StaggerItem>
       <Card>
         <div className="mb-2 flex items-center gap-2">
           <h2 className="font-semibold">AI assistant</h2>
@@ -98,7 +102,8 @@ export default function SettingsPage() {
           </p>
         )}
       </Card>
-
+        </StaggerItem>
+        <StaggerItem>
       <Card>
         <h2 className="mb-2 font-semibold">Reference data</h2>
         <StatusRow
@@ -109,6 +114,8 @@ export default function SettingsPage() {
           detail="Bundled from reference/connectors.json."
         />
       </Card>
+        </StaggerItem>
+      </Stagger>
 
       <Banner tone="info">
         <strong>Editing settings.</strong> This build reads all keys and models

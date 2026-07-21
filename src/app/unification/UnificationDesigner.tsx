@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { MatchRule } from "@/db/schema";
 import { Pill } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { saveUnificationAction } from "./actions";
 
 export function UnificationDesigner({
@@ -62,11 +63,11 @@ export function UnificationDesigner({
         </button>
       </div>
 
-      <ol className="mb-4 flex flex-col gap-2">
+      <Stagger className="mb-4 flex flex-col gap-2">
         {rules.map((rule, i) => (
-          <li
+          <StaggerItem
             key={i}
-            className={`flex items-center gap-3 rounded-[10px] border px-4 py-3 ${
+            className={`flex items-center gap-3 rounded-[10px] border px-4 py-3 transition-colors ${
               rule.enabled ? "border-line bg-white" : "border-line bg-slate-50 opacity-60"
             }`}
           >
@@ -83,9 +84,9 @@ export function UnificationDesigner({
               </div>
             </div>
             <Pill tone={rule.type === "exact" ? "ga" : "beta"}>{rule.type}</Pill>
-          </li>
+          </StaggerItem>
         ))}
-      </ol>
+      </Stagger>
 
       <label className="mb-1 block text-[13px] font-semibold">
         Reconciliation &amp; scenario decisions

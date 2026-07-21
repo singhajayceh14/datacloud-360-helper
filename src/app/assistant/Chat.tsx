@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -10,6 +11,7 @@ export function Chat({ ready }: { ready: boolean }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
 
   async function send() {
     const text = input.trim();
@@ -53,8 +55,11 @@ export function Chat({ ready }: { ready: boolean }) {
           </p>
         )}
         {messages.map((m, i) => (
-          <div
+          <motion.div
             key={i}
+            initial={{ opacity: 0, y: reduce ? 0 : 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: reduce ? 0 : 0.25, ease: [0.22, 1, 0.36, 1] }}
             className={`max-w-[80%] whitespace-pre-wrap rounded-xl px-3.5 py-2.5 leading-relaxed ${
               m.role === "user"
                 ? "self-end bg-brand text-white"
@@ -62,7 +67,7 @@ export function Chat({ ready }: { ready: boolean }) {
             }`}
           >
             {m.content}
-          </div>
+          </motion.div>
         ))}
         {busy && <div className="self-start text-muted">Thinking…</div>}
         {error && <div className="self-start text-[13px] text-red-700">{error}</div>}

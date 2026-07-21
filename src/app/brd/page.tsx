@@ -1,4 +1,5 @@
 import { Banner, PageHeader } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { buildBrd } from "@/lib/brd/build";
@@ -133,16 +134,20 @@ export default async function BrdPage() {
           Generated {doc.generatedAt} — sections sync from the console tabs.
         </p>
 
-        {doc.sections.map((s, i) => (
-          <section key={s.id} className="mt-6">
-            <h2 className="mb-2 border-b border-line pb-1 text-[16px] font-semibold">
-              {i + 1}. {s.title}
-            </h2>
-            {s.blocks.map((b, bi) => (
-              <BlockView key={bi} block={b} />
-            ))}
-          </section>
-        ))}
+        <Stagger>
+          {doc.sections.map((s, i) => (
+            <StaggerItem key={s.id}>
+              <section className="mt-6">
+                <h2 className="mb-2 border-b border-line pb-1 text-[16px] font-semibold">
+                  {i + 1}. {s.title}
+                </h2>
+                {s.blocks.map((b, bi) => (
+                  <BlockView key={bi} block={b} />
+                ))}
+              </section>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </article>
     </div>
   );

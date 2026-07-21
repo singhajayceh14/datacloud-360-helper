@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Pill } from "@/components/ui";
 
 type Connector = {
@@ -27,6 +28,7 @@ export function ConnectorSearch() {
     connectors: [],
   });
   const [loading, setLoading] = useState(true);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     const ctrl = new AbortController();
@@ -84,9 +86,12 @@ export function ConnectorSearch() {
 
       <div className="flex flex-col gap-2">
         {data.connectors.map((c) => (
-          <div
+          <motion.div
             key={c.name}
-            className="rounded-[10px] border border-line bg-white px-4 py-3 hover:border-indigo-200"
+            initial={{ opacity: 0, y: reduce ? 0 : 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: reduce ? 0 : 0.2 }}
+            className="rounded-[10px] border border-line bg-white px-4 py-3 transition-colors hover:border-indigo-200"
           >
             <div className="flex items-center gap-2">
               <span className="font-semibold">{c.label}</span>
@@ -105,7 +110,7 @@ export function ConnectorSearch() {
                 ))}
               </div>
             )}
-          </div>
+          </motion.div>
         ))}
         {!loading && data.connectors.length === 0 && (
           <p className="text-muted">No connectors match your search.</p>

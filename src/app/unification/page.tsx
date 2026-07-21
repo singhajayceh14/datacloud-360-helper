@@ -1,4 +1,5 @@
 import { Banner, Card, PageHeader } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
@@ -76,16 +77,16 @@ export default async function UnificationPage() {
       {derived.warnings.length > 0 && (
         <Card>
           <h2 className="mb-2 font-semibold">Scenario checks</h2>
-          <ul className="flex flex-col gap-2">
+          <Stagger className="flex flex-col gap-2">
             {derived.warnings.map((w, i) => (
-              <li
+              <StaggerItem
                 key={i}
                 className="rounded-[10px] border border-amber-200 bg-warn-bg px-3.5 py-2.5 text-[13px] text-warn"
               >
                 {w.text}
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
+          </Stagger>
         </Card>
       )}
 
