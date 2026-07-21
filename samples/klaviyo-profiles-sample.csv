@@ -1,0 +1,7 @@
+person_id,email,marketing_opt_in,engagement_score,last_open_date
+KL-88x01,ada.byron@example.com,true,0.82,2025-07-10
+KL-88x02,grace.hopper@example.com,true,0.64,2025-07-12
+KL-88x03,radia.perlman@example.com,false,0.21,2025-06-28
+KL-88x04,margaret.h@example.com,true,0.91,2025-07-14
+KL-88x05,barbara.liskov@example.com,true,0.47,2025-07-01
+KL-88x06,newsletter.only@example.com,true,0.35,2025-07-09

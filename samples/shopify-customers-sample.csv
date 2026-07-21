@@ -1,0 +1,13 @@
+customer_id,loyalty_id,first_name,last_name,email,phone,address1,city,state,postal_code,country,marketing_opt_in,sms_consent,created_at,total_orders,lifetime_value
+CUST-10001,NP-40188,Ada,Byron,ada.byron@example.com,+1-415-555-0182,12 Market St,San Francisco,CA,94103,US,true,true,2024-03-11,7,842.50
+CUST-10002,NP-40192,Grace,Hopper,grace.hopper@example.com,+1-212-555-0147,88 Pine Ave,New York,NY,10005,US,true,false,2023-11-02,14,2190.00
+CUST-10003,,Alan,Turing,alan.turing@example.com,+1-206-555-0119,4 Orchard Rd,Seattle,WA,98101,US,false,false,2025-01-20,1,64.99
+CUST-10004,NP-40205,Katherine,Johnson,katherine.j@example.com,+1-303-555-0173,220 Aspen Way,Denver,CO,80202,US,true,true,2022-08-14,23,4310.75
+CUST-10005,NP-40188,Ada,Byron,ada.byron@example.com,,12 Market St,San Francisco,CA,94103,US,true,true,2024-03-11,7,842.50
+CUST-10006,NP-40219,Linus,Torvalds,linus@example.com,+1-512-555-0198,9 Cedar Blvd,Austin,TX,73301,US,false,true,2024-07-09,3,275.20
+CUST-10007,NP-40224,Radia,Perlman,radia.perlman@example.com,+1-617-555-0165,33 Bridge St,Boston,MA,02108,US,true,false,2023-05-30,9,1180.40
+CUST-10008,,Guest,Checkout,orders@example.com,,,Portland,OR,97201,US,false,false,2025-06-01,1,39.95
+CUST-10009,NP-40231,Margaret,Hamilton,margaret.h@example.com,+1-305-555-0150,71 Coral Dr,Miami,FL,33101,US,true,true,2021-12-19,31,5920.10
+CUST-10010,NP-40244,Tim,Berners-Lee,tim.bl@example.com,+1-404-555-0136,15 Peachtree St,Atlanta,GA,30303,US,true,false,2024-02-28,5,610.00
+CUST-10011,NP-40251,Barbara,Liskov,barbara.liskov@example.com,+1-650-555-0121,240 University Ave,Palo Alto,CA,94301,US,false,false,2023-09-17,12,1755.60
+CUST-10012,NP-40188,A.,Byron,ada.byron@example.com,+1-415-555-0182,12 Market Street,San Francisco,CA,94103,US,true,true,2024-03-11,7,842.50
