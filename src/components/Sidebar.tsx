@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { motion } from "framer-motion";
-import { TABS } from "@/lib/tabs";
+import { TABS, SECONDARY_TABS, type Tab } from "@/lib/tabs";
 import { Stagger, StaggerItem } from "@/components/motion";
 import { Select } from "@/components/Select";
 import { setActiveProject } from "@/app/actions/active-project";
@@ -56,40 +56,46 @@ export default function Sidebar({
       />
 
       <Stagger className="flex flex-col gap-1">
-        {TABS.map((t) => {
-          const active =
-            pathname === t.href ||
-            (t.href !== "/projects" && pathname.startsWith(t.href));
-          return (
-            <StaggerItem key={t.id}>
-              <MotionLink
-                href={t.href}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className={`relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition-colors ${
-                  active
-                    ? "text-white"
-                    : "text-slate-300 hover:bg-sidebar-hover hover:text-white"
-                }`}
-              >
-                {active && (
-                  <motion.span
-                    layoutId="sidebar-active"
-                    className="absolute inset-0 rounded-lg bg-brand"
-                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
-                  />
-                )}
-                <span className="relative z-10 w-4 text-center">{t.icon}</span>
-                <span className="relative z-10">{t.label}</span>
-              </MotionLink>
-            </StaggerItem>
-          );
-        })}
+        {TABS.map((t) => (
+          <NavItem key={t.id} tab={t} pathname={pathname} />
+        ))}
+        <div className="my-2 border-t border-white/10" />
+        {SECONDARY_TABS.map((t) => (
+          <NavItem key={t.id} tab={t} pathname={pathname} />
+        ))}
       </Stagger>
 
       <div className="mt-auto px-2.5 py-2.5 text-[11px] text-slate-500">
         {dbReady ? "Supabase: connected" : "Supabase: not connected"}
       </div>
     </aside>
+  );
+}
+
+function NavItem({ tab, pathname }: { tab: Tab; pathname: string }) {
+  const active = pathname === tab.href || pathname.startsWith(tab.href + "/");
+  return (
+    <StaggerItem>
+      <MotionLink
+        href={tab.href}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+        className={`relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition-colors ${
+          active
+            ? "text-white"
+            : "text-slate-300 hover:bg-sidebar-hover hover:text-white"
+        }`}
+      >
+        {active && (
+          <motion.span
+            layoutId="sidebar-active"
+            className="absolute inset-0 rounded-lg bg-brand"
+            transition={{ type: "spring", stiffness: 500, damping: 35 }}
+          />
+        )}
+        <span className="relative z-10 w-4 text-center">{tab.icon}</span>
+        <span className="relative z-10">{tab.label}</span>
+      </MotionLink>
+    </StaggerItem>
   );
 }
