@@ -5,6 +5,7 @@ import { getUnification } from "@/db/queries/unifications";
 import { listSegments } from "@/db/queries/segments";
 import { listActivations } from "@/db/queries/activations";
 import { getEntitlement } from "@/db/queries/entitlements";
+import { listSources } from "@/db/queries/sources";
 import { deriveUnification } from "@/lib/unification/derive";
 import { activationWarnings } from "@/lib/activation/warnings";
 import { calcConsumption, formatCredits } from "@/lib/entitlements/calc";
@@ -24,13 +25,14 @@ export async function buildBrd(
   const project = await getProject(projectId).catch(() => null);
   if (!project) return null;
 
-  const [mappings, unification, segments, activations, entitlement] =
+  const [mappings, unification, segments, activations, entitlement, srcInventory] =
     await Promise.all([
       listMappings(projectId).catch(() => []),
       getUnification(projectId).catch(() => null),
       listSegments(projectId).catch(() => []),
       listActivations(projectId).catch(() => []),
       getEntitlement(projectId).catch(() => null),
+      listSources(projectId).catch(() => []),
     ]);
 
   const derived = deriveUnification(mappings);
@@ -64,14 +66,37 @@ export async function buildBrd(
 
   // 2 — Data sources & ingestion.
   const sourceBlocks: Block[] = [];
+
+  // Ingestion inventory (from the Ingestion tab).
+  if (srcInventory.length > 0) {
+    sourceBlocks.push({ type: "h3", text: "Ingestion inventory" });
+    sourceBlocks.push({
+      type: "table",
+      head: ["Source", "Entities", "Method", "Frequency", "Status"],
+      rows: srcInventory.map((s) => [
+        s.name,
+        dash(s.entities),
+        dash(s.method),
+        s.frequency,
+        s.status,
+      ]),
+    });
+    for (const s of srcInventory) {
+      if (s.status === "Blocked")
+        openItems.push(`Ingestion: source "${s.name}" is Blocked.`);
+    }
+  }
+
+  // Mapped/profiled sources (from the Data Mapping tab).
   if (mappings.length === 0) {
     sourceBlocks.push({
       type: "note",
-      tone: "warn",
+      tone: srcInventory.length > 0 ? "info" : "warn",
       text: "No sources mapped yet — add mappings on the Data Mapping tab.",
     });
-    openItems.push("No data sources mapped.");
+    if (srcInventory.length === 0) openItems.push("No data sources mapped.");
   } else {
+    sourceBlocks.push({ type: "h3", text: "Mapped sources" });
     sourceBlocks.push({
       type: "table",
       head: ["Source", "File", "Rows sampled", "Fields", "Identity fields"],

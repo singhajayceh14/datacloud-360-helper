@@ -43,6 +43,13 @@
       "when": 1784200316954,
       "tag": "0005_good_zemo",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1784700296438,
+      "tag": "0006_lumpy_sumo",
+      "breakpoints": true
     }
   ]
 }

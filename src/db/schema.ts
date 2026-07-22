@@ -200,3 +200,30 @@ export const entitlements = pgTable("entitlements", {
 
 export type Entitlement = typeof entitlements.$inferSelect;
 export type NewEntitlement = typeof entitlements.$inferInsert;
+
+/**
+ * A source system in the project's ingestion inventory — what's being
+ * ingested, how, how often, and where it stands. Project-scoped, cascade.
+ */
+export const sources = pgTable("sources", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .notNull()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  entities: text("entities").notNull().default(""),
+  method: text("method").notNull().default(""),
+  frequency: text("frequency").notNull().default("TBD"),
+  status: text("status").notNull().default("Proposed"),
+  notes: text("notes").notNull().default(""),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+export type Source = typeof sources.$inferSelect;
+export type NewSource = typeof sources.$inferInsert;
