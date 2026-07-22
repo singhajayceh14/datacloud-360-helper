@@ -37,6 +37,27 @@ export async function createSourceAction(
   }
 }
 
+/** One-click add from the connector catalog into the source inventory. */
+export async function addConnectorToInventoryAction(formData: FormData) {
+  const projectId = String(formData.get("projectId") ?? "");
+  const name = String(formData.get("name") ?? "").trim();
+  if (!projectId || !name) return;
+
+  const release = String(formData.get("release") ?? "");
+  const method = release === "MuleSoft" ? "MuleSoft" : "Native connector";
+
+  await createSource({
+    projectId,
+    name,
+    entities: "",
+    method,
+    frequency: "TBD",
+    status: "Proposed",
+    notes: release ? `From connector catalog (${release})` : "From connector catalog",
+  });
+  revalidatePath("/ingestion");
+}
+
 export async function updateSourceStatusAction(formData: FormData) {
   const id = String(formData.get("id") ?? "");
   const status = String(formData.get("status") ?? "");

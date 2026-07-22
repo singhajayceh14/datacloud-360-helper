@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useFormStatus } from "react-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { Pill } from "@/components/ui";
+import { addConnectorToInventoryAction } from "./actions";
 
 type Connector = {
   name: string;
@@ -20,7 +22,11 @@ function releaseTone(release: string): "ga" | "beta" | "other" {
   return "other";
 }
 
-export function ConnectorSearch() {
+export function ConnectorSearch({
+  projectId,
+}: {
+  projectId: string | null;
+}) {
   const [q, setQ] = useState("");
   const [release, setRelease] = useState("");
   const [data, setData] = useState<{ total: number; connectors: Connector[] }>({
@@ -96,6 +102,17 @@ export function ConnectorSearch() {
             <div className="flex items-center gap-2">
               <span className="font-semibold">{c.label}</span>
               <Pill tone={releaseTone(c.release)}>{c.release}</Pill>
+              {projectId && (
+                <form
+                  action={addConnectorToInventoryAction}
+                  className="ml-auto shrink-0"
+                >
+                  <input type="hidden" name="projectId" value={projectId} />
+                  <input type="hidden" name="name" value={c.label} />
+                  <input type="hidden" name="release" value={c.release} />
+                  <AddButton />
+                </form>
+              )}
             </div>
             <div className="mt-0.5 text-[13px] text-muted">{c.desc}</div>
             {c.features?.length > 0 && (
@@ -117,6 +134,20 @@ export function ConnectorSearch() {
         )}
       </div>
     </div>
+  );
+}
+
+function AddButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      title="Add this connector to the source inventory"
+      className="rounded-lg border border-line bg-white px-2.5 py-1 text-[12px] font-medium text-brand transition-colors hover:border-brand disabled:opacity-50"
+    >
+      {pending ? "Adding…" : "+ Add to inventory"}
+    </button>
   );
 }
 

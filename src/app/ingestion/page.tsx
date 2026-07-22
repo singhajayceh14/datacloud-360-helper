@@ -43,7 +43,13 @@ export default async function IngestionPage() {
               <h2 className="font-semibold">Connector catalog</h2>
               <Pill tone="ga">{count} connectors</Pill>
             </div>
-            <ConnectorSearch />
+            <ConnectorSearch projectId={project?.id ?? null} />
+            {dbReady && !project && (
+              <p className="mt-2 text-[12px] text-muted">
+                Select a project to add connectors straight into its source
+                inventory.
+              </p>
+            )}
           </Card>
         </StaggerItem>
 
