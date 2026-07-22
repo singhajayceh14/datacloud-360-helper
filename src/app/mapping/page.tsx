@@ -7,6 +7,7 @@ import { listMappings } from "@/db/queries/mappings";
 import type { Mapping } from "@/db/schema";
 import { MappingWorkbench } from "./MappingWorkbench";
 import { SavedMapping } from "./SavedMapping";
+import { ProjectMappingCanvas } from "./ProjectMappingCanvas";
 
 export const dynamic = "force-dynamic";
 
@@ -61,6 +62,24 @@ export default async function MappingPage() {
         </div>
         <MappingWorkbench projectId={project.id} />
       </Card>
+
+      {existing.length > 0 && (
+        <Card>
+          <div className="mb-2 flex flex-wrap items-center gap-2">
+            <h2 className="font-semibold">Project data model</h2>
+            <Pill tone="ga">
+              {existing.length} source{existing.length === 1 ? "" : "s"}
+            </Pill>
+          </div>
+          <p className="mb-3 text-[13px] text-muted">
+            Every source&apos;s columns fanning into the shared, de-duplicated
+            Data 360 model. A DMO fed by more than one source is marked{" "}
+            <span className="font-semibold text-emerald-700">unified</span> —
+            the visual of cross-source identity resolution.
+          </p>
+          <ProjectMappingCanvas mappings={existing} />
+        </Card>
+      )}
 
       <h2 className="mb-2 mt-6 font-semibold">
         Saved mappings{" "}
