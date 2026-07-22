@@ -92,7 +92,7 @@ export function AnimatedMain({ children }: { children: ReactNode }) {
   return (
     <motion.main
       key={pathname}
-      className="overflow-auto px-8 py-7"
+      className="min-w-0 flex-1 overflow-auto px-8 py-7"
       initial={{ opacity: 0, y: reduce ? 0 : 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: reduce ? 0 : 0.28, ease: EASE }}
