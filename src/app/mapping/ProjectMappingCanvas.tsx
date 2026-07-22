@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import {
   ReactFlow,
   Background,
@@ -35,7 +35,13 @@ const DMO_X = 600;
 
 type GroupData = { label: string; count: number };
 type ColumnData = { column: string; category: string; identity: boolean };
-type DmoData = { dmo: string; category: string; count: number; sources: string[] };
+type DmoData = {
+  dmo: string;
+  category: string;
+  count: number;
+  sources: string[];
+  focused?: boolean;
+};
 
 function GroupNode({ data }: { data: GroupData }) {
   return (
@@ -82,8 +88,14 @@ function DmoNode({ data }: { data: DmoData }) {
   const unified = data.sources.length > 1;
   return (
     <div
-      className="rounded-lg border-2 bg-white px-3 py-2 shadow-sm"
-      style={{ borderColor: color, width: 216 }}
+      className="cursor-pointer rounded-lg border-2 bg-white px-3 py-2 shadow-sm transition-shadow"
+      style={{
+        borderColor: color,
+        width: 216,
+        boxShadow: data.focused
+          ? `0 0 0 3px ${color}55`
+          : "0 1px 2px rgba(0,0,0,0.05)",
+      }}
     >
       <Handle
         type="target"
@@ -116,7 +128,9 @@ const nodeTypes = { group: GroupNode, column: ColumnNode, dmo: DmoNode };
  * "unified" — the visual payoff of cross-source identity resolution.
  */
 export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
-  const { nodes, edges } = useMemo(() => {
+  const [selectedDmo, setSelectedDmo] = useState<string | null>(null);
+
+  const base = useMemo(() => {
     const nodeList: Node[] = [];
     const edgeList: Edge[] = [];
 
@@ -194,6 +208,62 @@ export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
     return { nodes: nodeList, edges: edgeList };
   }, [mappings]);
 
+  // Apply focus styling: when a DMO is selected, light up its incoming edges
+  // and contributing source columns/groups, and dim everything else.
+  const { nodes, edges } = useMemo(() => {
+    if (!selectedDmo) return base;
+    const litCols = new Set(
+      base.edges.filter((e) => e.target === selectedDmo).map((e) => e.source),
+    );
+    const litGroups = new Set([...litCols].map((id) => id.split("-c")[0]));
+    const lit = new Set<string>([selectedDmo, ...litCols, ...litGroups]);
+
+    const nodes = base.nodes.map((n) => ({
+      ...n,
+      data:
+        n.type === "dmo"
+          ? { ...(n.data as DmoData), focused: n.id === selectedDmo }
+          : n.data,
+      style: {
+        ...n.style,
+        opacity: lit.has(n.id) ? 1 : 0.16,
+        transition: "opacity 0.2s ease",
+      },
+    }));
+    const edges = base.edges.map((e) => {
+      const on = e.target === selectedDmo;
+      return {
+        ...e,
+        animated: on,
+        zIndex: on ? 10 : 0,
+        style: {
+          ...e.style,
+          opacity: on ? 1 : 0.05,
+          strokeWidth: on ? 3 : (e.style?.strokeWidth as number) ?? 1.5,
+        },
+      };
+    });
+    return { nodes, edges };
+  }, [base, selectedDmo]);
+
+  const onNodeClick = useCallback(
+    (_: React.MouseEvent, node: Node) => {
+      if (node.type === "dmo") {
+        setSelectedDmo((prev) => (prev === node.id ? null : node.id));
+      } else if (node.type === "column") {
+        // Clicking a source column focuses the DMO it feeds.
+        const edge = base.edges.find((e) => e.source === node.id);
+        setSelectedDmo(edge ? (edge.target as string) : null);
+      }
+    },
+    [base.edges],
+  );
+
+  const focusedName = selectedDmo
+    ? (base.nodes.find((n) => n.id === selectedDmo)?.data as DmoData | undefined)
+        ?.dmo
+    : null;
+
   return (
     <div className="h-[620px] overflow-hidden rounded-xl border border-line bg-white">
       <ReactFlow
@@ -205,6 +275,8 @@ export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
         minZoom={0.15}
         nodesConnectable={false}
         edgesFocusable={false}
+        onNodeClick={onNodeClick}
+        onPaneClick={() => setSelectedDmo(null)}
       >
         <Background gap={16} color="#eef1f5" />
         <Controls showInteractive={false} />
@@ -234,8 +306,25 @@ export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
             <div className="mt-1.5 border-t border-line pt-1.5 text-muted">
               <span className="font-medium text-blue-700">Animated</span> edge = identity key
             </div>
+            <div className="mt-1 text-muted">Click a DMO to trace its sources</div>
           </div>
         </Panel>
+
+        {focusedName && (
+          <Panel position="top-right">
+            <div className="flex items-center gap-2 rounded-lg border border-line bg-white/90 px-3 py-2 text-[12px] shadow-sm backdrop-blur">
+              <span className="text-muted">Focused:</span>
+              <span className="font-semibold text-ink">{focusedName}</span>
+              <button
+                type="button"
+                onClick={() => setSelectedDmo(null)}
+                className="rounded-md border border-line px-1.5 py-0.5 text-[11px] text-muted transition-colors hover:border-brand hover:text-brand"
+              >
+                Clear ✕
+              </button>
+            </div>
+          </Panel>
+        )}
       </ReactFlow>
     </div>
   );
