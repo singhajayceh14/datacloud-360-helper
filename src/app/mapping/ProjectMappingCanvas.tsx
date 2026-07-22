@@ -307,6 +307,7 @@ export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
           zoomOnScroll={false}
           zoomOnPinch={false}
           zoomOnDoubleClick={false}
+          preventScrolling={false}
           nodesConnectable={false}
           edgesFocusable={false}
           onNodeClick={onNodeClick}

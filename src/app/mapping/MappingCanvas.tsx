@@ -150,6 +150,7 @@ export function MappingCanvas({ fields }: { fields: MappingField[] }) {
         zoomOnScroll={false}
         zoomOnPinch={false}
         zoomOnDoubleClick={false}
+        preventScrolling={false}
         nodesConnectable={false}
         edgesFocusable={false}
         elevateEdgesOnSelect={false}
