@@ -147,6 +147,9 @@ export function MappingCanvas({ fields }: { fields: MappingField[] }) {
         fitView
         fitViewOptions={{ padding: 0.15 }}
         minZoom={0.2}
+        zoomOnScroll={false}
+        zoomOnPinch={false}
+        zoomOnDoubleClick={false}
         nodesConnectable={false}
         edgesFocusable={false}
         elevateEdgesOnSelect={false}

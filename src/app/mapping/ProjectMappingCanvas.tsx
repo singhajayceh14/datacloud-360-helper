@@ -128,7 +128,13 @@ const nodeTypes = { group: GroupNode, column: ColumnNode, dmo: DmoNode };
  * "unified" — the visual payoff of cross-source identity resolution.
  */
 export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
+  const [activeId, setActiveId] = useState<string | null>(null); // null = all
   const [selectedDmo, setSelectedDmo] = useState<string | null>(null);
+
+  const visibleMappings = useMemo(
+    () => (activeId ? mappings.filter((m) => m.id === activeId) : mappings),
+    [mappings, activeId],
+  );
 
   const base = useMemo(() => {
     const nodeList: Node[] = [];
@@ -140,7 +146,7 @@ export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
       string,
       { category: string; count: number; sources: Set<string> }
     >();
-    for (const m of mappings) {
+    for (const m of visibleMappings) {
       for (const f of m.fields) {
         if (!dmoInfo.has(f.dmo)) {
           dmoInfo.set(f.dmo, { category: f.category, count: 0, sources: new Set() });
@@ -156,7 +162,7 @@ export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
 
     // Source groups + column nodes + edges.
     let y = 0;
-    mappings.forEach((m, mi) => {
+    visibleMappings.forEach((m, mi) => {
       const gh = HEADER_H + m.fields.length * ROW_H + 12;
       nodeList.push({
         id: `g${mi}`,
@@ -206,7 +212,7 @@ export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
     });
 
     return { nodes: nodeList, edges: edgeList };
-  }, [mappings]);
+  }, [visibleMappings]);
 
   // Apply focus styling: when a DMO is selected, light up its incoming edges
   // and contributing source columns/groups, and dim everything else.
@@ -264,20 +270,48 @@ export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
         ?.dmo
     : null;
 
+  function pick(id: string | null) {
+    setActiveId(id);
+    setSelectedDmo(null);
+  }
+
   return (
-    <div className="h-[620px] overflow-hidden rounded-xl border border-line bg-white">
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        nodeTypes={nodeTypes}
-        fitView
-        fitViewOptions={{ padding: 0.12 }}
-        minZoom={0.15}
-        nodesConnectable={false}
-        edgesFocusable={false}
-        onNodeClick={onNodeClick}
-        onPaneClick={() => setSelectedDmo(null)}
-      >
+    <div>
+      {/* Source view tabs */}
+      <div className="mb-3 flex flex-wrap items-center gap-1.5">
+        <TabButton active={activeId === null} onClick={() => pick(null)}>
+          All sources
+          <span className="ml-1 opacity-70">{mappings.length}</span>
+        </TabButton>
+        {mappings.map((m) => (
+          <TabButton
+            key={m.id}
+            active={activeId === m.id}
+            onClick={() => pick(m.id)}
+          >
+            {m.sourceName}
+            <span className="ml-1 opacity-70">{m.fields.length}</span>
+          </TabButton>
+        ))}
+      </div>
+
+      <div className="h-[620px] overflow-hidden rounded-xl border border-line bg-white">
+        <ReactFlow
+          key={activeId ?? "all"}
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={nodeTypes}
+          fitView
+          fitViewOptions={{ padding: 0.12 }}
+          minZoom={0.15}
+          zoomOnScroll={false}
+          zoomOnPinch={false}
+          zoomOnDoubleClick={false}
+          nodesConnectable={false}
+          edgesFocusable={false}
+          onNodeClick={onNodeClick}
+          onPaneClick={() => setSelectedDmo(null)}
+        >
         <Background gap={16} color="#eef1f5" />
         <Controls showInteractive={false} />
         <MiniMap
@@ -325,7 +359,32 @@ export function ProjectMappingCanvas({ mappings }: { mappings: Mapping[] }) {
             </div>
           </Panel>
         )}
-      </ReactFlow>
+        </ReactFlow>
+      </div>
     </div>
+  );
+}
+
+function TabButton({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`rounded-lg px-3 py-1.5 text-[13px] font-medium transition-colors ${
+        active
+          ? "bg-brand text-white"
+          : "border border-line bg-white text-muted hover:border-brand hover:text-brand"
+      }`}
+    >
+      {children}
+    </button>
   );
 }
