@@ -1,0 +1,30 @@
+{
+  "version": "2026-07 curated",
+  "source": "Salesforce Data Cloud 360 standard data model — curated reference (not fetched from a live org). Standard DMOs are consistent across orgs; org-specific custom DMOs would come from a live metadata fetch.",
+  "objects": [
+    { "name": "Individual", "category": "Profile", "fields": ["Individual Id", "First Name", "Last Name", "Full Name", "Salutation", "Gender", "Birth Date", "Marital Status", "Occupation", "Description"] },
+    { "name": "Contact Point Email", "category": "Profile", "fields": ["Contact Point Email Id", "Email Address", "Email Address Type", "Is Active", "Is Primary", "Individual Id"] },
+    { "name": "Contact Point Phone", "category": "Profile", "fields": ["Contact Point Phone Id", "Phone Number", "Phone Type", "Country Code", "Is Active", "Is Primary", "Individual Id"] },
+    { "name": "Contact Point Address", "category": "Profile", "fields": ["Contact Point Address Id", "Address Line 1", "Address Line 2", "City", "State Province", "Postal Code", "Country", "Address Type", "Latitude", "Longitude", "Is Primary", "Individual Id"] },
+    { "name": "Contact Point App", "category": "Profile", "fields": ["Contact Point App Id", "Application Name", "Device Token", "Platform Type", "Is Active", "Individual Id"] },
+    { "name": "Party Identification", "category": "Profile", "fields": ["Party Identification Id", "Identification Name", "Identification Type", "Identification Number", "Issuing Authority", "Individual Id"] },
+    { "name": "Account", "category": "Profile", "fields": ["Account Id", "Account Name", "Account Type", "Industry", "Website", "Billing City", "Billing Country"] },
+    { "name": "Contact", "category": "Profile", "fields": ["Contact Id", "First Name", "Last Name", "Email", "Phone", "Title", "Account Id"] },
+    { "name": "Communication Subscription", "category": "Consent", "fields": ["Communication Subscription Id", "Subscription Name", "Channel", "Subscription Type"] },
+    { "name": "Communication Subscription Consent", "category": "Consent", "fields": ["Consent Id", "Communication Subscription Id", "Contact Point Id", "Consent Status", "Consent Capture Date", "Channel"] },
+    { "name": "Party Consent", "category": "Consent", "fields": ["Party Consent Id", "Individual Id", "Consent Status", "Reason", "Effective From Date", "Effective To Date"] },
+    { "name": "Contact Point Consent", "category": "Consent", "fields": ["Contact Point Consent Id", "Contact Point Id", "Consent Status", "Channel", "Capture Date"] },
+    { "name": "Email Engagement", "category": "Engagement", "fields": ["Email Engagement Id", "Contact Point Email Id", "Engagement Type", "Engagement Date Time", "Campaign Id", "Link Url"] },
+    { "name": "Web Engagement", "category": "Engagement", "fields": ["Web Engagement Id", "Individual Id", "Event Type", "Page Url", "Session Id", "Engagement Date Time", "Device Type"] },
+    { "name": "Mobile Engagement", "category": "Engagement", "fields": ["Mobile Engagement Id", "Individual Id", "Event Type", "Application Name", "Engagement Date Time"] },
+    { "name": "Sales Order", "category": "Engagement", "fields": ["Sales Order Id", "Order Number", "Order Date Time", "Order Status", "Total Amount", "Currency", "Individual Id"] },
+    { "name": "Sales Order Product", "category": "Engagement", "fields": ["Sales Order Product Id", "Sales Order Id", "Product Id", "Quantity", "Unit Price", "Total Price"] },
+    { "name": "Case", "category": "Engagement", "fields": ["Case Id", "Case Number", "Subject", "Status", "Priority", "Origin", "Created Date", "Closed Date", "Individual Id"] },
+    { "name": "Loyalty Program Member", "category": "Engagement", "fields": ["Loyalty Program Member Id", "Membership Number", "Tier", "Points Balance", "Enrollment Date", "Individual Id"] },
+    { "name": "Loyalty Transaction Journal", "category": "Engagement", "fields": ["Journal Id", "Loyalty Program Member Id", "Transaction Type", "Points", "Transaction Date", "Amount"] },
+    { "name": "Product", "category": "Other", "fields": ["Product Id", "Product Name", "SKU", "Product Category", "Brand", "List Price", "Currency"] },
+    { "name": "Product Category", "category": "Other", "fields": ["Product Category Id", "Category Name", "Parent Category Id"] },
+    { "name": "Campaign", "category": "Other", "fields": ["Campaign Id", "Campaign Name", "Campaign Type", "Status", "Start Date", "End Date"] },
+    { "name": "Campaign Member", "category": "Other", "fields": ["Campaign Member Id", "Campaign Id", "Individual Id", "Member Status", "Response Date"] }
+  ]
+}

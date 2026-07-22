@@ -7,6 +7,7 @@ import {
   providerStatus,
 } from "@/lib/ai/config";
 import { connectorCount } from "@/lib/connectors";
+import { getDmoObjects } from "@/db/queries/dmo";
 
 export const dynamic = "force-dynamic";
 
@@ -34,12 +35,13 @@ function StatusRow({
   );
 }
 
-export default function SettingsPage() {
+export default async function SettingsPage() {
   const db = isDbConfigured();
   const ai = providerStatus();
   const claudeModel = process.env.CLAUDE_MODEL || DEFAULT_CLAUDE_MODEL;
   const geminiModel = process.env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL;
   const connectors = connectorCount();
+  const dmoCount = (await getDmoObjects().catch(() => [])).length;
 
   return (
     <div>
@@ -112,6 +114,13 @@ export default function SettingsPage() {
           okText={`${connectors} connectors`}
           offText="Empty"
           detail="Bundled from reference/connectors.json."
+        />
+        <StatusRow
+          label="DMO target catalog"
+          ok={dmoCount > 0}
+          okText={`${dmoCount} objects`}
+          offText="Empty"
+          detail="Standard Data Cloud DMOs — seeded from reference/dmo-catalog.json into the DB."
         />
       </Card>
         </StaggerItem>

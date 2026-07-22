@@ -36,12 +36,14 @@ export function MappingRows({
   onUpdate,
   rightSlot,
   readOnly = false,
+  dmoOptions,
 }: {
   fields: MappingField[];
   rowsSampled: number;
   onUpdate: (i: number, patch: Partial<MappingField>) => void;
   rightSlot?: ReactNode;
   readOnly?: boolean;
+  dmoOptions?: string[];
 }) {
   const identityCount = fields.filter((f) => f.identity).length;
   const catCounts = CATEGORIES.map((c) => ({
@@ -105,12 +107,26 @@ export function MappingRows({
 
               {/* TARGET: DMO + category + identity */}
               <div className="flex flex-1 flex-wrap items-center gap-2">
-                <input
-                  value={f.dmo}
-                  readOnly={readOnly}
-                  onChange={(e) => onUpdate(i, { dmo: e.target.value })}
-                  className="min-w-0 flex-1 rounded-lg border border-line px-2.5 py-1.5 text-[13px] font-medium outline-none read-only:bg-slate-50 read-only:text-muted focus:border-brand"
-                />
+                {!readOnly && dmoOptions && dmoOptions.length > 0 ? (
+                  <Select
+                    className="min-w-0 flex-1"
+                    value={f.dmo}
+                    onChange={(v) => onUpdate(i, { dmo: v })}
+                    ariaLabel="Target DMO"
+                    options={
+                      f.dmo && !dmoOptions.includes(f.dmo)
+                        ? [f.dmo, ...dmoOptions]
+                        : dmoOptions
+                    }
+                  />
+                ) : (
+                  <input
+                    value={f.dmo}
+                    readOnly={readOnly}
+                    onChange={(e) => onUpdate(i, { dmo: e.target.value })}
+                    className="min-w-0 flex-1 rounded-lg border border-line px-2.5 py-1.5 text-[13px] font-medium outline-none read-only:bg-slate-50 read-only:text-muted focus:border-brand"
+                  />
+                )}
                 {readOnly ? (
                   <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-[12px] font-semibold ${st.chip}`}>
                     {f.category}

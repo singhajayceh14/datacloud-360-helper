@@ -5,6 +5,7 @@ import {
   timestamp,
   integer,
   jsonb,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 /**
@@ -227,3 +228,26 @@ export const sources = pgTable("sources", {
 
 export type Source = typeof sources.$inferSelect;
 export type NewSource = typeof sources.$inferInsert;
+
+/**
+ * The Data Cloud 360 target-object catalog: standard DMOs (seeded from
+ * reference/dmo-catalog.json) plus any org-specific ones added later. Global,
+ * not project-scoped. Used to populate the mapping target dropdown.
+ */
+export const dmoObjects = pgTable("dmo_objects", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  name: text("name").notNull().unique(),
+  category: text("category").notNull().default("Other"),
+  isStandard: boolean("is_standard").notNull().default(true),
+  fields: jsonb("fields").notNull().$type<string[]>(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+export type DmoObjectRow = typeof dmoObjects.$inferSelect;
+export type NewDmoObject = typeof dmoObjects.$inferInsert;

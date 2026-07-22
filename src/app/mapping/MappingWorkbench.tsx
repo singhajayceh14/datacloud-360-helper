@@ -7,7 +7,13 @@ import type { MappingField } from "@/db/schema";
 import { MappingRows } from "./MappingFields";
 import { saveMappingAction } from "./actions";
 
-export function MappingWorkbench({ projectId }: { projectId: string }) {
+export function MappingWorkbench({
+  projectId,
+  dmoOptions,
+}: {
+  projectId: string;
+  dmoOptions?: string[];
+}) {
   const router = useRouter();
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -135,6 +141,7 @@ export function MappingWorkbench({ projectId }: { projectId: string }) {
             fields={fields}
             rowsSampled={rowsSampled}
             onUpdate={update}
+            dmoOptions={dmoOptions}
             rightSlot={
               <button
                 onClick={save}

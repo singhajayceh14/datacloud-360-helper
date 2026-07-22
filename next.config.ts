@@ -7,7 +7,11 @@ const nextConfig: NextConfig = {
   // Trace them into the serverless bundles so deploys (e.g. Vercel) can read
   // them. No effect on local dev.
   outputFileTracingIncludes: {
-    "/**": ["./reference/grounding.md", "./reference/connectors.json"],
+    "/**": [
+      "./reference/grounding.md",
+      "./reference/connectors.json",
+      "./reference/dmo-catalog.json",
+    ],
   },
 };
 
