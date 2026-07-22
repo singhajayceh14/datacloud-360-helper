@@ -1,4 +1,5 @@
-import { Banner, PageHeader } from "@/components/ui";
+import Link from "next/link";
+import { Banner, Card, PageHeader, Pill } from "@/components/ui";
 import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
@@ -8,6 +9,8 @@ import { getUnification } from "@/db/queries/unifications";
 import { deriveUnification } from "@/lib/unification/derive";
 import { listSegments } from "@/db/queries/segments";
 import { listActivations } from "@/db/queries/activations";
+import { getEntitlement } from "@/db/queries/entitlements";
+import { calcConsumption, formatCredits } from "@/lib/entitlements/calc";
 import { DesignBoard, type Board, type BoardEdge, type BoardNode, type NodeStatus } from "./DesignBoard";
 
 export const dynamic = "force-dynamic";
@@ -52,13 +55,14 @@ export default async function CanvasPage() {
     );
   }
 
-  const [sources, mappings, unification, segments, activations] =
+  const [sources, mappings, unification, segments, activations, entitlement] =
     await Promise.all([
       listSources(project.id).catch(() => []),
       listMappings(project.id).catch(() => []),
       getUnification(project.id).catch(() => null),
       listSegments(project.id).catch(() => []),
       listActivations(project.id).catch(() => []),
+      getEntitlement(project.id).catch(() => null),
     ]);
 
   const derived = deriveUnification(mappings);
@@ -153,6 +157,55 @@ export default async function CanvasPage() {
   const board: Board = { nodes, edges, gaps: [...gaps] };
   const empty = sources.length === 0 && mappings.length === 0 && segments.length === 0;
 
+  // Use-case coverage: one chip per segment objective, lit by its board status.
+  const coverage = segments.map((seg) => {
+    const required = seg.dmos.split(",").map((x) => x.trim()).filter(Boolean);
+    const missing = required.filter((r) => !mappedNorm.has(r.toLowerCase()));
+    return {
+      label: seg.objective?.trim() || seg.name,
+      status: missing.length ? ("gap" as NodeStatus) : segStatus(seg.status),
+    };
+  });
+
+  // Next steps: derived to-do list with a link to the tab that resolves it.
+  const insights: { text: string; href: string }[] = [];
+  const blocked = sources.filter((s) => s.status === "Blocked");
+  if (sources.length === 0)
+    insights.push({ text: "Add your source systems", href: "/ingestion" });
+  for (const b of blocked)
+    insights.push({ text: `Unblock source “${b.name}”`, href: "/ingestion" });
+  if (mappings.length === 0)
+    insights.push({ text: "Import & map a source CSV", href: "/mapping" });
+  if (board.gaps.length > 0)
+    insights.push({
+      text: `Map a source to: ${board.gaps.join(", ")}`,
+      href: "/mapping",
+    });
+  if (!hasSavedRuleset && mappings.length > 0)
+    insights.push({ text: "Design identity resolution", href: "/unification" });
+  const draftSegs = segments.filter((s) => s.status === "Draft").length;
+  if (draftSegs > 0)
+    insights.push({
+      text: `Activate ${draftSegs} draft segment${draftSegs === 1 ? "" : "s"}`,
+      href: "/segments",
+    });
+  const activatedSegIds = new Set(activations.map((a) => a.segmentId));
+  const unActivated = segments.filter((s) => !activatedSegIds.has(s.id));
+  if (segments.length > 0 && unActivated.length > 0)
+    insights.push({
+      text: `Plan activation for ${unActivated.length} segment${unActivated.length === 1 ? "" : "s"}`,
+      href: "/activation",
+    });
+  if (!entitlement)
+    insights.push({ text: "Capture the order form & entitlements", href: "/entitlements" });
+  if (insights.length === 0)
+    insights.push({ text: "Design looks complete — generate the BRD / SDD", href: "/brd" });
+
+  // Economics: annual credit burn vs the pool (from the entitlements tab).
+  const econ = entitlement
+    ? calcConsumption(entitlement.lineItems, entitlement.dataServicesCredits)
+    : null;
+
   return (
     <div>
       {header}
@@ -174,8 +227,126 @@ export default async function CanvasPage() {
           Mapping), and build segments. The board fills in as you design.
         </Banner>
       ) : (
-        <DesignBoard board={board} />
+        <>
+          <DesignBoard board={board} />
+
+          <div className="mt-4 grid gap-4 lg:grid-cols-2">
+            {/* Use-case coverage */}
+            <Card className="mb-0">
+              <h2 className="mb-2 font-semibold">Use-case coverage</h2>
+              {coverage.length === 0 ? (
+                <p className="text-[13px] text-muted">
+                  No segments yet — objectives light up here once you build them.
+                </p>
+              ) : (
+                <div className="flex flex-wrap gap-2">
+                  {coverage.map((c, i) => (
+                    <span
+                      key={i}
+                      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-medium ${
+                        c.status === "gap"
+                          ? "bg-red-50 text-red-700"
+                          : c.status === "ok"
+                            ? "bg-emerald-50 text-emerald-700"
+                            : "bg-amber-50 text-amber-700"
+                      }`}
+                    >
+                      {c.label}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </Card>
+
+            {/* Next steps */}
+            <Card className="mb-0">
+              <h2 className="mb-2 font-semibold">Next steps</h2>
+              <ul className="flex flex-col gap-1.5">
+                {insights.map((it, i) => (
+                  <li key={i}>
+                    <Link
+                      href={it.href}
+                      className="flex items-center gap-2 rounded-lg border border-line px-2.5 py-1.5 text-[13px] transition-colors hover:border-brand hover:bg-slate-50"
+                    >
+                      <span className="text-brand">→</span>
+                      <span className="grow">{it.text}</span>
+                      <span className="text-[11px] text-muted">
+                        {it.href.replace("/", "")}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            {/* Economics */}
+            <Card className="mb-0 lg:col-span-2">
+              <div className="mb-2 flex items-center gap-2">
+                <h2 className="font-semibold">Economics</h2>
+                {econ && (
+                  <Pill
+                    tone={
+                      econ.utilizationPct === null
+                        ? "other"
+                        : econ.utilizationPct > 100
+                          ? "beta"
+                          : "ga"
+                    }
+                  >
+                    {econ.utilizationPct === null
+                      ? "no pool set"
+                      : `${econ.utilizationPct.toFixed(0)}% of pool`}
+                  </Pill>
+                )}
+              </div>
+              {econ ? (
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  <Metric label="Monthly credits" value={formatCredits(econ.monthlyCredits)} />
+                  <Metric label="Annual credits" value={formatCredits(econ.annualCredits)} />
+                  <Metric
+                    label="Credit pool"
+                    value={formatCredits(entitlement!.dataServicesCredits)}
+                  />
+                  <Metric
+                    label={econ.remaining >= 0 ? "Headroom" : "Over pool"}
+                    value={formatCredits(Math.abs(econ.remaining))}
+                    tone={econ.remaining >= 0 ? "ok" : "bad"}
+                  />
+                </div>
+              ) : (
+                <p className="text-[13px] text-muted">
+                  No entitlements captured —{" "}
+                  <Link href="/entitlements" className="text-brand hover:underline">
+                    add the order form
+                  </Link>{" "}
+                  to estimate credit burn vs the pool.
+                </p>
+              )}
+            </Card>
+          </div>
+        </>
       )}
+    </div>
+  );
+}
+
+function Metric({
+  label,
+  value,
+  tone = "muted",
+}: {
+  label: string;
+  value: string;
+  tone?: "muted" | "ok" | "bad";
+}) {
+  const cls =
+    tone === "ok" ? "text-emerald-700" : tone === "bad" ? "text-red-700" : "text-ink";
+  return (
+    <div className="rounded-xl border border-line bg-white p-3">
+      <div className="text-[12px] text-muted">{label}</div>
+      <div className={`mt-1 text-[20px] font-semibold tabular-nums ${cls}`}>
+        {value}
+      </div>
     </div>
   );
 }
