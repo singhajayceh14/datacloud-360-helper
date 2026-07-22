@@ -252,3 +252,25 @@ export const dmoObjects = pgTable("dmo_objects", {
 
 export type DmoObjectRow = typeof dmoObjects.$inferSelect;
 export type NewDmoObject = typeof dmoObjects.$inferInsert;
+
+/**
+ * A client business objective for the project (e.g. "Win back lapsed buyers").
+ * Segments serve objectives; the Canvas lights coverage from them.
+ */
+export const objectives = pgTable("objectives", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .notNull()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  text: text("text").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+export type Objective = typeof objectives.$inferSelect;
+export type NewObjective = typeof objectives.$inferInsert;

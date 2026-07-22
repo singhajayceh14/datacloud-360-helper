@@ -3,6 +3,7 @@ import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
 import { listSources } from "@/db/queries/sources";
+import { listObjectives } from "@/db/queries/objectives";
 import type { Source } from "@/db/schema";
 import { IngestionTabs, type SourceLite } from "./IngestionTabs";
 
@@ -43,7 +44,10 @@ export default async function IngestionPage() {
     );
   }
 
-  const rows: Source[] = await listSources(project.id).catch(() => []);
+  const [rows, objRows] = await Promise.all([
+    listSources(project.id).catch(() => [] as Source[]),
+    listObjectives(project.id).catch(() => []),
+  ]);
   const sources: SourceLite[] = rows.map((s) => ({
     id: s.id,
     name: s.name,
@@ -53,11 +57,16 @@ export default async function IngestionPage() {
     status: s.status,
     notes: s.notes,
   }));
+  const objectives = objRows.map((o) => ({ id: o.id, text: o.text }));
 
   return (
     <div>
       {header}
-      <IngestionTabs projectId={project.id} sources={sources} />
+      <IngestionTabs
+        projectId={project.id}
+        sources={sources}
+        objectives={objectives}
+      />
     </div>
   );
 }

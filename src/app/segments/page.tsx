@@ -4,6 +4,7 @@ import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
 import { listSegments } from "@/db/queries/segments";
+import { listObjectives } from "@/db/queries/objectives";
 import type { Segment } from "@/db/schema";
 import { CreateSegmentForm } from "./CreateSegmentForm";
 import { SegmentStatus } from "./SegmentStatus";
@@ -52,7 +53,11 @@ export default async function SegmentsPage() {
     );
   }
 
-  const segments: Segment[] = await listSegments(project.id).catch(() => []);
+  const [segments, objRows] = await Promise.all([
+    listSegments(project.id).catch(() => [] as Segment[]),
+    listObjectives(project.id).catch(() => []),
+  ]);
+  const objectiveTexts = objRows.map((o) => o.text);
 
   return (
     <div>
@@ -63,7 +68,7 @@ export default async function SegmentsPage() {
           <h2 className="font-semibold">New segment</h2>
           <Pill tone="other">{project.name}</Pill>
         </div>
-        <CreateSegmentForm projectId={project.id} />
+        <CreateSegmentForm projectId={project.id} objectives={objectiveTexts} />
       </Card>
 
       <h2 className="mb-2 mt-6 font-semibold">

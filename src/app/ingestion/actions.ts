@@ -6,8 +6,39 @@ import {
   updateSource,
   deleteSource,
 } from "@/db/queries/sources";
+import { createObjective, deleteObjective } from "@/db/queries/objectives";
 
 export type CreateState = { error?: string; ok?: boolean };
+
+function revalidateObjectiveConsumers() {
+  revalidatePath("/ingestion");
+  revalidatePath("/canvas");
+  revalidatePath("/segments");
+}
+
+export async function createObjectiveAction(
+  _prev: CreateState,
+  formData: FormData,
+): Promise<CreateState> {
+  const projectId = String(formData.get("projectId") ?? "");
+  const text = String(formData.get("text") ?? "").trim();
+  if (!projectId) return { error: "No active project." };
+  if (!text) return { error: "Objective text is required." };
+  try {
+    await createObjective(projectId, text);
+    revalidateObjectiveConsumers();
+    return { ok: true };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+export async function deleteObjectiveAction(formData: FormData) {
+  const id = String(formData.get("id") ?? "");
+  if (!id) return;
+  await deleteObjective(id);
+  revalidateObjectiveConsumers();
+}
 
 export async function createSourceAction(
   _prev: CreateState,

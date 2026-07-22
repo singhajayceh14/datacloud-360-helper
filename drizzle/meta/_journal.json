@@ -57,6 +57,13 @@
       "when": 1784704082600,
       "tag": "0007_certain_risque",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1784718435295,
+      "tag": "0008_robust_vision",
+      "breakpoints": true
     }
   ]
 }

@@ -10,6 +10,7 @@ import { deriveUnification } from "@/lib/unification/derive";
 import { listSegments } from "@/db/queries/segments";
 import { listActivations } from "@/db/queries/activations";
 import { getEntitlement } from "@/db/queries/entitlements";
+import { listObjectives } from "@/db/queries/objectives";
 import { getScenarioComparison, baseName } from "@/db/queries/scenarios";
 import { calcConsumption, formatCredits } from "@/lib/entitlements/calc";
 import { DuplicateButton } from "./DuplicateButton";
@@ -57,7 +58,7 @@ export default async function CanvasPage() {
     );
   }
 
-  const [sources, mappings, unification, segments, activations, entitlement] =
+  const [sources, mappings, unification, segments, activations, entitlement, objectives] =
     await Promise.all([
       listSources(project.id).catch(() => []),
       listMappings(project.id).catch(() => []),
@@ -65,6 +66,7 @@ export default async function CanvasPage() {
       listSegments(project.id).catch(() => []),
       listActivations(project.id).catch(() => []),
       getEntitlement(project.id).catch(() => null),
+      listObjectives(project.id).catch(() => []),
     ]);
 
   const derived = deriveUnification(mappings);
@@ -159,15 +161,38 @@ export default async function CanvasPage() {
   const board: Board = { nodes, edges, gaps: [...gaps] };
   const empty = sources.length === 0 && mappings.length === 0 && segments.length === 0;
 
-  // Use-case coverage: one chip per segment objective, lit by its board status.
-  const coverage = segments.map((seg) => {
-    const required = seg.dmos.split(",").map((x) => x.trim()).filter(Boolean);
-    const missing = required.filter((r) => !mappedNorm.has(r.toLowerCase()));
-    return {
-      label: seg.objective?.trim() || seg.name,
-      status: missing.length ? ("gap" as NodeStatus) : segStatus(seg.status),
-    };
-  });
+  // Use-case coverage: one chip per business objective (or per segment
+  // objective if none are defined), lit by the segments that serve it.
+  const segMissing = (dmoList: string) =>
+    dmoList
+      .split(",")
+      .map((x) => x.trim())
+      .filter(Boolean)
+      .filter((r) => !mappedNorm.has(r.toLowerCase()));
+
+  const coverage =
+    objectives.length > 0
+      ? objectives.map((o) => {
+          const ot = o.text.trim().toLowerCase();
+          const serving = segments.filter((s) => {
+            const so = (s.objective ?? "").trim().toLowerCase();
+            return so && (so === ot || so.includes(ot) || ot.includes(so));
+          });
+          let status: NodeStatus = "planned"; // unaddressed
+          if (serving.length) {
+            const anyGap = serving.some((s) => segMissing(s.dmos).length > 0);
+            status = anyGap
+              ? "gap"
+              : serving.some((s) => s.status === "Active")
+                ? "ok"
+                : "wip";
+          }
+          return { label: o.text, status };
+        })
+      : segments.map((seg) => ({
+          label: seg.objective?.trim() || seg.name,
+          status: segMissing(seg.dmos).length ? ("gap" as NodeStatus) : segStatus(seg.status),
+        }));
 
   // Next steps: derived to-do list with a link to the tab that resolves it.
   const insights: { text: string; href: string }[] = [];

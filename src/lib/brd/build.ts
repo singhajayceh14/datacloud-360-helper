@@ -6,6 +6,7 @@ import { listSegments } from "@/db/queries/segments";
 import { listActivations } from "@/db/queries/activations";
 import { getEntitlement } from "@/db/queries/entitlements";
 import { listSources } from "@/db/queries/sources";
+import { listObjectives } from "@/db/queries/objectives";
 import { deriveUnification } from "@/lib/unification/derive";
 import { activationWarnings } from "@/lib/activation/warnings";
 import { calcConsumption, formatCredits } from "@/lib/entitlements/calc";
@@ -25,7 +26,7 @@ export async function buildBrd(
   const project = await getProject(projectId).catch(() => null);
   if (!project) return null;
 
-  const [mappings, unification, segments, activations, entitlement, srcInventory] =
+  const [mappings, unification, segments, activations, entitlement, srcInventory, objectives] =
     await Promise.all([
       listMappings(projectId).catch(() => []),
       getUnification(projectId).catch(() => null),
@@ -33,6 +34,7 @@ export async function buildBrd(
       listActivations(projectId).catch(() => []),
       getEntitlement(projectId).catch(() => null),
       listSources(projectId).catch(() => []),
+      listObjectives(projectId).catch(() => []),
     ]);
 
   const derived = deriveUnification(mappings);
@@ -42,27 +44,28 @@ export async function buildBrd(
   const sections: Section[] = [];
 
   // 1 — Project overview.
-  sections.push({
-    id: "overview",
-    title: "Project overview",
-    blocks: [
-      {
-        type: "p",
-        text: `This solution-design document captures the Data Cloud 360 implementation design for ${project.name}. It is generated from the console tabs and stays in sync as each tab is updated.`,
-      },
-      {
-        type: "table",
-        head: ["Field", "Value"],
-        rows: [
-          ["Project", project.name],
-          ["Client", dash(project.client)],
-          ["Edition", dash(project.edition)],
-          ["Phase", dash(project.phase)],
-          ["Status", dash(project.status)],
-        ],
-      },
-    ],
-  });
+  const overviewBlocks: Block[] = [
+    {
+      type: "p",
+      text: `This solution-design document captures the Data Cloud 360 implementation design for ${project.name}. It is generated from the console tabs and stays in sync as each tab is updated.`,
+    },
+    {
+      type: "table",
+      head: ["Field", "Value"],
+      rows: [
+        ["Project", project.name],
+        ["Client", dash(project.client)],
+        ["Edition", dash(project.edition)],
+        ["Phase", dash(project.phase)],
+        ["Status", dash(project.status)],
+      ],
+    },
+  ];
+  if (objectives.length > 0) {
+    overviewBlocks.push({ type: "h3", text: "Business objectives" });
+    overviewBlocks.push({ type: "ul", items: objectives.map((o) => o.text) });
+  }
+  sections.push({ id: "overview", title: "Project overview", blocks: overviewBlocks });
 
   // 2 — Data sources & ingestion.
   const sourceBlocks: Block[] = [];

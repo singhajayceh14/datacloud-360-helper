@@ -10,7 +10,13 @@ const STATUSES = ["Draft", "Active", "Paused", "Archived"];
 const inputCls =
   "w-full rounded-lg border border-line bg-white px-3 py-2 outline-none focus:border-brand";
 
-export function CreateSegmentForm({ projectId }: { projectId: string }) {
+export function CreateSegmentForm({
+  projectId,
+  objectives = [],
+}: {
+  projectId: string;
+  objectives?: string[];
+}) {
   const [state, action, pending] = useActionState<CreateState, FormData>(
     createSegmentAction,
     {},
@@ -24,9 +30,17 @@ export function CreateSegmentForm({ projectId }: { projectId: string }) {
         <input name="channel" placeholder="Channel (Email, SMS, Ads…)" className={inputCls} />
         <input
           name="objective"
-          placeholder="Objective"
+          list="seg-objectives"
+          placeholder="Objective (from business objectives)"
           className={`${inputCls} sm:col-span-2`}
         />
+        {objectives.length > 0 && (
+          <datalist id="seg-objectives">
+            {objectives.map((o) => (
+              <option key={o} value={o} />
+            ))}
+          </datalist>
+        )}
         <textarea
           name="criteria"
           placeholder="Criteria / segment definition"

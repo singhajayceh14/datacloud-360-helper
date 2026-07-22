@@ -5,6 +5,7 @@ import { Card, Pill } from "@/components/ui";
 import { ConnectorSearch } from "./ConnectorSearch";
 import { CreateSourceForm } from "./CreateSourceForm";
 import { SourceStatus } from "./SourceStatus";
+import { ObjectivesCard, type ObjectiveLite } from "./ObjectivesCard";
 import { deleteSourceAction } from "./actions";
 
 export type SourceLite = {
@@ -35,9 +36,11 @@ function statusTone(s: string): "ga" | "beta" | "other" {
 export function IngestionTabs({
   projectId,
   sources,
+  objectives,
 }: {
   projectId: string;
   sources: SourceLite[];
+  objectives: ObjectiveLite[];
 }) {
   const [view, setView] = useState<string>("overview");
 
@@ -122,7 +125,11 @@ export function IngestionTabs({
           </dl>
         </Card>
       ) : (
-        <OverviewView sources={sources} />
+        <OverviewView
+          projectId={projectId}
+          sources={sources}
+          objectives={objectives}
+        />
       )}
     </div>
   );
@@ -137,7 +144,15 @@ function Field({ label, value }: { label: string; value: string }) {
   );
 }
 
-function OverviewView({ sources }: { sources: SourceLite[] }) {
+function OverviewView({
+  projectId,
+  sources,
+  objectives,
+}: {
+  projectId: string;
+  sources: SourceLite[];
+  objectives: ObjectiveLite[];
+}) {
   const live = sources.filter((s) => s.status === "Live").length;
   const writeup =
     sources.length === 0
@@ -150,6 +165,8 @@ function OverviewView({ sources }: { sources: SourceLite[] }) {
 
   return (
     <>
+      <ObjectivesCard projectId={projectId} objectives={objectives} />
+
       <Card>
         <h2 className="mb-1 font-semibold">Ingestion write-up</h2>
         <p className="text-[13px] leading-relaxed text-muted">{writeup}</p>
