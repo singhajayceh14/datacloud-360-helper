@@ -213,9 +213,109 @@ export default async function CanvasPage() {
     (r) => baseName(r.name) === baseName(project.name),
   );
 
+  // Phase stepper — status derived from real design state.
+  type PhaseStatus = "complete" | "inprogress" | "planned";
+  const anyLiveSource = sources.some((s) => s.status === "Live");
+  const allActiveSeg = segments.length > 0 && segments.every((s) => s.status === "Active");
+  const allActiveAct = activations.length > 0 && activations.every((a) => a.status === "Active");
+  const phases: { n: number; title: string; status: PhaseStatus }[] = [
+    {
+      n: 1,
+      title: "Source discovery & ingestion",
+      status: sources.length ? (anyLiveSource ? "complete" : "inprogress") : "planned",
+    },
+    {
+      n: 2,
+      title: "Data mapping",
+      status: mappings.length ? (board.gaps.length ? "inprogress" : "complete") : "planned",
+    },
+    {
+      n: 3,
+      title: "BRD / SDD",
+      status: mappings.length ? "inprogress" : "planned",
+    },
+    {
+      n: 4,
+      title: "Unification",
+      status: hasSavedRuleset ? "complete" : mappings.length ? "inprogress" : "planned",
+    },
+    {
+      n: 5,
+      title: "Segmentation",
+      status: segments.length ? (allActiveSeg ? "complete" : "inprogress") : "planned",
+    },
+    {
+      n: 6,
+      title: "Activation",
+      status: activations.length ? (allActiveAct ? "complete" : "inprogress") : "planned",
+    },
+  ];
+  const pct = Math.round(
+    (100 *
+      phases.reduce(
+        (a, p) => a + (p.status === "complete" ? 1 : p.status === "inprogress" ? 0.5 : 0),
+        0,
+      )) /
+      phases.length,
+  );
+  const phaseLabel: Record<PhaseStatus, string> = {
+    complete: "Complete",
+    inprogress: "In progress",
+    planned: "Planned",
+  };
+
   return (
     <div>
       {header}
+
+      {/* Phase stepper + progress */}
+      <Card>
+        <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+          <div className="font-semibold">
+            {project.name}
+            {project.phase && (
+              <>
+                {" — "}
+                <span className="text-brand">{project.phase}</span>
+              </>
+            )}
+          </div>
+          <div className="text-[13px] font-medium text-muted">{pct}% complete</div>
+        </div>
+        <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+          <div
+            className="h-full rounded-full bg-emerald-500 transition-all"
+            style={{ width: `${pct}%` }}
+          />
+        </div>
+        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+          {phases.map((p) => {
+            const c =
+              p.status === "complete"
+                ? { box: "border-emerald-200 bg-emerald-50", dot: "bg-emerald-500" }
+                : p.status === "inprogress"
+                  ? { box: "border-amber-200 bg-amber-50", dot: "bg-amber-500" }
+                  : { box: "border-line bg-white", dot: "bg-slate-400" };
+            return (
+              <div key={p.n} className={`rounded-xl border p-3 ${c.box}`}>
+                <div className="flex items-start gap-2">
+                  <span
+                    className={`grid h-5 w-5 shrink-0 place-items-center rounded-full text-[11px] font-bold text-white ${c.dot}`}
+                  >
+                    {p.n}
+                  </span>
+                  <span className="text-[13px] font-semibold leading-tight">
+                    {p.title}
+                  </span>
+                </div>
+                <div className="mt-1 text-[12px] text-muted">
+                  {phaseLabel[p.status]}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Card>
 
       {board.gaps.length > 0 && (
         <Banner tone="warn">
@@ -235,6 +335,10 @@ export default async function CanvasPage() {
         </Banner>
       ) : (
         <>
+          <h2 className="mb-2 mt-1 font-semibold">Design board</h2>
+          <p className="mb-2 text-[12px] text-muted">
+            Click any node for its config and the tab that owns it.
+          </p>
           <DesignBoard board={board} />
 
           <div className="mt-4 grid gap-4 lg:grid-cols-2">
