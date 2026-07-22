@@ -11,6 +11,7 @@ export type Tab = {
  */
 export const TABS: Tab[] = [
   { id: "projects", label: "Projects", icon: "▦", href: "/projects" },
+  { id: "canvas", label: "Canvas", icon: "◇", href: "/canvas" },
   { id: "ingestion", label: "Ingestion", icon: "⇥", href: "/ingestion" },
   { id: "mapping", label: "Data Mapping", icon: "⇄", href: "/mapping" },
   { id: "unification", label: "Unification", icon: "⚭", href: "/unification" },
