@@ -52,7 +52,10 @@ export default async function MappingPage() {
   }
 
   const existing: Mapping[] = await listMappings(project.id).catch(() => []);
-  const dmoNames = (await getDmoObjects().catch(() => [])).map((o) => o.name);
+  const dmoCatalog = (await getDmoObjects().catch(() => [])).map((o) => ({
+    name: o.name,
+    fields: o.fields,
+  }));
 
   return (
     <div>
@@ -62,7 +65,7 @@ export default async function MappingPage() {
           <h2 className="font-semibold">New source mapping</h2>
           <Pill tone="other">{project.name}</Pill>
         </div>
-        <MappingWorkbench projectId={project.id} dmoOptions={dmoNames} />
+        <MappingWorkbench projectId={project.id} dmoCatalog={dmoCatalog} />
       </Card>
 
       {existing.length > 0 && (
@@ -95,7 +98,7 @@ export default async function MappingPage() {
       <Stagger className="flex flex-col gap-2">
         {existing.map((m) => (
           <StaggerItem key={m.id}>
-            <SavedMapping mapping={m} dmoOptions={dmoNames} />
+            <SavedMapping mapping={m} dmoCatalog={dmoCatalog} />
           </StaggerItem>
         ))}
       </Stagger>

@@ -36,15 +36,18 @@ export function MappingRows({
   onUpdate,
   rightSlot,
   readOnly = false,
-  dmoOptions,
+  dmoCatalog,
 }: {
   fields: MappingField[];
   rowsSampled: number;
   onUpdate: (i: number, patch: Partial<MappingField>) => void;
   rightSlot?: ReactNode;
   readOnly?: boolean;
-  dmoOptions?: string[];
+  dmoCatalog?: { name: string; fields: string[] }[];
 }) {
+  const dmoNames = dmoCatalog?.map((o) => o.name) ?? [];
+  const fieldsFor = (dmo: string) =>
+    dmoCatalog?.find((o) => o.name === dmo)?.fields ?? [];
   const identityCount = fields.filter((f) => f.identity).length;
   const catCounts = CATEGORIES.map((c) => ({
     cat: c,
@@ -105,18 +108,19 @@ export function MappingRows({
                 </svg>
               </div>
 
-              {/* TARGET: DMO + category + identity */}
+              {/* TARGET: DMO → field + category + identity */}
               <div className="flex flex-1 flex-wrap items-center gap-2">
-                {!readOnly && dmoOptions && dmoOptions.length > 0 ? (
+                {!readOnly && dmoNames.length > 0 ? (
                   <Select
-                    className="min-w-0 flex-1"
+                    className="min-w-[150px] flex-1"
                     value={f.dmo}
-                    onChange={(v) => onUpdate(i, { dmo: v })}
+                    // Switching DMO clears the field (it belongs to the old DMO).
+                    onChange={(v) => onUpdate(i, { dmo: v, dmoField: "" })}
                     ariaLabel="Target DMO"
                     options={
-                      f.dmo && !dmoOptions.includes(f.dmo)
-                        ? [f.dmo, ...dmoOptions]
-                        : dmoOptions
+                      f.dmo && !dmoNames.includes(f.dmo)
+                        ? [f.dmo, ...dmoNames]
+                        : dmoNames
                     }
                   />
                 ) : (
@@ -124,8 +128,30 @@ export function MappingRows({
                     value={f.dmo}
                     readOnly={readOnly}
                     onChange={(e) => onUpdate(i, { dmo: e.target.value })}
-                    className="min-w-0 flex-1 rounded-lg border border-line px-2.5 py-1.5 text-[13px] font-medium outline-none read-only:bg-slate-50 read-only:text-muted focus:border-brand"
+                    className="min-w-[130px] flex-1 rounded-lg border border-line px-2.5 py-1.5 text-[13px] font-medium outline-none read-only:bg-slate-50 read-only:text-muted focus:border-brand"
                   />
+                )}
+
+                {/* Target field within the DMO */}
+                {!readOnly && fieldsFor(f.dmo).length > 0 ? (
+                  <Select
+                    className="min-w-[140px] flex-1"
+                    value={f.dmoField ?? ""}
+                    onChange={(v) => onUpdate(i, { dmoField: v })}
+                    placeholder="Field…"
+                    ariaLabel="Target field"
+                    options={
+                      f.dmoField && !fieldsFor(f.dmo).includes(f.dmoField)
+                        ? [f.dmoField, ...fieldsFor(f.dmo)]
+                        : fieldsFor(f.dmo)
+                    }
+                  />
+                ) : (
+                  f.dmoField && (
+                    <span className="rounded-md bg-slate-100 px-2 py-1 text-[12px] text-slate-600">
+                      {f.dmoField}
+                    </span>
+                  )
                 )}
                 {readOnly ? (
                   <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-[12px] font-semibold ${st.chip}`}>

@@ -9,10 +9,10 @@ import { saveMappingAction } from "./actions";
 
 export function MappingWorkbench({
   projectId,
-  dmoOptions,
+  dmoCatalog,
 }: {
   projectId: string;
-  dmoOptions?: string[];
+  dmoCatalog?: { name: string; fields: string[] }[];
 }) {
   const router = useRouter();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -141,7 +141,7 @@ export function MappingWorkbench({
             fields={fields}
             rowsSampled={rowsSampled}
             onUpdate={update}
-            dmoOptions={dmoOptions}
+            dmoCatalog={dmoCatalog}
             rightSlot={
               <button
                 onClick={save}

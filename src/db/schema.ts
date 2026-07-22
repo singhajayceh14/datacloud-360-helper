@@ -55,6 +55,7 @@ export type MappingField = {
   sample: string | null; // an example value
   dlo: string; // Data Lake Object (source object)
   dmo: string; // Data Model Object (target)
+  dmoField?: string; // specific field within the target DMO
   category: string; // person-split bucket, e.g. "Party Identification"
   identity: boolean; // used for identity resolution?
 };

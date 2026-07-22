@@ -128,12 +128,13 @@ export async function buildBrd(
       modelBlocks.push({ type: "h3", text: m.sourceName });
       modelBlocks.push({
         type: "table",
-        head: ["Column", "Sample", "DLO", "DMO", "Category", "Identity"],
+        head: ["Column", "Sample", "DLO", "DMO", "Field", "Category", "Identity"],
         rows: m.fields.map((f) => [
           f.column,
           dash(f.sample),
           f.dlo,
           f.dmo,
+          dash(f.dmoField),
           f.category,
           yn(f.identity),
         ]),

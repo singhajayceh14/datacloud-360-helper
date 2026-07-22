@@ -12,10 +12,10 @@ const clone = (fields: MappingField[]) => fields.map((f) => ({ ...f }));
 
 export function SavedMapping({
   mapping,
-  dmoOptions,
+  dmoCatalog,
 }: {
   mapping: Mapping;
-  dmoOptions?: string[];
+  dmoCatalog?: { name: string; fields: string[] }[];
 }) {
   const router = useRouter();
   const reduce = useReducedMotion();
@@ -174,7 +174,7 @@ export function SavedMapping({
                   fields={fields}
                   rowsSampled={mapping.rowsSampled}
                   onUpdate={update}
-                  dmoOptions={dmoOptions}
+                  dmoCatalog={dmoCatalog}
                 />
               ) : (
                 <MappingCanvas fields={fields} />

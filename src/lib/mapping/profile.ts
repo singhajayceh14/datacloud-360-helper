@@ -53,7 +53,7 @@ export function parseCsv(text: string): { headers: string[]; rows: string[][] } 
 export function inferField(
   column: string,
   sample: string | null,
-): { dmo: string; category: string; identity: boolean } {
+): { dmo: string; dmoField: string; category: string; identity: boolean } {
   const n = column.toLowerCase().replace(/[^a-z0-9]/g, "");
   const val = (sample ?? "").trim();
 
@@ -70,33 +70,37 @@ export function inferField(
   const looksDate = /date|time|timestamp|created|updated|modified/.test(n);
 
   if (looksEmail)
-    return { dmo: "Contact Point Email", category: "Contact Point", identity: true };
+    return { dmo: "Contact Point Email", dmoField: "Email Address", category: "Contact Point", identity: true };
   if (looksPhone)
-    return { dmo: "Contact Point Phone", category: "Contact Point", identity: true };
+    return { dmo: "Contact Point Phone", dmoField: "Phone Number", category: "Contact Point", identity: true };
   if (looksConsent)
-    return {
-      dmo: "Communication Subscription",
-      category: "Consent",
-      identity: false,
-    };
+    return { dmo: "Communication Subscription", dmoField: "", category: "Consent", identity: false };
   if (looksId)
-    return {
-      dmo: "Party Identification",
-      category: "Identity",
-      identity: true,
-    };
-  if (looksName)
-    return { dmo: "Individual", category: "Party", identity: false };
-  if (looksAddress)
-    return {
-      dmo: "Contact Point Address",
-      category: "Contact Point",
-      identity: false,
-    };
+    return { dmo: "Party Identification", dmoField: "Identification Number", category: "Identity", identity: true };
+  if (looksName) {
+    const dmoField = /first|given/.test(n)
+      ? "First Name"
+      : /last|surname/.test(n)
+        ? "Last Name"
+        : "Full Name";
+    return { dmo: "Individual", dmoField, category: "Party", identity: false };
+  }
+  if (looksAddress) {
+    const dmoField = /city/.test(n)
+      ? "City"
+      : /state|province/.test(n)
+        ? "State Province"
+        : /zip|postal|postcode/.test(n)
+          ? "Postal Code"
+          : /country/.test(n)
+            ? "Country"
+            : "Address Line 1";
+    return { dmo: "Contact Point Address", dmoField, category: "Contact Point", identity: false };
+  }
   if (looksDate)
-    return { dmo: "Attribute", category: "Attribute", identity: false };
+    return { dmo: "Attribute", dmoField: "", category: "Attribute", identity: false };
 
-  return { dmo: "Attribute", category: "Attribute", identity: false };
+  return { dmo: "Attribute", dmoField: "", category: "Attribute", identity: false };
 }
 
 /** Profile a CSV and produce a draft DLO→DMO mapping. */
@@ -110,8 +114,8 @@ export function profileCsv(
   const fields: MappingField[] = headers.map((column, idx) => {
     const sample =
       rows.map((r) => r[idx]).find((v) => v && v.trim() !== "")?.trim() ?? null;
-    const { dmo, category, identity } = inferField(column, sample);
-    return { column, sample, dlo, dmo, category, identity };
+    const { dmo, dmoField, category, identity } = inferField(column, sample);
+    return { column, sample, dlo, dmo, dmoField, category, identity };
   });
 
   return { headers, rowsSampled: rows.length, fields };
