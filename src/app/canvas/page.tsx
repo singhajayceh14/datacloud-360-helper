@@ -10,7 +10,9 @@ import { deriveUnification } from "@/lib/unification/derive";
 import { listSegments } from "@/db/queries/segments";
 import { listActivations } from "@/db/queries/activations";
 import { getEntitlement } from "@/db/queries/entitlements";
+import { getScenarioComparison, baseName } from "@/db/queries/scenarios";
 import { calcConsumption, formatCredits } from "@/lib/entitlements/calc";
+import { DuplicateButton } from "./DuplicateButton";
 import { DesignBoard, type Board, type BoardEdge, type BoardNode, type NodeStatus } from "./DesignBoard";
 
 export const dynamic = "force-dynamic";
@@ -206,6 +208,11 @@ export default async function CanvasPage() {
     ? calcConsumption(entitlement.lineItems, entitlement.dataServicesCredits)
     : null;
 
+  // Scenario family: this project plus any forks sharing its base name.
+  const family = (await getScenarioComparison().catch(() => [])).filter(
+    (r) => baseName(r.name) === baseName(project.name),
+  );
+
   return (
     <div>
       {header}
@@ -322,6 +329,62 @@ export default async function CanvasPage() {
                   to estimate credit burn vs the pool.
                 </p>
               )}
+            </Card>
+
+            {/* Scenario comparison */}
+            <Card className="mb-0 lg:col-span-2">
+              <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <h2 className="font-semibold">Scenarios</h2>
+                  <Pill tone="other">
+                    {family.length} in family
+                  </Pill>
+                </div>
+                <DuplicateButton projectId={project.id} />
+              </div>
+              <p className="mb-3 text-[12px] text-muted">
+                Fork this project to compare alternatives (e.g. Zero Copy vs
+                ingestion) side by side — the cheapest consistent scenario wins
+                the client conversation.
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[560px] border-collapse text-[13px]">
+                  <thead>
+                    <tr className="text-left text-muted">
+                      <th className="border-b border-line pb-1 pr-3 font-medium">Scenario</th>
+                      <th className="border-b border-line pb-1 pr-3 text-right font-medium">Sources</th>
+                      <th className="border-b border-line pb-1 pr-3 text-right font-medium">DMOs</th>
+                      <th className="border-b border-line pb-1 pr-3 text-right font-medium">Gaps</th>
+                      <th className="border-b border-line pb-1 pr-3 text-right font-medium">Segments</th>
+                      <th className="border-b border-line pb-1 pr-3 text-right font-medium">Activations</th>
+                      <th className="border-b border-line pb-1 text-right font-medium">Est. credits/yr</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {family.map((r) => (
+                      <tr
+                        key={r.id}
+                        className={`border-b border-line/60 ${r.id === project.id ? "bg-slate-50" : ""}`}
+                      >
+                        <td className="py-1.5 pr-3">
+                          {r.name.replace(baseName(r.name), "").replace(/^ — /, "") || "Base"}
+                          {r.id === project.id && (
+                            <span className="ml-1.5 text-[11px] text-brand">current</span>
+                          )}
+                        </td>
+                        <td className="py-1.5 pr-3 text-right tabular-nums">{r.sources}</td>
+                        <td className="py-1.5 pr-3 text-right tabular-nums">{r.dmos}</td>
+                        <td className={`py-1.5 pr-3 text-right tabular-nums ${r.gaps > 0 ? "text-red-700" : ""}`}>{r.gaps}</td>
+                        <td className="py-1.5 pr-3 text-right tabular-nums">{r.segments}</td>
+                        <td className="py-1.5 pr-3 text-right tabular-nums">{r.activations}</td>
+                        <td className="py-1.5 text-right tabular-nums">
+                          {r.credits === null ? "—" : formatCredits(r.credits)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </Card>
           </div>
         </>
