@@ -4,6 +4,8 @@ import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
 import { listSources } from "@/db/queries/sources";
 import { listObjectives } from "@/db/queries/objectives";
+import { listSegments } from "@/db/queries/segments";
+import { listActivations } from "@/db/queries/activations";
 import type { Source } from "@/db/schema";
 import { IngestionTabs, type SourceLite } from "./IngestionTabs";
 
@@ -44,9 +46,11 @@ export default async function IngestionPage() {
     );
   }
 
-  const [rows, objRows] = await Promise.all([
+  const [rows, objRows, segs, acts] = await Promise.all([
     listSources(project.id).catch(() => [] as Source[]),
     listObjectives(project.id).catch(() => []),
+    listSegments(project.id).catch(() => []),
+    listActivations(project.id).catch(() => []),
   ]);
   const sources: SourceLite[] = rows.map((s) => ({
     id: s.id,
@@ -58,6 +62,7 @@ export default async function IngestionPage() {
     notes: s.notes,
   }));
   const objectives = objRows.map((o) => ({ id: o.id, text: o.text }));
+  const targetCount = new Set(acts.map((a) => a.target)).size;
 
   return (
     <div>
@@ -66,6 +71,10 @@ export default async function IngestionPage() {
         projectId={project.id}
         sources={sources}
         objectives={objectives}
+        phase={project.phase}
+        segmentCount={segs.length}
+        targetCount={targetCount}
+        openQuestions={[]}
       />
     </div>
   );

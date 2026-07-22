@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { Card, Pill } from "@/components/ui";
+import Link from "next/link";
 import { ConnectorSearch } from "./ConnectorSearch";
 import { CreateSourceForm } from "./CreateSourceForm";
 import { SourceStatus } from "./SourceStatus";
 import { ObjectivesCard, type ObjectiveLite } from "./ObjectivesCard";
+import { IngestionArchitecture } from "./IngestionArchitecture";
 import { deleteSourceAction } from "./actions";
 
 export type SourceLite = {
@@ -37,10 +39,18 @@ export function IngestionTabs({
   projectId,
   sources,
   objectives,
+  phase,
+  segmentCount,
+  targetCount,
+  openQuestions,
 }: {
   projectId: string;
   sources: SourceLite[];
   objectives: ObjectiveLite[];
+  phase: string | null;
+  segmentCount: number;
+  targetCount: number;
+  openQuestions: string[];
 }) {
   const [view, setView] = useState<string>("overview");
 
@@ -129,6 +139,10 @@ export function IngestionTabs({
           projectId={projectId}
           sources={sources}
           objectives={objectives}
+          phase={phase}
+          segmentCount={segmentCount}
+          targetCount={targetCount}
+          openQuestions={openQuestions}
         />
       )}
     </div>
@@ -148,82 +162,209 @@ function OverviewView({
   projectId,
   sources,
   objectives,
+  phase,
+  segmentCount,
+  targetCount,
+  openQuestions,
 }: {
   projectId: string;
   sources: SourceLite[];
   objectives: ObjectiveLite[];
+  phase: string | null;
+  segmentCount: number;
+  targetCount: number;
+  openQuestions: string[];
 }) {
-  const live = sources.filter((s) => s.status === "Live").length;
-  const writeup =
-    sources.length === 0
-      ? "No systems registered yet — use “＋ Connect a system” to search the connector directory or add a source manually."
-      : `${sources.length} source system${sources.length === 1 ? "" : "s"} feed Data 360 (${live} live): ` +
-        sources
-          .map((s) => `${s.name} — ${s.method || "method TBD"}, ${s.frequency}`)
-          .join("; ") +
-        ".";
+  const writeup = buildWriteup(sources, objectives);
 
   return (
     <>
-      <ObjectivesCard projectId={projectId} objectives={objectives} />
-
+      {/* Ingestion architecture */}
       <Card>
-        <h2 className="mb-1 font-semibold">Ingestion write-up</h2>
-        <p className="text-[13px] leading-relaxed text-muted">{writeup}</p>
+        <h2 className="mb-1 font-semibold">Ingestion architecture</h2>
+        <p className="mb-3 text-[13px] text-muted">
+          All systems connected to Data 360 — use the diagram and write-up in the
+          BRD/SDD.
+        </p>
+        {sources.length > 0 ? (
+          <IngestionArchitecture
+            sources={sources}
+            segmentCount={segmentCount}
+            targetCount={targetCount}
+          />
+        ) : (
+          <p className="rounded-xl border border-dashed border-line p-6 text-center text-[13px] text-muted">
+            No systems yet — click “＋ Connect a system”.
+          </p>
+        )}
+        <p className="mt-2 text-[11px] text-muted">
+          Edge colors: blue streaming/real-time · green hourly/rapid · amber
+          daily · grey weekly+ / TBD.
+        </p>
+
+        <div className="mt-4 rounded-xl border border-line bg-slate-50/60 p-4">
+          <div className="whitespace-pre-wrap text-[13px] leading-relaxed text-ink">
+            {writeup}
+          </div>
+        </div>
+
+        <div className="mt-3 flex flex-wrap gap-2">
+          <CopyWriteupButton writeup={writeup} />
+          <a
+            href="/api/brd/export?format=docx"
+            className="rounded-lg bg-brand px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-brand-hover"
+          >
+            Update BRD / SDD now
+          </a>
+        </div>
       </Card>
 
+      {/* Business objectives */}
+      <ObjectivesCard projectId={projectId} objectives={objectives} />
+
+      {/* What's next + Data Cloud org */}
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Card className="mb-0">
+          <h2 className="mb-1 font-semibold">What&apos;s next</h2>
+          <p className="mb-2 text-[13px] text-muted">
+            {phase ? `Phase: ${phase}.` : "Design in progress."}{" "}
+            {openQuestions.length > 0
+              ? `${openQuestions.length} open question${openQuestions.length === 1 ? "" : "s"} for the client.`
+              : ""}
+          </p>
+          {openQuestions.length > 0 && (
+            <ul className="mb-2 ml-4 list-disc text-[13px]">
+              {openQuestions.map((q, i) => (
+                <li key={i} className="mb-0.5">
+                  {q}
+                </li>
+              ))}
+            </ul>
+          )}
+          <Link
+            href="/segments"
+            className="inline-block rounded-lg border border-line bg-white px-3 py-1.5 text-[13px] font-medium text-ink transition-colors hover:border-brand"
+          >
+            Build segments for their goals →
+          </Link>
+        </Card>
+
+        <Card className="mb-0">
+          <h2 className="mb-1 font-semibold">Data Cloud org</h2>
+          <p className="mb-2 text-[13px] text-muted">
+            No org connected — this console is design-time. Live metadata fetch
+            (DMOs/DLOs) from a Data Cloud org is a future step.
+          </p>
+          <Link
+            href="/settings"
+            className="inline-block rounded-lg border border-line bg-white px-3 py-1.5 text-[13px] font-medium text-ink transition-colors hover:border-brand"
+          >
+            Check status
+          </Link>
+        </Card>
+      </div>
+
+      {/* Source inventory table */}
       <Card>
-        <div className="mb-2 flex items-center gap-2">
+        <div className="mb-1 flex items-center gap-2">
           <h2 className="font-semibold">Source inventory</h2>
           <Pill tone="ga">
             {sources.length} source{sources.length === 1 ? "" : "s"}
           </Pill>
         </div>
+        <p className="mb-3 text-[13px] text-muted">
+          The table the whole project builds on.
+        </p>
         {sources.length === 0 ? (
           <p className="text-[13px] text-muted">
             No sources yet — click “＋ Connect a system”.
           </p>
         ) : (
-          <div className="flex flex-col gap-2">
-            {sources.map((s) => (
-              <div
-                key={s.id}
-                className="flex items-start gap-3 rounded-[10px] border border-line bg-white px-4 py-3"
-              >
-                <span className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${dotColor(s.status)}`} />
-                <div className="grow">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-semibold">{s.name}</span>
-                    <Pill tone={statusTone(s.status)}>{s.status}</Pill>
-                    {s.method && (
-                      <span className="text-[12px] text-muted">· {s.method}</span>
-                    )}
-                    <span className="text-[12px] text-muted">· {s.frequency}</span>
-                  </div>
-                  {s.entities && (
-                    <div className="mt-1 text-[12px] text-muted">
-                      <span className="font-medium">Entities:</span> {s.entities}
-                    </div>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[640px] border-collapse text-[13px]">
+              <thead>
+                <tr className="text-left text-muted">
+                  {["Source", "Entities", "Method", "Frequency", "Status", "Notes", ""].map(
+                    (h, i) => (
+                      <th key={i} className="border-b border-line pb-1.5 pr-3 font-medium">
+                        {h}
+                      </th>
+                    ),
                   )}
-                </div>
-                <div className="flex shrink-0 items-center gap-2">
-                  <SourceStatus id={s.id} status={s.status} />
-                  <form action={deleteSourceAction}>
-                    <input type="hidden" name="id" value={s.id} />
-                    <button
-                      type="submit"
-                      className="rounded-lg border border-line bg-white px-2.5 py-1.5 text-[13px] text-muted transition-colors hover:border-red-300 hover:text-red-700"
-                    >
-                      Delete
-                    </button>
-                  </form>
-                </div>
-              </div>
-            ))}
+                </tr>
+              </thead>
+              <tbody>
+                {sources.map((s) => (
+                  <tr key={s.id} className="border-b border-line/60 align-top">
+                    <td className="py-2 pr-3 font-semibold">{s.name}</td>
+                    <td className="py-2 pr-3 text-muted">{s.entities || "—"}</td>
+                    <td className="py-2 pr-3 text-muted">{s.method || "—"}</td>
+                    <td className="py-2 pr-3 text-muted">{s.frequency}</td>
+                    <td className="py-2 pr-3">
+                      <Pill tone={statusTone(s.status)}>{s.status}</Pill>
+                    </td>
+                    <td className="py-2 pr-3 text-muted">{s.notes || "—"}</td>
+                    <td className="py-2 text-right">
+                      <form action={deleteSourceAction}>
+                        <input type="hidden" name="id" value={s.id} />
+                        <button
+                          type="submit"
+                          className="rounded-md border border-line px-2 py-0.5 text-[12px] text-muted transition-colors hover:border-red-300 hover:text-red-700"
+                        >
+                          ✕
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         )}
       </Card>
-
     </>
+  );
+}
+
+/** Prose "Why this architecture" write-up for the BRD/SDD. */
+function buildWriteup(sources: SourceLite[], objectives: ObjectiveLite[]): string {
+  if (sources.length === 0)
+    return "No systems registered yet — connect the client's sources to generate the architecture write-up.";
+  const objLine =
+    objectives.length > 0
+      ? `The design exists to serve ${objectives.length} business objective${objectives.length === 1 ? "" : "s"}: ${objectives
+          .map((o) => o.text.replace(/\.$/, ""))
+          .join("; ")}. Every source below earns its place by feeding at least one of them.`
+      : "Capture the client's business objectives above so each source can be justified against them.";
+  const bullets = sources
+    .map(
+      (s) =>
+        `• ${s.name} contributes ${s.entities || "its data"} — connects via ${s.method || "a method still being researched"} and refreshes ${s.frequency}.`,
+    )
+    .join("\n");
+  return (
+    `Why this architecture. ${objLine}\n\n${bullets}\n\n` +
+    "Each source lands in its own data stream and Data Lake Object (original schema), is harmonized onto the C360 standard model, and resolves into the Unified Individual — the single customer the segments and activations act on. Per Salesforce best practice, only decision-relevant records and attributes are ingested."
+  );
+}
+
+function CopyWriteupButton({ writeup }: { writeup: string }) {
+  const [done, setDone] = useState(false);
+  return (
+    <button
+      type="button"
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(writeup);
+          setDone(true);
+          setTimeout(() => setDone(false), 1500);
+        } catch {
+          /* clipboard unavailable */
+        }
+      }}
+      className="rounded-lg border border-line bg-white px-4 py-2 text-[13px] font-medium text-ink transition-colors hover:border-brand"
+    >
+      {done ? "Copied ✓" : "Copy write-up"}
+    </button>
   );
 }
