@@ -22,21 +22,19 @@ function releaseTone(release: string): "ga" | "beta" | "other" {
   return "other";
 }
 
-export function ConnectorSearch({
-  projectId,
-}: {
-  projectId: string | null;
-}) {
+export function ConnectorSearch({ projectId }: { projectId: string | null }) {
   const [q, setQ] = useState("");
   const [release, setRelease] = useState("");
   const [data, setData] = useState<{ total: number; connectors: Connector[] }>({
     total: 0,
     connectors: [],
   });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const reduce = useReducedMotion();
+  const active = q.trim() !== "" || release !== "";
 
   useEffect(() => {
+    if (!active) return; // results block is hidden when inactive
     const ctrl = new AbortController();
     const t = setTimeout(async () => {
       setLoading(true);
@@ -44,9 +42,7 @@ export function ConnectorSearch({
       if (q) params.set("q", q);
       if (release) params.set("release", release);
       try {
-        const res = await fetch(`/api/connectors?${params}`, {
-          signal: ctrl.signal,
-        });
+        const res = await fetch(`/api/connectors?${params}`, { signal: ctrl.signal });
         setData(await res.json());
       } catch {
         /* aborted */
@@ -58,81 +54,80 @@ export function ConnectorSearch({
       clearTimeout(t);
       ctrl.abort();
     };
-  }, [q, release]);
+  }, [q, release, active]);
 
   return (
     <div>
       <input
         value={q}
         onChange={(e) => setQ(e.target.value)}
-        placeholder="Search 325 connectors — Shopify, Salesforce, S3, Snowflake…"
-        className="w-full rounded-lg border border-line bg-white px-3 py-2 outline-none focus:border-brand"
+        placeholder="e.g. Shopify, Azure, S3, Snowflake, MySQL…"
+        className="w-full rounded-lg border border-line bg-white px-3 py-2.5 outline-none focus:border-brand"
       />
 
-      <div className="mt-3 flex flex-wrap gap-2">
-        <FilterChip active={release === ""} onClick={() => setRelease("")}>
-          All
-        </FilterChip>
-        {RELEASES.map((r) => (
-          <FilterChip
-            key={r}
-            active={release === r}
-            onClick={() => setRelease(r)}
-          >
-            {r}
-          </FilterChip>
-        ))}
-      </div>
+      {active && (
+        <>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <FilterChip active={release === ""} onClick={() => setRelease("")}>
+              All
+            </FilterChip>
+            {RELEASES.map((r) => (
+              <FilterChip key={r} active={release === r} onClick={() => setRelease(r)}>
+                {r}
+              </FilterChip>
+            ))}
+          </div>
 
-      <div className="my-3 text-[12px] text-muted">
-        {loading ? "Searching…" : `${data.total} connector${data.total === 1 ? "" : "s"}`}
-        {data.total > data.connectors.length &&
-          ` · showing first ${data.connectors.length}`}
-      </div>
+          <div className="my-3 text-[12px] text-muted">
+            {loading
+              ? "Searching…"
+              : `${data.total} connector${data.total === 1 ? "" : "s"}`}
+            {data.total > data.connectors.length &&
+              ` · showing first ${data.connectors.length}`}
+          </div>
 
-      <div className="flex flex-col gap-2">
-        {data.connectors.map((c) => (
-          <motion.div
-            key={c.name}
-            initial={{ opacity: 0, y: reduce ? 0 : 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduce ? 0 : 0.2 }}
-            className="rounded-[10px] border border-line bg-white px-4 py-3 transition-colors hover:border-indigo-200"
-          >
-            <div className="flex items-center gap-2">
-              <span className="font-semibold">{c.label}</span>
-              <Pill tone={releaseTone(c.release)}>{c.release}</Pill>
-              {projectId && (
-                <form
-                  action={addConnectorToInventoryAction}
-                  className="ml-auto shrink-0"
-                >
-                  <input type="hidden" name="projectId" value={projectId} />
-                  <input type="hidden" name="name" value={c.label} />
-                  <input type="hidden" name="release" value={c.release} />
-                  <AddButton />
-                </form>
-              )}
-            </div>
-            <div className="mt-0.5 text-[13px] text-muted">{c.desc}</div>
-            {c.features?.length > 0 && (
-              <div className="mt-1.5 flex flex-wrap gap-1.5">
-                {c.features.map((f) => (
-                  <span
-                    key={f}
-                    className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600"
-                  >
-                    {f}
-                  </span>
-                ))}
-              </div>
+          <div className="flex flex-col gap-2">
+            {data.connectors.map((c) => (
+              <motion.div
+                key={c.name}
+                initial={{ opacity: 0, y: reduce ? 0 : 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: reduce ? 0 : 0.2 }}
+                className="rounded-[10px] border border-line bg-white px-4 py-3 transition-colors hover:border-indigo-200"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold">{c.label}</span>
+                  <Pill tone={releaseTone(c.release)}>{c.release}</Pill>
+                  {projectId && (
+                    <form action={addConnectorToInventoryAction} className="ml-auto shrink-0">
+                      <input type="hidden" name="projectId" value={projectId} />
+                      <input type="hidden" name="name" value={c.label} />
+                      <input type="hidden" name="release" value={c.release} />
+                      <AddButton />
+                    </form>
+                  )}
+                </div>
+                <div className="mt-0.5 text-[13px] text-muted">{c.desc}</div>
+                {c.features?.length > 0 && (
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    {c.features.map((f) => (
+                      <span
+                        key={f}
+                        className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600"
+                      >
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            ))}
+            {!loading && data.connectors.length === 0 && (
+              <p className="text-muted">No connectors match your search.</p>
             )}
-          </motion.div>
-        ))}
-        {!loading && data.connectors.length === 0 && (
-          <p className="text-muted">No connectors match your search.</p>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
