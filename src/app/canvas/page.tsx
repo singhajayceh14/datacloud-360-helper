@@ -14,6 +14,7 @@ import { listObjectives } from "@/db/queries/objectives";
 import { getScenarioComparison, baseName } from "@/db/queries/scenarios";
 import { formatCredits } from "@/lib/entitlements/calc";
 import { calcConsumptionFromVolumes } from "@/lib/entitlements/rate-card";
+import { dmoMapped } from "@/lib/mapping/dmo-match";
 import { DuplicateButton } from "./DuplicateButton";
 import { DesignBoard, type Board, type BoardEdge, type BoardNode, type NodeStatus } from "./DesignBoard";
 
@@ -127,14 +128,14 @@ export default async function CanvasPage() {
   for (const dmo of dmoSources.keys()) edges.push({ from: `dmo:${dmo}`, to: "ir" });
 
   // Col 3 — segments (with data-gap detection vs mapped DMOs).
-  const mappedNorm = new Set([...dmoSources.keys()].map((d) => d.toLowerCase()));
+  const mappedDmos = [...dmoSources.keys()];
   const gaps = new Set<string>();
   for (const seg of segments) {
     const required = seg.dmos
       .split(",")
       .map((x) => x.trim())
       .filter(Boolean);
-    const missing = required.filter((r) => !mappedNorm.has(r.toLowerCase()));
+    const missing = required.filter((r) => !dmoMapped(r, mappedDmos));
     missing.forEach((mm) => gaps.add(mm));
     nodes.push({
       id: `seg:${seg.id}`,
@@ -169,7 +170,7 @@ export default async function CanvasPage() {
       .split(",")
       .map((x) => x.trim())
       .filter(Boolean)
-      .filter((r) => !mappedNorm.has(r.toLowerCase()));
+      .filter((r) => !dmoMapped(r, mappedDmos));
 
   const coverage =
     objectives.length > 0
@@ -230,11 +231,12 @@ export default async function CanvasPage() {
     insights.push({ text: "Design looks complete — generate the BRD / SDD", href: "/brd" });
 
   // Economics: annual credit burn vs the pool (from the entitlements tab).
+  const econEnv = entitlement?.calcEnv === "sand" ? "sand" : "prod";
   const econ = entitlement
     ? calcConsumptionFromVolumes(
         entitlement.volumes,
-        entitlement.calcEnv === "sand" ? "sand" : "prod",
-        entitlement.dataServicesCredits,
+        econEnv,
+        econEnv === "sand" ? entitlement.sandboxCredits : entitlement.dataServicesCredits,
       )
     : null;
 

@@ -55,6 +55,9 @@ export function inferField(
   sample: string | null,
 ): { dmo: string; dmoField: string; category: string; identity: boolean } {
   const n = column.toLowerCase().replace(/[^a-z0-9]/g, "");
+  // Separator-preserving form so "id"/"key" match only as whole tokens
+  // (customer_id ✓, api key ✓) and never as suffixes (paid ✗, monkey ✗).
+  const sep = column.toLowerCase().replace(/[^a-z0-9]+/g, "_");
   const val = (sample ?? "").trim();
 
   const looksEmail = /@/.test(val) || /email|e-mail/.test(n);
@@ -62,7 +65,7 @@ export function inferField(
   const looksConsent =
     /consent|optin|optout|subscrib|unsubscrib|marketing|permission|gdpr/.test(n);
   const looksId =
-    /(^|.*)(id|guid|uuid|key)$/.test(n) ||
+    /(^|_)(id|guid|uuid|key)(_|$)/.test(sep) ||
     /customerid|accountid|contactid|userid|externalid|memberid/.test(n);
   const looksName = /firstname|lastname|fullname|givenname|surname|(^name$)/.test(n);
   const looksAddress =

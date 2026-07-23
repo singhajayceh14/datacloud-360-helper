@@ -8,6 +8,8 @@ export type DesignRule = {
   n: number;
   name: string;
   criteria: string;
+  /** Match keys (identity attributes) this rule matches on — NOT source names. */
+  keys: string[];
   sources: string[];
   why: string;
   optional: boolean;
@@ -77,6 +79,7 @@ export function designUnification(
       n: rules.length + 1,
       name: "Party Identification — exact",
       criteria: "Identification Name + Identification Number equal",
+      keys: ["Identification Name", "Identification Number"],
       sources: ext,
       optional: false,
       why:
@@ -90,6 +93,7 @@ export function designUnification(
       n: rules.length + 1,
       name: "Contact Point Email — exact (normalized)",
       criteria: "Email Address equal after trim + lowercase",
+      keys: ["Email Address"],
       sources: em,
       optional: false,
       why: `Email present in ${em.join(", ")}. Normalize at stream level so case/whitespace never blocks a match. Shared family/company inboxes are the over-match risk.`,
@@ -100,6 +104,7 @@ export function designUnification(
       n: rules.length + 1,
       name: "Contact Point Phone — exact (E.164)",
       criteria: "Telephone Number equal after E.164 normalization",
+      keys: ["Telephone Number"],
       sources: ph,
       optional: false,
       why: `Phone present in ${ph.join(", ")}. Only reliable after E.164 normalization with a confirmed default country code.`,
@@ -110,6 +115,7 @@ export function designUnification(
       n: rules.length + 1,
       name: "Guarded fuzzy — Fuzzy First Name + Exact Last Name + exact anchor",
       criteria: "Fuzzy(First Name) AND Last Name equal AND (email OR phone OR full address equal)",
+      keys: ["First Name (fuzzy)", "Last Name", "Email / Phone / Address anchor"],
       sources: nm,
       optional: true,
       why: "Catches typo'd duplicates. Optional — enable only after reviewing name fill rates. Never ship fuzzy-name-only or address-only rules: over-matching is far more damaging than under-matching.",

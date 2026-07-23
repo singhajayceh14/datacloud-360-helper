@@ -14,10 +14,10 @@ const CADENCE_RANK: Record<string, number> = {
   Manual: 4,
 };
 
-/** Channels that push to a person and therefore need a consent/lawful basis. */
-function isMarketingChannel(channel: string): boolean {
-  return /email|sms|text|push|ad|meta|google|whatsapp|social|display/i.test(
-    channel,
+/** Targets that push to a person and therefore need a consent/lawful basis. */
+function isMarketingTarget(target: string): boolean {
+  return /email|sms|text|push|\bads?\b|meta|google|amazon|tiktok|linkedin|marketing cloud|personalization|social|display/i.test(
+    target,
   );
 }
 
@@ -45,11 +45,11 @@ export function activationWarnings(
     });
   }
 
-  // Consent: a marketing channel with no lawful basis recorded.
-  if (isMarketingChannel(act.channel) && !act.consentBasis.trim()) {
+  // Consent: a marketing/ad target with no lawful basis recorded.
+  if (isMarketingTarget(act.target) && !act.consentBasis.trim()) {
     out.push({
       level: "warn",
-      message: `No consent basis recorded for a ${act.channel} activation — capture the Communication Subscription / consent DMO before publishing.`,
+      message: `No consent basis recorded for the ${act.target} activation — capture the Communication Subscription / consent DMO before publishing.`,
     });
   }
 

@@ -63,7 +63,8 @@ export function EntitlementsTabs({
       ) : (
         <CalcView
           projectId={projectId}
-          pool={caps.dataServicesCredits}
+          prodPool={caps.dataServicesCredits}
+          sandPool={caps.sandboxCredits}
           initialEnv={calcEnv}
           initialVolumes={volumes}
         />
@@ -248,12 +249,14 @@ function Field({ label, children, className = "" }: { label: string; children: R
 
 function CalcView({
   projectId,
-  pool,
+  prodPool,
+  sandPool,
   initialEnv,
   initialVolumes,
 }: {
   projectId: string;
-  pool: number;
+  prodPool: number;
+  sandPool: number;
   initialEnv: CalcEnv;
   initialVolumes: Record<string, number>;
 }) {
@@ -264,6 +267,8 @@ function CalcView({
   const [env, setEnv] = useState<CalcEnv>(initialEnv);
   const [volumes, setVolumes] = useState<Record<string, number>>(initialVolumes);
 
+  // Sandbox estimates draw down the sandbox credit pool, not production.
+  const pool = env === "sand" ? sandPool : prodPool;
   const sum = calcConsumptionFromVolumes(volumes, env, pool);
 
   const setVol = (k: string, v: string) =>

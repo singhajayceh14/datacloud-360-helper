@@ -53,11 +53,7 @@ export default async function RootLayout({
             <AnimatedMain>{children}</AnimatedMain>
           </div>
         </div>
-        <ChatPanel
-          projectName={activeName}
-          ready={ai.ready}
-          provider={ai.active}
-        />
+        <ChatPanel projectName={activeName} ready={ai.ready} />
       </body>
     </html>
   );

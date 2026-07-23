@@ -19,7 +19,6 @@ export default function ChatPanel({
 }: {
   projectName: string | null;
   ready: boolean;
-  provider: string;
 }) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);

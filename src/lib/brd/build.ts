@@ -292,10 +292,11 @@ export async function buildBrd(
       ],
     });
     const env = entitlement.calcEnv === "sand" ? "sand" : "prod";
+    const pool = env === "sand" ? entitlement.sandboxCredits : entitlement.dataServicesCredits;
     const sum = calcConsumptionFromVolumes(
       entitlement.volumes,
       env,
-      entitlement.dataServicesCredits,
+      pool,
     );
     const usedRates = ALL_RATES.filter((r) => (entitlement.volumes?.[r.key] ?? 0) > 0);
     if (usedRates.length > 0) {
@@ -314,7 +315,7 @@ export async function buildBrd(
       type: "p",
       text: `Estimated burn ${formatCredits(sum.monthlyCredits)}/month (${formatCredits(sum.annualCredits)}/year, ${env === "prod" ? "production" : "sandbox"} rates)${
         sum.runwayMonths !== null
-          ? ` — runway ≈ ${sum.runwayMonths.toFixed(1)} months against ${formatCredits(entitlement.dataServicesCredits)} credits`
+          ? ` — runway ≈ ${sum.runwayMonths.toFixed(1)} months against ${formatCredits(pool)} ${env === "sand" ? "sandbox" : "Data Services"} credits`
           : ""
       }.`,
     });

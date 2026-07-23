@@ -4,6 +4,7 @@ import { useActionState, useEffect, useState } from "react";
 import { Card, Pill } from "@/components/ui";
 import { Select } from "@/components/Select";
 import { RichText } from "@/components/RichText";
+import { normDmo, dmoMapped } from "@/lib/mapping/dmo-match";
 import { saveSegmentAction, deleteSegmentAction, type CreateState } from "./actions";
 
 export type SegmentLite = {
@@ -34,14 +35,6 @@ const COMMON_TARGETS = [
   "Activation API / webhook",
 ];
 
-const normDmo = (d: string) => d.toLowerCase().replace(/[^a-z]/g, "");
-function dmoMapped(d: string, mapped: string[]): boolean {
-  const n = normDmo(d);
-  return mapped.some((m) => {
-    const nm = normDmo(m);
-    return nm === n || nm.includes(n) || n.includes(nm);
-  });
-}
 const splitDmos = (s: string) =>
   s.split(",").map((x) => x.trim()).filter(Boolean);
 
@@ -101,6 +94,7 @@ export function SegmentsPanel({
 
       {editing && (
         <SegmentForm
+          key={editing === "new" ? "new" : editing.id}
           projectId={projectId}
           segment={editing === "new" ? null : editing}
           dmoOptions={dmoOptions}

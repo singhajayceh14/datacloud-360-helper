@@ -8,9 +8,12 @@ import {
   unifications,
   segments,
   activations,
+  activationTargets,
   entitlements,
+  objectives,
 } from "@/db/schema";
 import { calcConsumptionFromVolumes } from "@/lib/entitlements/rate-card";
+import { dmoMapped } from "@/lib/mapping/dmo-match";
 
 /** Base name shared by a project and its scenario forks. */
 export const baseName = (name: string) => name.split(" — Scenario")[0].trim();
@@ -98,9 +101,26 @@ export async function duplicateProject(sourceId: string, newName: string) {
       channel: a.channel,
       cadence: a.cadence,
       consentBasis: a.consentBasis,
+      contactPoints: a.contactPoints,
+      relatedAttributes: a.relatedAttributes,
       status: a.status,
     }));
   if (actVals.length) await db.insert(activations).values(actVals);
+
+  const tgtRows = await db
+    .select()
+    .from(activationTargets)
+    .where(eq(activationTargets.projectId, sourceId));
+  if (tgtRows.length)
+    await db.insert(activationTargets).values(
+      tgtRows.map((t) => ({ projectId: np.id, name: t.name, type: t.type, notes: t.notes })),
+    );
+
+  const objRows = await db.select().from(objectives).where(eq(objectives.projectId, sourceId));
+  if (objRows.length)
+    await db.insert(objectives).values(
+      objRows.map((o) => ({ projectId: np.id, text: o.text })),
+    );
 
   const [ent] = await db
     .select()
@@ -117,6 +137,8 @@ export async function duplicateProject(sourceId: string, newName: string) {
       orderEndDate: ent.orderEndDate,
       notes: ent.notes,
       lineItems: ent.lineItems,
+      calcEnv: ent.calcEnv,
+      volumes: ent.volumes,
     });
 
   return np;
@@ -150,7 +172,6 @@ export async function getScenarioComparison(): Promise<ScenarioRow[]> {
 
       const dmos = new Set<string>();
       maps.forEach((m) => m.fields.forEach((f) => dmos.add(f.dmo)));
-      const mappedNorm = new Set([...dmos].map((d) => d.toLowerCase()));
       const gaps = new Set<string>();
       segs.forEach((s) =>
         s.dmos
@@ -158,15 +179,16 @@ export async function getScenarioComparison(): Promise<ScenarioRow[]> {
           .map((x) => x.trim())
           .filter(Boolean)
           .forEach((r) => {
-            if (!mappedNorm.has(r.toLowerCase())) gaps.add(r);
+            if (!dmoMapped(r, dmos)) gaps.add(r);
           }),
       );
       const ent = entRows[0];
+      const env = ent?.calcEnv === "sand" ? "sand" : "prod";
       const credits = ent
         ? calcConsumptionFromVolumes(
             ent.volumes,
-            ent.calcEnv === "sand" ? "sand" : "prod",
-            ent.dataServicesCredits,
+            env,
+            env === "sand" ? ent.sandboxCredits : ent.dataServicesCredits,
           ).annualCredits
         : null;
 

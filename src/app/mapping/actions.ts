@@ -8,6 +8,14 @@ import {
 } from "@/db/queries/mappings";
 import type { MappingField } from "@/db/schema";
 
+/** Mapped DMOs drive gap detection on these tabs, so revalidate them together. */
+function revalidateMappingDependents() {
+  revalidatePath("/mapping");
+  revalidatePath("/canvas");
+  revalidatePath("/unification");
+  revalidatePath("/segments");
+}
+
 export type SaveMappingInput = {
   projectId: string;
   sourceName: string;
@@ -31,7 +39,7 @@ export async function saveMappingAction(
       rowsSampled: input.rowsSampled,
       fields: input.fields,
     });
-    revalidatePath("/mapping");
+    revalidateMappingDependents();
     return { ok: true };
   } catch (e) {
     return { error: e instanceof Error ? e.message : String(e) };
@@ -56,7 +64,7 @@ export async function updateMappingAction(
       sourceName: input.sourceName.trim(),
       fields: input.fields,
     });
-    revalidatePath("/mapping");
+    revalidateMappingDependents();
     return { ok: true };
   } catch (e) {
     return { error: e instanceof Error ? e.message : String(e) };
@@ -67,5 +75,5 @@ export async function deleteMappingAction(formData: FormData): Promise<void> {
   const id = String(formData.get("id") ?? "");
   if (!id) return;
   await deleteMapping(id);
-  revalidatePath("/mapping");
+  revalidateMappingDependents();
 }

@@ -165,6 +165,7 @@ function OverviewView({
 
         {editing && (
           <ActivationForm
+            key={editing === "new" ? "new" : editing.id}
             projectId={projectId}
             activation={editing === "new" ? null : editing}
             segments={segments}
@@ -288,6 +289,7 @@ function TargetView({
 
       {editing && (
         <ActivationForm
+          key={editing === "new" ? "new" : editing.id}
           projectId={projectId}
           activation={editing === "new" ? { target: target.name } : editing}
           segments={segments}

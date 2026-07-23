@@ -42,7 +42,7 @@ export function UnificationDesigner({
     setError("");
     const matchRules: MatchRule[] = rules.map((r) => ({
       name: r.name,
-      keys: r.sources,
+      keys: r.keys,
       type: r.optional ? "fuzzy" : "exact",
       enabled: !!enabled[r.n],
     }));

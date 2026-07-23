@@ -2,6 +2,7 @@ import "server-only";
 import { eq } from "drizzle-orm";
 import { getDb } from "@/db";
 import { sources, mappings, segments, activations } from "@/db/schema";
+import { dmoMapped } from "@/lib/mapping/dmo-match";
 
 export type ProjectCounts = {
   sources: number;
@@ -24,7 +25,6 @@ export async function getProjectCounts(projectId: string): Promise<ProjectCounts
 
   const dmos = new Set<string>();
   maps.forEach((m) => m.fields.forEach((f) => dmos.add(f.dmo)));
-  const mappedNorm = new Set([...dmos].map((d) => d.toLowerCase()));
   const gaps = new Set<string>();
   segs.forEach((s) =>
     s.dmos
@@ -32,7 +32,7 @@ export async function getProjectCounts(projectId: string): Promise<ProjectCounts
       .map((x) => x.trim())
       .filter(Boolean)
       .forEach((r) => {
-        if (!mappedNorm.has(r.toLowerCase())) gaps.add(r);
+        if (!dmoMapped(r, dmos)) gaps.add(r);
       }),
   );
 
