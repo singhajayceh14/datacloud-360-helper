@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { RichText } from "@/components/RichText";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -150,18 +151,23 @@ export default function ChatPanel({
                 </div>
               ) : (
                 <>
-                  {messages.map((m, i) => (
-                    <div
-                      key={i}
-                      className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-[14px] leading-relaxed ${
-                        m.role === "user"
-                          ? "self-end rounded-br-md bg-gradient-to-br from-brand to-brand-hover text-white"
-                          : "self-start rounded-bl-md border border-line bg-slate-50"
-                      }`}
-                    >
-                      {m.content}
-                    </div>
-                  ))}
+                  {messages.map((m, i) =>
+                    m.role === "user" ? (
+                      <div
+                        key={i}
+                        className="max-w-[88%] self-end whitespace-pre-wrap rounded-2xl rounded-br-md bg-gradient-to-br from-brand to-brand-hover px-3.5 py-2 text-[14px] leading-relaxed text-white"
+                      >
+                        {m.content}
+                      </div>
+                    ) : (
+                      <div
+                        key={i}
+                        className="max-w-[88%] self-start rounded-2xl rounded-bl-md border border-line bg-slate-50 px-3.5 py-2 text-ink"
+                      >
+                        <RichText>{m.content}</RichText>
+                      </div>
+                    ),
+                  )}
                   {busy && (
                     <div className="inline-flex gap-1 self-start rounded-2xl rounded-bl-md bg-slate-50 px-4 py-3">
                       {[0, 0.2, 0.4].map((d) => (
