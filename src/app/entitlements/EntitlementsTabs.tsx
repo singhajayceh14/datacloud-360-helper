@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { Card } from "@/components/ui";
+import { extractPdfText, extractCaps } from "./order-form";
 import {
   RATE_CARD,
   RATE_CARD_DATE,
@@ -80,6 +81,36 @@ function LicenseView({ projectId, initial }: { projectId: string; initial: Caps 
   );
   const [caps, setCaps] = useState<Caps>(initial);
   const [days, setDays] = useState<number | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [upBusy, setUpBusy] = useState(false);
+  const [upMsg, setUpMsg] = useState("");
+
+  async function onOrderForm(file: File) {
+    setUpBusy(true);
+    setUpMsg("Reading order form…");
+    try {
+      const text = await extractPdfText(file);
+      const found = extractCaps(text);
+      const keys = Object.keys(found) as (keyof typeof found)[];
+      if (keys.length === 0) {
+        setUpMsg("No entitlement values found — enter them manually below.");
+      } else {
+        setCaps((c) => ({ ...c, ...found }));
+        setUpMsg(
+          `${keys.length} field${keys.length === 1 ? "" : "s"} auto-filled — verify against the PDF, then Save.`,
+        );
+      }
+    } catch (e) {
+      setUpMsg(
+        "Couldn't read the PDF (" +
+          (e instanceof Error ? e.message : String(e)) +
+          ") — enter values manually.",
+      );
+    } finally {
+      setUpBusy(false);
+      if (fileRef.current) fileRef.current.value = "";
+    }
+  }
 
   // Days-left reads the clock, so it must run client-side in an effect
   // (avoids the SSR/client mismatch and the render-purity rule).
@@ -103,12 +134,39 @@ function LicenseView({ projectId, initial }: { projectId: string; initial: Caps 
     <form action={action}>
       <input type="hidden" name="projectId" value={projectId} />
       <Card>
-        <h2 className="mb-1 font-semibold">License &amp; entitlements</h2>
-        <p className="mb-4 text-[13px] text-muted">
-          From the Salesforce Order Form. Credits expire at the Order End Date —
-          no rollover; multiple order forms pool, earliest end date burns first
-          (rate card terms, {RATE_CARD_DATE}).
+        <div className="mb-1 flex flex-wrap items-start justify-between gap-2">
+          <h2 className="font-semibold">License &amp; entitlements</h2>
+          <div>
+            <button
+              type="button"
+              disabled={upBusy}
+              onClick={() => fileRef.current?.click()}
+              className="rounded-lg border border-line bg-white px-3 py-1.5 text-[13px] font-medium text-ink transition-colors hover:border-brand disabled:opacity-50"
+            >
+              {upBusy ? "Reading…" : "⬆ Upload order form"}
+            </button>
+            <input
+              ref={fileRef}
+              type="file"
+              accept=".pdf"
+              hidden
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                if (f) onOrderForm(f);
+              }}
+            />
+          </div>
+        </div>
+        <p className="mb-3 text-[13px] text-muted">
+          From the Salesforce Order Form. Upload the PDF to auto-fill the values
+          below, or enter them manually. Credits expire at the Order End Date —
+          no rollover (rate card terms, {RATE_CARD_DATE}).
         </p>
+        {upMsg && (
+          <p className="mb-3 rounded-lg bg-blue-50 px-3 py-2 text-[12.5px] text-blue-800">
+            {upMsg}
+          </p>
+        )}
 
         {/* Big numbers */}
         <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -243,14 +301,20 @@ function CalcView({
           change — re-verify on renewal.
         </p>
 
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px] border-collapse text-[13px]">
+        <div className="overflow-x-auto rounded-xl border border-line">
+          <table className="w-full min-w-[620px] text-[13px]">
+            <colgroup>
+              <col />
+              <col className="w-[150px]" />
+              <col className="w-[128px]" />
+              <col className="w-[112px]" />
+            </colgroup>
             <thead>
-              <tr className="text-left text-muted">
-                <th className="border-b border-line pb-1.5 pr-3 font-medium">Usage type</th>
-                <th className="border-b border-line pb-1.5 pr-3 text-right font-medium">Rate</th>
-                <th className="border-b border-line pb-1.5 pr-3 text-right font-medium">Volume</th>
-                <th className="border-b border-line pb-1.5 text-right font-medium">Credits / mo</th>
+              <tr className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-500">
+                <th className="px-3 py-2.5 font-semibold">Usage type</th>
+                <th className="px-3 py-2.5 text-right font-semibold">Rate</th>
+                <th className="px-3 py-2.5 text-right font-semibold">Volume / mo</th>
+                <th className="px-3 py-2.5 text-right font-semibold">Credits / mo</th>
               </tr>
             </thead>
             <tbody>
@@ -318,36 +382,42 @@ function RateGroupRows({
   return (
     <>
       <tr>
-        <td colSpan={4} className="border-b border-line bg-slate-50 px-1 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+        <td colSpan={4} className="border-y border-line bg-slate-100/70 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-slate-600">
           {category}
         </td>
       </tr>
-      {rates.map((r) => (
-        <tr key={r.key} className="border-b border-line/60 align-top">
-          <td className="py-2 pr-3">
-            <div className="font-medium">{r.title}</div>
-            {r.note && <div className="text-[11px] text-muted">{r.note}</div>}
-          </td>
-          <td className="py-2 pr-3 text-right tabular-nums text-muted">
-            {rateFor(r, env).toLocaleString("en-US")} <span className="text-[11px]">{r.unit}</span>
-          </td>
-          <td className="py-2 pr-3 text-right">
-            <input
-              type="number"
-              min={0}
-              step="any"
-              value={volumes[r.key] || ""}
-              onChange={(e) => onVol(r.key, e.target.value)}
-              placeholder="0"
-              className="w-20 rounded border border-line px-2 py-1 text-right text-[13px] outline-none focus:border-brand"
-            />
-            <div className="text-[10px] text-muted">{r.volLabel}</div>
-          </td>
-          <td className="py-2 text-right tabular-nums font-medium">
-            {perKey[r.key] ? formatCredits(perKey[r.key]) : "0"}
-          </td>
-        </tr>
-      ))}
+      {rates.map((r) => {
+        const credits = perKey[r.key] ?? 0;
+        return (
+          <tr key={r.key} className="border-b border-line/60 align-top transition-colors last:border-0 hover:bg-slate-50/60">
+            <td className="px-3 py-2.5">
+              <div className="font-medium text-ink">{r.title}</div>
+              {r.note && <div className="mt-0.5 text-[11px] leading-snug text-muted">{r.note}</div>}
+            </td>
+            <td className="whitespace-nowrap px-3 py-2.5 text-right tabular-nums">
+              <div className="font-medium text-ink">{rateFor(r, env).toLocaleString("en-US")}</div>
+              <div className="text-[10.5px] text-muted">{r.unit}</div>
+            </td>
+            <td className="px-3 py-2.5 text-right">
+              <input
+                type="number"
+                min={0}
+                step="any"
+                value={volumes[r.key] || ""}
+                onChange={(e) => onVol(r.key, e.target.value)}
+                placeholder="0"
+                className="w-24 rounded-lg border border-line px-2.5 py-1.5 text-right text-[13px] tabular-nums outline-none focus:border-brand"
+              />
+              <div className="mt-0.5 text-[10.5px] text-muted">{r.volLabel}</div>
+            </td>
+            <td className="px-3 py-2.5 text-right align-middle tabular-nums">
+              <span className={credits > 0 ? "font-semibold text-ink" : "text-muted"}>
+                {credits > 0 ? formatCredits(credits) : "—"}
+              </span>
+            </td>
+          </tr>
+        );
+      })}
     </>
   );
 }
