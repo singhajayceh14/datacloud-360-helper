@@ -51,13 +51,13 @@ export default async function RootLayout({
           <TabBar counts={counts} />
           <div className="flex min-h-0 flex-1">
             <AnimatedMain>{children}</AnimatedMain>
-            <ChatPanel
-              projectName={activeName}
-              ready={ai.ready}
-              provider={ai.active}
-            />
           </div>
         </div>
+        <ChatPanel
+          projectName={activeName}
+          ready={ai.ready}
+          provider={ai.active}
+        />
       </body>
     </html>
   );
