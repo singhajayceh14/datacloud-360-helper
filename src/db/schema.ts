@@ -152,6 +152,8 @@ export const activations = pgTable("activations", {
   channel: text("channel").notNull().default(""),
   cadence: text("cadence").notNull().default("Daily"),
   consentBasis: text("consent_basis").notNull().default(""),
+  contactPoints: text("contact_points").notNull().default(""),
+  relatedAttributes: text("related_attributes").notNull().default(""),
   status: text("status").notNull().default("Draft"),
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()
@@ -161,6 +163,23 @@ export const activations = pgTable("activations", {
     .defaultNow()
     .$onUpdate(() => new Date()),
 });
+
+/** A registered activation destination for a project (from the target catalog). */
+export const activationTargets = pgTable("activation_targets", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .notNull()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  type: text("type").notNull().default(""),
+  notes: text("notes").notNull().default(""),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type ActivationTarget = typeof activationTargets.$inferSelect;
+export type NewActivationTarget = typeof activationTargets.$inferInsert;
 
 export type Activation = typeof activations.$inferSelect;
 export type NewActivation = typeof activations.$inferInsert;

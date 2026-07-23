@@ -71,6 +71,13 @@
       "when": 1784789171320,
       "tag": "0009_acoustic_roughhouse",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1784796004537,
+      "tag": "0010_fixed_kat_farrell",
+      "breakpoints": true
     }
   ]
 }
