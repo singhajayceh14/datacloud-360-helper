@@ -8,11 +8,18 @@ import remarkGfm from "remark-gfm";
  * to React elements (no raw HTML injection), so it's XSS-safe; Tailwind
  * arbitrary variants restyle the elements Preflight resets.
  */
-export function RichText({ children }: { children: string }) {
+export function RichText({
+  children,
+  size = "base",
+}: {
+  children: string;
+  size?: "sm" | "base";
+}) {
   return (
     <div
       className={[
-        "text-[14px] leading-relaxed",
+        size === "sm" ? "text-[13px]" : "text-[14px]",
+        "leading-relaxed",
         "[&_p]:my-1.5 first:[&_p]:mt-0 last:[&_p]:mb-0",
         "[&_ul]:my-1.5 [&_ul]:ml-4 [&_ul]:list-disc",
         "[&_ol]:my-1.5 [&_ol]:ml-4 [&_ol]:list-decimal",

@@ -4,6 +4,7 @@ import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { buildBrd } from "@/lib/brd/build";
 import type { Block } from "@/lib/brd/model";
+import { RichText } from "@/components/RichText";
 import { PrintButton } from "./PrintButton";
 
 export const dynamic = "force-dynamic";
@@ -13,7 +14,11 @@ function BlockView({ block }: { block: Block }) {
     case "h3":
       return <h4 className="mt-4 mb-1.5 font-semibold">{block.text}</h4>;
     case "p":
-      return <p className="mb-2 text-[13px] leading-relaxed">{block.text}</p>;
+      return (
+        <div className="mb-2">
+          <RichText size="sm">{block.text}</RichText>
+        </div>
+      );
     case "note":
       return (
         <p
