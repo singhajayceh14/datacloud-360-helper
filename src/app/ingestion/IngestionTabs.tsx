@@ -5,9 +5,9 @@ import { Card, Pill } from "@/components/ui";
 import Link from "next/link";
 import { ConnectorSearch } from "./ConnectorSearch";
 import { CreateSourceForm } from "./CreateSourceForm";
-import { SourceStatus } from "./SourceStatus";
 import { ObjectivesCard, type ObjectiveLite } from "./ObjectivesCard";
 import { IngestionArchitecture } from "./IngestionArchitecture";
+import { SourceFlow, type StreamLite } from "./SourceFlow";
 import { deleteSourceAction } from "./actions";
 
 export type SourceLite = {
@@ -18,6 +18,13 @@ export type SourceLite = {
   frequency: string;
   status: string;
   notes: string;
+};
+
+export type SourceDetail = {
+  streams: StreamLite[];
+  features: string[];
+  release: string;
+  desc: string;
 };
 
 const dotColor = (s: string) =>
@@ -43,6 +50,7 @@ export function IngestionTabs({
   segmentCount,
   targetCount,
   openQuestions,
+  details,
 }: {
   projectId: string;
   sources: SourceLite[];
@@ -51,6 +59,7 @@ export function IngestionTabs({
   segmentCount: number;
   targetCount: number;
   openQuestions: string[];
+  details: Record<string, SourceDetail>;
 }) {
   const [view, setView] = useState<string>("overview");
 
@@ -109,31 +118,7 @@ export function IngestionTabs({
           <CreateSourceForm projectId={projectId} />
         </Card>
       ) : selected ? (
-        <Card>
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <span className={`h-2.5 w-2.5 rounded-full ${dotColor(selected.status)}`} />
-            <h2 className="font-semibold">{selected.name}</h2>
-            <Pill tone={statusTone(selected.status)}>{selected.status}</Pill>
-            <div className="ml-auto flex items-center gap-2">
-              <SourceStatus id={selected.id} status={selected.status} />
-              <form action={deleteSourceAction}>
-                <input type="hidden" name="id" value={selected.id} />
-                <button
-                  type="submit"
-                  className="rounded-lg border border-line bg-white px-2.5 py-1.5 text-[13px] text-muted transition-colors hover:border-red-300 hover:text-red-700"
-                >
-                  Delete
-                </button>
-              </form>
-            </div>
-          </div>
-          <dl className="grid grid-cols-1 gap-2 text-[13px] sm:grid-cols-2">
-            <Field label="Entities" value={selected.entities} />
-            <Field label="Method" value={selected.method} />
-            <Field label="Frequency" value={selected.frequency} />
-            <Field label="Owner / notes" value={selected.notes} />
-          </dl>
-        </Card>
+        <SourceDetailView source={selected} detail={details[selected.name]} />
       ) : (
         <OverviewView
           projectId={projectId}
@@ -149,12 +134,148 @@ export function IngestionTabs({
   );
 }
 
-function Field({ label, value }: { label: string; value: string }) {
+function SourceDetailView({
+  source,
+  detail,
+}: {
+  source: SourceLite;
+  detail?: SourceDetail;
+}) {
+  const streams = detail?.streams ?? [];
+  const isBeta = detail?.release === "BETA" || /beta/i.test(source.method);
+
   return (
-    <div className="rounded-lg border border-line bg-white p-2.5">
-      <dt className="text-[12px] text-muted">{label}</dt>
-      <dd className="mt-0.5 font-medium">{value?.trim() || "—"}</dd>
-    </div>
+    <>
+      {/* Header card */}
+      <Card>
+        <div className="flex flex-wrap items-start gap-2">
+          <div className="grow">
+            <div className="flex items-center gap-2">
+              <h2 className="text-[18px] font-bold">{source.name}</h2>
+              {isBeta && (
+                <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[11px] font-bold text-amber-700">
+                  Beta
+                </span>
+              )}
+            </div>
+            <p className="mt-0.5 text-[13px] text-muted">{detail?.desc}</p>
+          </div>
+          <form action={deleteSourceAction}>
+            <input type="hidden" name="id" value={source.id} />
+            <button
+              type="submit"
+              className="rounded-lg border border-line bg-white px-3 py-1.5 text-[13px] font-medium text-red-600 transition-colors hover:border-red-300"
+            >
+              Remove
+            </button>
+          </form>
+        </div>
+
+        {(detail?.features ?? []).length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {detail!.features.map((f) => (
+              <span
+                key={f}
+                className="rounded-md border border-line bg-white px-2 py-0.5 text-[12px] text-muted"
+              >
+                {f}
+              </span>
+            ))}
+          </div>
+        )}
+        <p className="mt-2 text-[12px] text-muted">
+          <a
+            href="https://help.salesforce.com/s/articleView?id=data.c360_a_connectors.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand hover:underline"
+          >
+            Connector docs
+          </a>{" "}
+          · objects, schedule limits and data kits are per-connector — verify at
+          implementation time.
+        </p>
+
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-[13px]">
+            <thead>
+              <tr className="text-left text-muted">
+                {["Entities", "Method", "Frequency", "Status", "Notes"].map((h) => (
+                  <th key={h} className="border-b border-line pb-1.5 pr-3 font-medium">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="align-top">
+                <td className="py-2 pr-3">{source.entities || "—"}</td>
+                <td className="py-2 pr-3">{source.method || "—"}</td>
+                <td className="py-2 pr-3">{source.frequency}</td>
+                <td className="py-2 pr-3">
+                  <Pill tone={statusTone(source.status)}>{source.status}</Pill>
+                </td>
+                <td className="py-2 pr-3 text-muted">{source.notes || "—"}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      {/* Source → Data 360 flow */}
+      <Card>
+        <h2 className="mb-1 font-semibold">{source.name} → Data 360</h2>
+        <p className="mb-3 text-[13px] text-muted">
+          How this system lands in Data 360, from its mapping docs.
+        </p>
+        {streams.length > 0 ? (
+          <SourceFlow sourceName={source.name} method={source.method} streams={streams} />
+        ) : (
+          <p className="rounded-xl border border-dashed border-line p-6 text-center text-[13px] text-muted">
+            No mappings for {source.name} yet — map a CSV on the Data Mapping tab.
+          </p>
+        )}
+      </Card>
+
+      {/* Planned data streams */}
+      <Card>
+        <h2 className="mb-1 font-semibold">Planned data streams</h2>
+        <p className="mb-3 text-[13px] text-muted">
+          Category, PK, and event time are hard to change after stream creation
+          — confirm before configuring in the org. Batch refresh with
+          incremental updates is the default cost-safe choice.
+        </p>
+        {streams.length === 0 ? (
+          <p className="text-[13px] text-muted">No data streams yet.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[680px] border-collapse text-[13px]">
+              <thead>
+                <tr className="text-left text-muted">
+                  {["DLO", "Category", "PK", "Event time", "Target DMOs", "Doc"].map((h) => (
+                    <th key={h} className="border-b border-line pb-1.5 pr-3 font-medium">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {streams.map((s, i) => (
+                  <tr key={i} className="border-b border-line/60 align-top">
+                    <td className="py-2 pr-3 font-mono text-[12px]">{s.dlo}</td>
+                    <td className="py-2 pr-3">{s.category}</td>
+                    <td className="py-2 pr-3 font-mono text-[12px]">{s.pk || "—"}</td>
+                    <td className="py-2 pr-3 font-mono text-[12px]">{s.eventTime || "—"}</td>
+                    <td className="py-2 pr-3 text-muted">{s.dmos.join(", ")}</td>
+                    <td className="py-2 pr-3 font-mono text-[12px] text-muted">{s.doc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </Card>
+    </>
   );
 }
 
