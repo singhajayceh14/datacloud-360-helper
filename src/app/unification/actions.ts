@@ -17,6 +17,7 @@ export async function saveUnificationAction(input: {
       input.notes ?? "",
     );
     revalidatePath("/unification");
+    revalidatePath("/canvas");
     return { ok: true };
   } catch (e) {
     return { error: e instanceof Error ? e.message : String(e) };
