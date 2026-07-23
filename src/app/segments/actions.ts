@@ -9,6 +9,42 @@ import {
 
 export type CreateState = { error?: string; ok?: boolean };
 
+/** Create or update a segment (full form). Required DMOs come as repeated
+ * `dmos` checkbox values. */
+export async function saveSegmentAction(
+  _prev: CreateState,
+  formData: FormData,
+): Promise<CreateState> {
+  const id = String(formData.get("id") ?? "");
+  const projectId = String(formData.get("projectId") ?? "");
+  const name = String(formData.get("name") ?? "").trim();
+  if (!id && !projectId) return { error: "No active project." };
+  if (!name) return { error: "Segment name is required." };
+
+  const get = (k: string) => String(formData.get(k) ?? "").trim();
+  const dmos = formData.getAll("dmos").map(String).filter(Boolean).join(", ");
+  const data = {
+    name,
+    objective: get("objective"),
+    criteria: get("criteria"),
+    dmos,
+    calculatedInsights: get("calculatedInsights"),
+    cadence: get("cadence") || "Daily",
+    channel: get("channel"),
+    status: get("status") || "Draft",
+  };
+
+  try {
+    if (id) await updateSegment(id, data);
+    else await createSegment({ projectId, ...data });
+    revalidatePath("/segments");
+    revalidatePath("/canvas");
+    return { ok: true };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
 export async function createSegmentAction(
   _prev: CreateState,
   formData: FormData,
