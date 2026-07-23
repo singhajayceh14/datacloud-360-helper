@@ -71,7 +71,7 @@ export default function ChatPanel({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-[86px] right-5 z-50 flex max-h-[72vh] w-[min(384px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-2xl shadow-slate-900/15"
+            className="fixed bottom-[92px] right-5 z-50 flex h-[min(560px,calc(100dvh-7rem))] w-[min(384px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-2xl shadow-slate-900/15"
           >
             {/* Header */}
             <div className="flex items-center gap-2 border-b border-line px-4 py-3">
@@ -206,18 +206,43 @@ export default function ChatPanel({
       </AnimatePresence>
 
       {/* Floating toggle */}
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        title={open ? "Minimize assistant" : "Ask about this project"}
-        className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-2xl bg-brand text-white shadow-lg shadow-brand/30 transition-transform hover:scale-105"
-      >
-        {open ? (
-          <span className="text-[22px] leading-none">−</span>
-        ) : (
-          <Diamond className="h-4 w-4" />
+      <div className="fixed bottom-5 right-5 z-50 h-14 w-14">
+        {!open && (
+          <>
+            <span className="pointer-events-none absolute inset-0 animate-ping rounded-full bg-brand/30" />
+            <span className="pointer-events-none absolute -inset-2 rounded-full bg-brand/10" />
+          </>
         )}
-      </button>
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          title={open ? "Minimize assistant" : "Ask about this project"}
+          className="relative grid h-14 w-14 place-items-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 transition-transform hover:scale-105"
+        >
+          {open ? (
+            <span className="text-[24px] leading-none">−</span>
+          ) : (
+            <ChatBubble />
+          )}
+          {!open && (
+            <span className="absolute right-1 top-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-rose-500" />
+          )}
+        </button>
+      </div>
     </>
+  );
+}
+
+function ChatBubble() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
