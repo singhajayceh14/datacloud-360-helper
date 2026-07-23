@@ -10,7 +10,7 @@ import {
   activations,
   entitlements,
 } from "@/db/schema";
-import { calcConsumption } from "@/lib/entitlements/calc";
+import { calcConsumptionFromVolumes } from "@/lib/entitlements/rate-card";
 
 /** Base name shared by a project and its scenario forks. */
 export const baseName = (name: string) => name.split(" — Scenario")[0].trim();
@@ -163,7 +163,11 @@ export async function getScenarioComparison(): Promise<ScenarioRow[]> {
       );
       const ent = entRows[0];
       const credits = ent
-        ? calcConsumption(ent.lineItems, ent.dataServicesCredits).annualCredits
+        ? calcConsumptionFromVolumes(
+            ent.volumes,
+            ent.calcEnv === "sand" ? "sand" : "prod",
+            ent.dataServicesCredits,
+          ).annualCredits
         : null;
 
       return {

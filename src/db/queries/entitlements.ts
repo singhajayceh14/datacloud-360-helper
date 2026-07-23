@@ -1,7 +1,7 @@
 import "server-only";
 import { eq } from "drizzle-orm";
 import { getDb } from "@/db";
-import { entitlements, type ConsumptionLine } from "@/db/schema";
+import { entitlements } from "@/db/schema";
 
 export type EntitlementCaps = {
   dataServicesCredits: number;
@@ -21,19 +21,29 @@ export async function getEntitlement(projectId: string) {
   return row ?? null;
 }
 
-export async function upsertEntitlement(
+/** Save the order-form caps (License & entitlements tab). */
+export async function upsertEntitlementCaps(
   projectId: string,
   caps: EntitlementCaps,
-  lineItems: ConsumptionLine[],
 ) {
-  const values = { projectId, ...caps, lineItems };
   const [row] = await getDb()
     .insert(entitlements)
-    .values(values)
-    .onConflictDoUpdate({
-      target: entitlements.projectId,
-      set: { ...caps, lineItems },
-    })
+    .values({ projectId, ...caps, lineItems: [] })
+    .onConflictDoUpdate({ target: entitlements.projectId, set: caps })
+    .returning();
+  return row;
+}
+
+/** Save the rate-card calculator state (environment + monthly volumes). */
+export async function upsertEntitlementCalc(
+  projectId: string,
+  calcEnv: "prod" | "sand",
+  volumes: Record<string, number>,
+) {
+  const [row] = await getDb()
+    .insert(entitlements)
+    .values({ projectId, lineItems: [], calcEnv, volumes })
+    .onConflictDoUpdate({ target: entitlements.projectId, set: { calcEnv, volumes } })
     .returning();
   return row;
 }

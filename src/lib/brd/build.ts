@@ -9,7 +9,12 @@ import { listSources } from "@/db/queries/sources";
 import { listObjectives } from "@/db/queries/objectives";
 import { deriveUnification } from "@/lib/unification/derive";
 import { activationWarnings } from "@/lib/activation/warnings";
-import { calcConsumption, formatCredits } from "@/lib/entitlements/calc";
+import { formatCredits } from "@/lib/entitlements/calc";
+import {
+  ALL_RATES,
+  calcConsumptionFromVolumes,
+  rateFor,
+} from "@/lib/entitlements/rate-card";
 import type { Block, BrdDoc, Section } from "./model";
 
 const yn = (b: boolean) => (b ? "Yes" : "—");
@@ -286,27 +291,30 @@ export async function buildBrd(
         ["Edition / notes", dash(entitlement.notes)],
       ],
     });
-    if (entitlement.lineItems.length > 0) {
+    const env = entitlement.calcEnv === "sand" ? "sand" : "prod";
+    const sum = calcConsumptionFromVolumes(
+      entitlement.volumes,
+      env,
+      entitlement.dataServicesCredits,
+    );
+    const usedRates = ALL_RATES.filter((r) => (entitlement.volumes?.[r.key] ?? 0) > 0);
+    if (usedRates.length > 0) {
       entBlocks.push({
         type: "table",
-        head: ["Usage type", "Volume / mo", "Credits / unit", "Annual credits"],
-        rows: entitlement.lineItems.map((l) => [
-          l.category,
-          `${l.monthlyVolume} ${l.unit}`,
-          String(l.creditsPerUnit),
-          formatCredits(l.monthlyVolume * l.creditsPerUnit * 12),
+        head: ["Usage type", "Rate", "Volume / mo", "Credits / mo"],
+        rows: usedRates.map((r) => [
+          r.title,
+          `${rateFor(r, env).toLocaleString("en-US")} ${r.unit}`,
+          `${entitlement.volumes[r.key]} ${r.volLabel}`,
+          formatCredits(sum.perKey[r.key]),
         ]),
       });
     }
-    const sum = calcConsumption(
-      entitlement.lineItems,
-      entitlement.dataServicesCredits,
-    );
     entBlocks.push({
       type: "p",
-      text: `Estimated annual burn ${formatCredits(sum.annualCredits)}${
-        sum.utilizationPct !== null
-          ? ` — ${sum.utilizationPct.toFixed(0)}% of the ${formatCredits(entitlement.dataServicesCredits)} credit pool`
+      text: `Estimated burn ${formatCredits(sum.monthlyCredits)}/month (${formatCredits(sum.annualCredits)}/year, ${env === "prod" ? "production" : "sandbox"} rates)${
+        sum.runwayMonths !== null
+          ? ` — runway ≈ ${sum.runwayMonths.toFixed(1)} months against ${formatCredits(entitlement.dataServicesCredits)} credits`
           : ""
       }.`,
     });

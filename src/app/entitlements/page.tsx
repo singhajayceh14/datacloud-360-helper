@@ -1,11 +1,9 @@
-import { Banner, Card, PageHeader, Pill } from "@/components/ui";
-import { Reveal } from "@/components/motion";
+import { Banner, PageHeader } from "@/components/ui";
 import { isDbConfigured } from "@/db";
 import { getActiveProjectId } from "@/lib/active-project";
 import { getProject } from "@/db/queries/projects";
 import { getEntitlement } from "@/db/queries/entitlements";
-import { DEFAULT_LINES } from "@/lib/entitlements/calc";
-import { EntitlementEditor, type InitialCaps } from "./EntitlementEditor";
+import { EntitlementsTabs, type Caps } from "./EntitlementsTabs";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +11,7 @@ export default async function EntitlementsPage() {
   const header = (
     <PageHeader
       title="Entitlements"
-      sub="Capture the order-form caps and run the consumption calculator against them."
+      sub="Capture the order-form licence, then size credit consumption against it."
     />
   );
 
@@ -37,7 +35,7 @@ export default async function EntitlementsPage() {
       <div>
         {header}
         <Banner tone="info">
-          <strong>Select a project</strong> from the sidebar to plan its
+          <strong>Select a project</strong> from the header to plan its
           entitlements.
         </Banner>
       </div>
@@ -45,8 +43,7 @@ export default async function EntitlementsPage() {
   }
 
   const row = await getEntitlement(project.id).catch(() => null);
-
-  const initialCaps: InitialCaps = {
+  const caps: Caps = {
     dataServicesCredits: row?.dataServicesCredits ?? 0,
     sandboxCredits: row?.sandboxCredits ?? 0,
     flexCredits: row?.flexCredits ?? 0,
@@ -55,26 +52,18 @@ export default async function EntitlementsPage() {
     orderEndDate: row?.orderEndDate ?? "",
     notes: row?.notes ?? "",
   };
-  const initialLines =
-    row && row.lineItems.length > 0 ? row.lineItems : DEFAULT_LINES;
+  const calcEnv = row?.calcEnv === "sand" ? "sand" : "prod";
+  const volumes = row?.volumes ?? {};
 
   return (
     <div>
       {header}
-      <Reveal>
-        <Card>
-          <div className="mb-4 flex items-center gap-2">
-            <h2 className="font-semibold">Order form &amp; consumption</h2>
-            <Pill tone="other">{project.name}</Pill>
-            {!row && <Pill tone="beta">starter rate card</Pill>}
-          </div>
-          <EntitlementEditor
-            projectId={project.id}
-            initialCaps={initialCaps}
-            initialLines={initialLines}
-          />
-        </Card>
-      </Reveal>
+      <EntitlementsTabs
+        projectId={project.id}
+        caps={caps}
+        calcEnv={calcEnv}
+        volumes={volumes}
+      />
     </div>
   );
 }

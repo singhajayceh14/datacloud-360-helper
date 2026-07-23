@@ -190,7 +190,10 @@ export const entitlements = pgTable("entitlements", {
   contractStart: text("contract_start").notNull().default(""),
   orderEndDate: text("order_end_date").notNull().default(""),
   notes: text("notes").notNull().default(""),
-  lineItems: jsonb("line_items").notNull().$type<ConsumptionLine[]>(),
+  lineItems: jsonb("line_items").notNull().$type<ConsumptionLine[]>().default([]),
+  // Rate-card calculator state: environment + monthly volumes keyed by rate key.
+  calcEnv: text("calc_env").notNull().default("prod"),
+  volumes: jsonb("volumes").notNull().$type<Record<string, number>>().default({}),
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()
     .defaultNow(),

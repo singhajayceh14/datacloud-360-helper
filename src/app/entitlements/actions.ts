@@ -1,25 +1,19 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { upsertEntitlement } from "@/db/queries/entitlements";
-import type { ConsumptionLine } from "@/db/schema";
+import {
+  upsertEntitlementCaps,
+  upsertEntitlementCalc,
+} from "@/db/queries/entitlements";
 
 export type SaveState = { error?: string; ok?: boolean };
 
-/** Coerce arbitrary input into a clean ConsumptionLine[]. */
-function sanitizeLines(input: unknown): ConsumptionLine[] {
-  if (!Array.isArray(input)) return [];
-  return input
-    .map((l) => ({
-      category: String((l as ConsumptionLine)?.category ?? "").trim(),
-      unit: String((l as ConsumptionLine)?.unit ?? "").trim(),
-      monthlyVolume: Number((l as ConsumptionLine)?.monthlyVolume) || 0,
-      creditsPerUnit: Number((l as ConsumptionLine)?.creditsPerUnit) || 0,
-    }))
-    .filter((l) => l.category !== "");
+function revalidate() {
+  revalidatePath("/entitlements");
+  revalidatePath("/canvas");
 }
 
-export async function saveEntitlementAction(
+export async function saveEntitlementCapsAction(
   _prev: SaveState,
   formData: FormData,
 ): Promise<SaveState> {
@@ -32,28 +26,45 @@ export async function saveEntitlementAction(
   };
   const str = (k: string) => String(formData.get(k) ?? "").trim();
 
-  let lineItems: ConsumptionLine[] = [];
   try {
-    lineItems = sanitizeLines(JSON.parse(String(formData.get("lineItems") ?? "[]")));
+    await upsertEntitlementCaps(projectId, {
+      dataServicesCredits: num("dataServicesCredits"),
+      sandboxCredits: num("sandboxCredits"),
+      flexCredits: num("flexCredits"),
+      dataStorageTb: num("dataStorageTb"),
+      contractStart: str("contractStart"),
+      orderEndDate: str("orderEndDate"),
+      notes: str("notes"),
+    });
+    revalidate();
+    return { ok: true };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+export async function saveConsumptionAction(
+  _prev: SaveState,
+  formData: FormData,
+): Promise<SaveState> {
+  const projectId = String(formData.get("projectId") ?? "");
+  if (!projectId) return { error: "No active project." };
+  const calcEnv = String(formData.get("calcEnv") ?? "prod") === "sand" ? "sand" : "prod";
+
+  const volumes: Record<string, number> = {};
+  try {
+    const parsed = JSON.parse(String(formData.get("volumes") ?? "{}"));
+    for (const [k, v] of Object.entries(parsed)) {
+      const n = Number(v);
+      if (Number.isFinite(n) && n > 0) volumes[k] = n;
+    }
   } catch {
-    return { error: "Could not read the consumption line items." };
+    return { error: "Could not read the volumes." };
   }
 
   try {
-    await upsertEntitlement(
-      projectId,
-      {
-        dataServicesCredits: num("dataServicesCredits"),
-        sandboxCredits: num("sandboxCredits"),
-        flexCredits: num("flexCredits"),
-        dataStorageTb: num("dataStorageTb"),
-        contractStart: str("contractStart"),
-        orderEndDate: str("orderEndDate"),
-        notes: str("notes"),
-      },
-      lineItems,
-    );
-    revalidatePath("/entitlements");
+    await upsertEntitlementCalc(projectId, calcEnv, volumes);
+    revalidate();
     return { ok: true };
   } catch (e) {
     return { error: e instanceof Error ? e.message : String(e) };

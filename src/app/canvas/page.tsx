@@ -12,7 +12,8 @@ import { listActivations } from "@/db/queries/activations";
 import { getEntitlement } from "@/db/queries/entitlements";
 import { listObjectives } from "@/db/queries/objectives";
 import { getScenarioComparison, baseName } from "@/db/queries/scenarios";
-import { calcConsumption, formatCredits } from "@/lib/entitlements/calc";
+import { formatCredits } from "@/lib/entitlements/calc";
+import { calcConsumptionFromVolumes } from "@/lib/entitlements/rate-card";
 import { DuplicateButton } from "./DuplicateButton";
 import { DesignBoard, type Board, type BoardEdge, type BoardNode, type NodeStatus } from "./DesignBoard";
 
@@ -230,7 +231,11 @@ export default async function CanvasPage() {
 
   // Economics: annual credit burn vs the pool (from the entitlements tab).
   const econ = entitlement
-    ? calcConsumption(entitlement.lineItems, entitlement.dataServicesCredits)
+    ? calcConsumptionFromVolumes(
+        entitlement.volumes,
+        entitlement.calcEnv === "sand" ? "sand" : "prod",
+        entitlement.dataServicesCredits,
+      )
     : null;
 
   // Scenario family: this project plus any forks sharing its base name.
